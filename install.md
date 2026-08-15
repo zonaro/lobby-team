@@ -1,6 +1,6 @@
-# 📦 Instalação dos Agentes — Prompt Universal para Qualquer Agente de IA
+# 📦 Instalação dos Agentes — Prompt para o OpenCode
 
-Cole o prompt abaixo em qualquer agente de IA (OpenCode, Claude, Codex, Hermes, OpenClaw, GitHub Copilot, etc.) para instalar a equipe **Lobby** na configuração global, baixando os arquivos diretamente do repositório no GitHub.
+Cole o prompt abaixo no **OpenCode** para instalar a equipe **Lobby** na configuração global, baixando os arquivos diretamente do repositório no GitHub.
 
 ---
 
@@ -20,30 +20,17 @@ O repositório é `zonaro/opencode-lobby` (branch `main`). Os arquivos estão di
 
 ## Passo 1 — Identifique o sistema operacional
 
-Detecte o SO em que você está rodando:
-- **Linux** → use `~/.config/...` (ou `$XDG_CONFIG_HOME` se definido)
-- **macOS** → use `~/.config/...` ou `~/Library/Application Support/...` conforme o agente
-- **Windows** → use `%USERPROFILE%\.config\...` ou `%APPDATA%\...` conforme o agente
+Detecte o SO em que você está rodando e determine o diretório de configuração do OpenCode:
 
-## Passo 2 — Identifique o agente e o diretório de configuração
+| SO          | Diretório de configuração do OpenCode                                                         |
+| ----------- | --------------------------------------------------------------------------------------------- |
+| **Linux**   | `~/.config/opencode/` (ou `$XDG_CONFIG_HOME/opencode/` se `XDG_CONFIG_HOME` estiver definido) |
+| **macOS**   | `~/.config/opencode/`                                                                         |
+| **Windows** | `%USERPROFILE%\.config\opencode\`                                                             |
 
-Determine qual agente você é e use o diretório de configuração correto:
+## Passo 2 — Baixe os arquivos
 
-| Agente                 | Linux                                                   | macOS                                           | Windows                           |
-| ---------------------- | ------------------------------------------------------- | ----------------------------------------------- | --------------------------------- |
-| **OpenCode**           | `~/.config/opencode/`                                   | `~/.config/opencode/`                           | `%USERPROFILE%\.config\opencode\` |
-| **Claude Code**        | `~/.claude/`                                            | `~/.claude/`                                    | `%USERPROFILE%\.claude\`          |
-| **OpenAI Codex**       | `~/.codex/`                                             | `~/.codex/`                                     | `%USERPROFILE%\.codex\`           |
-| **OpenClaw**           | `~/.openclaw/`                                          | `~/.openclaw/`                                  | `%USERPROFILE%\.openclaw\`        |
-| **GitHub Copilot CLI** | `~/.config/github-copilot/`                             | `~/Library/Application Support/github-copilot/` | `%APPDATA%\GitHub Copilot\`       |
-| **Hermes**             | `~/.hermes/`                                            | `~/.hermes/`                                    | `%USERPROFILE%\.hermes\`          |
-| **Outro agente**       | Use o diretório de configuração padrão do seu framework |                                                 |                                   |
-
-Se você não tiver certeza, use o diretório de configuração padrão do seu próprio framework.
-
-## Passo 3 — Baixe os arquivos
-
-Baixe cada arquivo do repositório e coloque no diretório de configuração identificado no Passo 2:
+Baixe cada arquivo do repositório e coloque no diretório de configuração do OpenCode identificado no Passo 1:
 
 1. `AGENTS.md` → `<config_dir>/AGENTS.md`
 2. `opencode.jsonc` → `<config_dir>/opencode.jsonc`
@@ -54,7 +41,9 @@ Use a ferramenta de download apropriada para o SO:
 - **Linux/macOS**: `curl -fsSL <url> -o <destino>` ou `wget -q <url> -O <destino>`
 - **Windows**: `Invoke-WebRequest -Uri <url> -OutFile <destino>` (PowerShell)
 
-Crie os diretórios necessários antes de baixar (ex.: `mkdir -p <config_dir>/agents`).
+Crie os diretórios necessários antes de baixar:
+- **Linux/macOS**: `mkdir -p <config_dir>/agents`
+- **Windows**: `New-Item -ItemType Directory -Force -Path <config_dir>\agents` (PowerShell)
 
 ## Regras
 
@@ -69,16 +58,24 @@ Crie os diretórios necessários antes de baixar (ex.: `mkdir -p <config_dir>/ag
 ## Como usar
 
 1. Copie o prompt acima.
-2. Cole em qualquer agente de IA (OpenCode, Claude, Codex, Hermes, OpenClaw, GitHub Copilot, etc.) e envie.
-3. O agente identificará o SO, baixará os arquivos do GitHub e os colocará no diretório de configuração correto.
+2. Cole no OpenCode e envie.
+3. O OpenCode identificará o SO, baixará os arquivos do GitHub e os colocará no diretório de configuração correto.
 4. Pronto! A equipe Lobby estará disponível globalmente.
 
 ## Verificação
 
-Depois de instalar, confira com:
+Depois de instalar, confira com o comando apropriado para o seu SO:
+
+**Linux/macOS:**
 
 ```bash
 ls -la ~/.config/opencode/agents/
+```
+
+**Windows (PowerShell):**
+
+```powershell
+Get-ChildItem "$env:USERPROFILE\.config\opencode\agents"
 ```
 
 Você deve ver todos os arquivos de agentes baixados do repositório.
