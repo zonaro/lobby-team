@@ -1,7 +1,7 @@
 ---
 description: "Frontend specialist — HTML, CSS/Tailwind, jQuery, Select2, React/Vue/Web components, responsive layouts, mobile-first design, and visual styling."
 mode: subagent
-model: opencode/minimax-m3-free
+model: opencode/deepseek-v4-flash-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []

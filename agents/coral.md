@@ -1,7 +1,7 @@
 ---
 description: "Chief Architect — defines the entire project structure and architecture, selects the agent team, writes AGENTS.md and .agents/ for new projects, documents all rules (architecture, project rules, client visual identity for Fishie, code patterns, preferences, permissions). Plan-only: does not write production code."
 mode: subagent
-model: opencode/deepseek-v4-free
+model: opencode/nemotron-3-ultra-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []

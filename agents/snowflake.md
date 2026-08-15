@@ -1,7 +1,7 @@
 ---
 description: "C#/.NET specialist — Desktop-first with InfiniFrame (modern Photino rework), Blazor WebView, Razor components, DI container, C#↔JS interop, cross-platform (Windows/Linux/macOS). Also covers the full .NET ecosystem: ASP.NET Core, EF Core, APIs, libraries, and tooling."
 mode: subagent
-model: opencode/deepseek-v4-free
+model: opencode/deepseek-v4-flash-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []

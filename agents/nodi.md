@@ -1,7 +1,7 @@
 ---
 description: "Node.js specialist — backend APIs, REST/GraphQL, Express/Fastify/NestJS, TypeScript/JavaScript, async patterns, testing, and tooling."
 mode: subagent
-model: opencode/deepseek-v4-free
+model: opencode/deepseek-v4-flash-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []

@@ -1,7 +1,7 @@
 ---
 description: "Linux specialist — POSIX-compliant shell scripts for maintenance, deployment, installation, automation (cron/systemd), Docker/containers, networking, and monitoring. Distro-agnostic, Arch/Manjaro/Big Linux as reference."
 mode: subagent
-model: opencode/deepseek-v4-free
+model: opencode/deepseek-v4-flash-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []

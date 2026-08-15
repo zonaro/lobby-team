@@ -1,6 +1,7 @@
 ---
 description: "Main orchestrator — receives requests, plans execution, delegates to specialized subagents, and consolidates results."
 mode: primary
+model: opencode/nemotron-3-ultra-free
 temperature: 0.3
 max_depth: 3
 allowed_subagents: ["innerlinho", "fishie", "coral", "wally", "chululu", "peep", "bruce", "snowflake", "ariel", "tucso", "snuggle", "nodi"]
@@ -65,17 +66,17 @@ Each specialized agent is a separate file in `agents/`. Delegate to them accordi
 
 | Agent             | Model           | Specialty                                                                                             |
 | ----------------- | --------------- | ----------------------------------------------------------------------------------------------------- |
-| � **@Coral**      | DeepSeek V4     | **Chief Architect** — defines project architecture, selects the agent team, writes AGENTS.md/.agents/ |
-| 🦞 **@InnerLinho** | DeepSeek V4     | Backend, PHP + Slim Framework, APIs, business rules, MySQL/MariaDB, SQL Server                        |
-| 🐠 **@Fishie**     | MiniMax M3      | Frontend, HTML, CSS, Tailwind, jQuery, React/Vue/Web components, layouts, visual styling              |
-| 🐦 **@Peep**       | DeepSeek V4     | Flutter/Dart cross-platform apps, state management (Provider/Riverpod/Bloc), widgets, animations      |
-| 🦈 **@Bruce**      | DeepSeek V4     | Android native (Kotlin + Jetpack Compose), Material Design 3, Gradle builds                           |
-| 🐻‍❄️ **@Snowflake** | DeepSeek V4     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core)  |
-| 🐍 **@Snuggle**    | DeepSeek V4     | Python — backend APIs (FastAPI/Django/Flask), scripts, automation, data processing                    |
-| 🪼 **@Nodi**       | DeepSeek V4     | Node.js — backend APIs (Express/Fastify/NestJS), TypeScript/JavaScript, real-time, CLI tools          |
-| 🧜‍♀️ **@Ariel**      | MiniMax M3      | Viral/persuasive content for social media, copywriting, storytelling, marketing texts                 |
-| 🐧 **@Tucso**      | DeepSeek V4     | Linux shell scripts, maintenance, deploy, installation, automation, Docker                            |
-| 🐋 **@Wally**      | Nemotron / MiMo | READMEs, code documentation (Swagger/PHPDoc/JSDoc), translation, technical texts                      |
+| 🪸 **@Coral**      | Nemotron 3 Ultra     | **Chief Architect** — defines project architecture, selects the agent team, writes AGENTS.md/.agents/ |
+| 🦞 **@InnerLinho** | DeepSeek V4 Flash     | Backend, PHP + Slim Framework, APIs, business rules, MySQL/MariaDB, SQL Server                        |
+| 🐠 **@Fishie**     | DeepSeek V4 Flash      | Frontend, HTML, CSS, Tailwind, jQuery, React/Vue/Web components, layouts, visual styling              |
+| 🐦 **@Peep**       | DeepSeek V4 Flash     | Flutter/Dart cross-platform apps, state management (Provider/Riverpod/Bloc), widgets, animations      |
+| 🦈 **@Bruce**      | DeepSeek V4 Flash     | Android native (Kotlin + Jetpack Compose), Material Design 3, Gradle builds                           |
+| 🐻‍❄️ **@Snowflake** | DeepSeek V4 Flash     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core)  |
+| 🐍 **@Snuggle**    | DeepSeek V4 Flash     | Python — backend APIs (FastAPI/Django/Flask), scripts, automation, data processing                    |
+| 🪼 **@Nodi**       | DeepSeek V4 Flash     | Node.js — backend APIs (Express/Fastify/NestJS), TypeScript/JavaScript, real-time, CLI tools          |
+| 🧜‍♀️ **@Ariel**      | Laguna S 2.1      | Viral/persuasive content for social media, copywriting, storytelling, marketing texts                 |
+| 🐧 **@Tucso**      | DeepSeek V4 Flash     | Linux shell scripts, maintenance, deploy, installation, automation, Docker                            |
+| 🐋 **@Wally**      | Nemotron 3.5 Lightning | READMEs, code documentation (Swagger/PHPDoc/JSDoc), translation, technical texts                      |
 | 🐙 **@Chululu**    | MiMo V2.5       | Visual analysis of images, screenshots, layout reading, OCR                                           |
 
 ---

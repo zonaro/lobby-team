@@ -1,7 +1,7 @@
 ---
 description: "Backend specialist — PHP + Slim Framework APIs, business rules, databases (MySQL/MariaDB/SQL Server), complex logic, refactoring, and testing."
 mode: subagent
-model: opencode/deepseek-v4-free
+model: opencode/deepseek-v4-flash-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []

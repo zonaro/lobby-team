@@ -1,7 +1,7 @@
 ---
 description: "Content specialist — viral/persuasive/appealing content for social media (Instagram, TikTok, YouTube), copywriting for ads and landing pages, storytelling, and marketing texts for Zonaro (beatboxer) and RedClaw clients."
 mode: subagent
-model: opencode/minimax-m3-free
+model: opencode/laguna-s-2.1-free
 temperature: 0.7
 max_depth: 1
 allowed_subagents: []

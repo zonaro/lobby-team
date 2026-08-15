@@ -1,7 +1,7 @@
 ---
 description: "Python specialist — backend APIs, scripts, automation, data processing, web frameworks (FastAPI/Django/Flask), testing, and tooling."
 mode: subagent
-model: opencode/deepseek-v4-free
+model: opencode/deepseek-v4-flash-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []

@@ -1,7 +1,7 @@
 ---
 description: "Documentation specialist — READMEs, code docs (Swagger/PHPDoc/JSDoc), translation (pt-br/en/es), technical texts, and writing prompts."
 mode: subagent
-model: opencode/nemotron-free
+model: opencode/nemotron-3.5-lightning-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []

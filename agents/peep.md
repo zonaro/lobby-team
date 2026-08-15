@@ -1,7 +1,7 @@
 ---
 description: "Flutter specialist — cross-platform apps (Android, iOS, Web, Desktop) with Dart, state management (Provider/Riverpod/Bloc), widgets, animations, and Flutter testing."
 mode: subagent
-model: opencode/deepseek-v4-free
+model: opencode/deepseek-v4-flash-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []

@@ -118,18 +118,18 @@ Each agent is specialized by **competence + programming language**. For new proj
 
 | Agent          | Emoji | Model           | Specialty                                                                                            |
 | -------------- | ----- | --------------- | ---------------------------------------------------------------------------------------------------- |
-| **Lobby**      | 🦞     | Primary         | Main orchestrator — receives requests, plans, delegates, consolidates                                |
-| **Coral**      | 🪸     | DeepSeek V4     | Chief Architect — defines architecture, selects team, writes AGENTS.md/.agents/                      |
-| **InnerLinho** | 🦞     | DeepSeek V4     | Backend — PHP + Slim Framework, MySQL/MariaDB, SQL Server                                            |
-| **Fishie**     | 🐠     | MiniMax M3      | Frontend — HTML, CSS, Tailwind, jQuery, React/Vue, visual styling                                    |
-| **Peep**       | 🐦     | DeepSeek V4     | Flutter/Dart — cross-platform apps, state management, widgets                                        |
-| **Bruce**      | 🦈     | DeepSeek V4     | Android native — Kotlin + Jetpack Compose, Material Design 3                                         |
-| **Snowflake**  | 🐻‍❄️    | DeepSeek V4     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core) |
-| **Snuggle**    | 🐍     | DeepSeek V4     | Python — backend APIs (FastAPI/Django/Flask), scripts, automation, data processing                   |
-| **Nodi**       | 🪼     | DeepSeek V4     | Node.js — backend APIs (Express/Fastify/NestJS), TypeScript/JavaScript, real-time, CLI tools         |
-| **Ariel**      | 🧜‍♀️     | MiniMax M3      | Content — viral/persuasive social media content, copywriting, storytelling                           |
-| **Tucso**      | 🐧     | DeepSeek V4     | Linux — shell scripts, maintenance, deploy, installation, Docker                                     |
-| **Wally**      | 🐋     | Nemotron / MiMo | Documentation — READMEs, Swagger/PHPDoc/JSDoc, translation (pt-br/en/es)                             |
+| **Lobby**      | 🦞     | Nemotron 3 Ultra         | Main orchestrator — receives requests, plans, delegates, consolidates                                |
+| **Coral**      | 🪸     | Nemotron 3 Ultra     | Chief Architect — defines architecture, selects team, writes AGENTS.md/.agents/                      |
+| **InnerLinho** | 🦞     | DeepSeek V4 Flash     | Backend — PHP + Slim Framework, MySQL/MariaDB, SQL Server                                            |
+| **Fishie**     | 🐠     | DeepSeek V4 Flash      | Frontend — HTML, CSS, Tailwind, jQuery, React/Vue, visual styling                                    |
+| **Peep**       | 🐦     | DeepSeek V4 Flash     | Flutter/Dart — cross-platform apps, state management, widgets                                        |
+| **Bruce**      | 🦈     | DeepSeek V4 Flash     | Android native — Kotlin + Jetpack Compose, Material Design 3                                         |
+| **Snowflake**  | 🐻‍❄️    | DeepSeek V4 Flash     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core) |
+| **Snuggle**    | 🐍     | DeepSeek V4 Flash     | Python — backend APIs (FastAPI/Django/Flask), scripts, automation, data processing                   |
+| **Nodi**       | 🪼     | DeepSeek V4 Flash     | Node.js — backend APIs (Express/Fastify/NestJS), TypeScript/JavaScript, real-time, CLI tools         |
+| **Ariel**      | 🧜‍♀️     | Laguna S 2.1      | Content — viral/persuasive social media content, copywriting, storytelling                           |
+| **Tucso**      | 🐧     | DeepSeek V4 Flash     | Linux — shell scripts, maintenance, deploy, installation, Docker                                     |
+| **Wally**      | 🐋     | Nemotron 3.5 Lightning | Documentation — READMEs, Swagger/PHPDoc/JSDoc, translation (pt-br/en/es)                             |
 | **Chululu**    | 🐙     | MiMo V2.5       | Vision — image/screenshot analysis, layout reading, OCR                                              |
 
 ## Lobby Delegation Rules

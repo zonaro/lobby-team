@@ -1,7 +1,7 @@
 ---
 description: "Android specialist — native Android apps (games, launchers, widgets) with Kotlin, Jetpack Compose, Material Design 3 (Material You), Gradle builds, and API integration."
 mode: subagent
-model: opencode/deepseek-v4-free
+model: opencode/deepseek-v4-flash-free
 temperature: 0.3
 max_depth: 1
 allowed_subagents: []
