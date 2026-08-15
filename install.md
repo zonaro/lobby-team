@@ -1,117 +1,117 @@
-# 📦 Instalação dos Agentes — Prompt para o OpenCode
+# 📦 Agent Installation — Prompt for OpenCode
 
-Cole o prompt abaixo no **OpenCode** para instalar a equipe **Lobby** na configuração global, baixando os arquivos diretamente do repositório no GitHub.
+Paste the prompt below into **OpenCode** to install the **Lobby** team in the global configuration, downloading files directly from the GitHub repository.
 
 ---
 
 ## Prompt
 
 ```
-Instale a configuração global dos agentes do projeto opencode-lobby baixando os arquivos do GitHub.
+Install the global agent configuration for the opencode-lobby project by downloading files from GitHub.
 
-## Contexto
+## Context
 
-O repositório é `zonaro/opencode-lobby` (branch `main`). Os arquivos estão disponíveis via raw.githubusercontent.com:
+The repository is `zonaro/opencode-lobby` (branch `main`). Files are available via raw.githubusercontent.com:
 
 - Base: `https://raw.githubusercontent.com/zonaro/opencode-lobby/main/`
-- `agents/` — pasta com todos os agentes especializados (lobby, coral, innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, ariel, tucso, wally, chululu)
-- `AGENTS.md` — regras globais do usuário e regras de delegação
-- `opencode.jsonc` — configuração do opencode (default_agent: lobby)
+- `agents/` — folder with all specialized agents (lobby, coral, innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, ariel, tucso, wally, chululu)
+- `AGENTS.md` — global user rules and delegation rules
+- `opencode.jsonc` — opencode configuration (default_agent: lobby)
 
-> **Nota**: `USER.md` (perfil pessoal do usuário) NÃO está no repositório — ele é criado localmente no Passo 3 com as informações fornecidas pelo usuário.
+> **Note**: `USER.md` (user's personal profile) is NOT in the repository — it is created locally in Step 3 with user-provided information.
 
-## Passo 1 — Identifique o sistema operacional
+## Step 1 — Identify the operating system
 
-Detecte o SO em que você está rodando e determine o diretório de configuração do OpenCode:
+Detect the OS you're running on and determine the OpenCode configuration directory:
 
-| SO          | Diretório de configuração do OpenCode                                                         |
-| ----------- | --------------------------------------------------------------------------------------------- |
-| **Linux**   | `~/.config/opencode/` (ou `$XDG_CONFIG_HOME/opencode/` se `XDG_CONFIG_HOME` estiver definido) |
-| **macOS**   | `~/.config/opencode/`                                                                         |
-| **Windows** | `%USERPROFILE%\.config\opencode\`                                                             |
+| OS          | OpenCode Configuration Directory                                                    |
+| ----------- | ----------------------------------------------------------------------------------- |
+| **Linux**   | `~/.config/opencode/` (or `$XDG_CONFIG_HOME/opencode/` if `XDG_CONFIG_HOME` is set) |
+| **macOS**   | `~/.config/opencode/`                                                               |
+| **Windows** | `%USERPROFILE%\.config\opencode\`                                                   |
 
-## Passo 2 — Baixe os arquivos
+## Step 2 — Download the files
 
-Baixe cada arquivo do repositório e coloque no diretório de configuração do OpenCode identificado no Passo 1:
+Download each file from the repository and place it in the OpenCode configuration directory identified in Step 1:
 
 1. `AGENTS.md` → `<config_dir>/AGENTS.md`
 2. `opencode.jsonc` → `<config_dir>/opencode.jsonc`
-3. Todos os arquivos de `agents/` → `<config_dir>/agents/`:
+3. All files from `agents/` → `<config_dir>/agents/`:
    - `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`
 
-Use a ferramenta de download apropriada para o SO:
-- **Linux/macOS**: `curl -fsSL <url> -o <destino>` ou `wget -q <url> -O <destino>`
-- **Windows**: `Invoke-WebRequest -Uri <url> -OutFile <destino>` (PowerShell)
+Use the appropriate download tool for the OS:
+- **Linux/macOS**: `curl -fsSL <url> -o <destination>` or `wget -q <url> -O <destination>`
+- **Windows**: `Invoke-WebRequest -Uri <url> -OutFile <destination>` (PowerShell)
 
-Crie os diretórios necessários antes de baixar:
+Create necessary directories before downloading:
 - **Linux/macOS**: `mkdir -p <config_dir>/agents`
 - **Windows**: `New-Item -ItemType Directory -Force -Path <config_dir>\agents` (PowerShell)
 
-## Passo 3 — Crie o USER.md com as informações do usuário
+## Step 3 — Create USER.md with user information
 
-O `USER.md` contém o perfil pessoal do usuário (nome, preferências, família, informações profissionais). Ele é **pessoal e não deve ser commitado** — por isso é criado localmente durante a instalação.
+`USER.md` contains the user's personal profile (name, preferences, family, professional info). It is **personal and must not be committed** — that's why it's created locally during installation.
 
-Pergunte ao usuário as seguintes informações (em pt-br, a menos que ele prefira outro idioma):
+Ask the user the following information (in pt-br, unless they prefer another language):
 
-1. **Como quer ser chamado(a)?** (apelido)
-2. **Nome completo**
-3. **Gênero** (opcional)
-4. **Pronomes** (ex.: Ele/Dele, Ela/Dela)
-5. **Fuso horário** (ex.: America/Sao_Paulo)
-6. **Idioma preferido** (ex.: Português pt-br)
-7. **Localização** (cidade, estado, país)
-8. **Profissão / área de atuação**
-9. **Stack de tecnologia preferida** (linguagens, frameworks, bancos de dados)
-10. **Informações familiares** (opcional)
-11. **Qualquer outra preferência pessoal** que ele queira registrar
+1. **What should I call you?** (nickname)
+2. **Full name**
+3. **Gender** (optional)
+4. **Pronouns** (e.g., He/Him, She/Her)
+5. **Timezone** (e.g., America/Sao_Paulo)
+6. **Preferred language** (e.g., Portuguese pt-br)
+7. **Location** (city, state, country)
+8. **Profession / area of work**
+9. **Preferred tech stack** (languages, frameworks, databases)
+10. **Family information** (optional)
+11. **Any other personal preferences** they want to record
 
-Crie o arquivo `<config_dir>/USER.md` com as respostas, seguindo este formato:
+Create the file `<config_dir>/USER.md` with the answers, following this format:
 
 ```markdown
 # User Profile
 
-- **Callme by**: {apelido}
-- **Gender**: {gênero}
-- **Full Name**: {nome completo}
+- **Callme by**: {nickname}
+- **Gender**: {gender}
+- **Full Name**: {full name}
 - **Alias / Handle**: {alias}
-- **Pronouns**: {pronomes}
-- **Timezone**: {fuso horário}
-- **Language**: {idioma}
-- **Location**: {localização}
+- **Pronouns**: {pronouns}
+- **Timezone**: {timezone}
+- **Language**: {language}
+- **Location**: {location}
 
 ### Professional
 
-- {profissão / área de atuação}
-- {stack de tecnologia}
+- {profession / area of work}
+- {tech stack}
 
 ### Preferences
 
-- {preferências pessoais}
+- {personal preferences}
 ```
 
-Se o usuário não quiser responder alguma pergunta, deixe o campo vazio ou omita a linha.
+If the user doesn't want to answer a question, leave the field blank or omit the line.
 
-## Regras
+## Rules
 
-- Crie o diretório de configuração se ele não existir.
-- Se um arquivo já existir, sobrescreva com a versão mais recente do repositório.
-- Baixe TODOS os arquivos da pasta `agents/` — não pule nenhum.
-- **NÃO baixe `USER.md` do repositório** — ele é criado localmente no Passo 3 com as informações do usuário.
-- Ao final, liste os arquivos instalados e confirme que todos foram baixados com sucesso.
+- Create the configuration directory if it doesn't exist.
+- If a file already exists, overwrite with the latest version from the repository.
+- Download ALL files from the `agents/` folder — don't skip any.
+- **DO NOT download `USER.md` from the repository** — it's created locally in Step 3 with user information.
+- At the end, list the installed files and confirm all were downloaded successfully.
 ```
 
 ---
 
-## Como usar
+## How to use
 
-1. Copie o prompt acima.
-2. Cole no OpenCode e envie.
-3. O OpenCode identificará o SO, baixará os arquivos do GitHub, os colocará no diretório de configuração correto e **perguntará suas informações para criar o `USER.md`**.
-4. Pronto! A equipe Lobby estará disponível globalmente.
+1. Copy the prompt above.
+2. Paste into OpenCode and send.
+3. OpenCode will identify the OS, download files from GitHub, place them in the correct configuration directory, and **ask for your information to create `USER.md`**.
+4. Done! The Lobby team will be available globally.
 
-## Verificação
+## Verification
 
-Depois de instalar, confira com o comando apropriado para o seu SO:
+After installing, verify with the appropriate command for your OS:
 
 **Linux/macOS:**
 
@@ -125,4 +125,4 @@ ls -la ~/.config/opencode/agents/
 Get-ChildItem "$env:USERPROFILE\.config\opencode\agents"
 ```
 
-Você deve ver todos os arquivos de agentes baixados do repositório.
+You should see all agent files downloaded from the repository.

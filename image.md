@@ -1,44 +1,44 @@
-# 🎨 Prompt para atualizar a `lobby_team.png`
+# 🎨 Prompt to update `lobby_team.png`
 
-> **Objetivo**: partir da imagem **atual** (`lobby_team.png`, 1537×1023, 3:2 paisagem) e produzir uma nova versão que:
+> **Goal**: start from the **current** image (`lobby_team.png`, 1537×1023, 3:2 landscape) and produce a new version that:
 >
-> 1. **Traga os personagens da prateleira para o chão**, junto do resto do time (o pássaro do Flutter = **Peep**, e o urso do C# = **Snowflake**);
-> 2. **Adicione os 7 membros novos** que ainda não aparecem (**Bruce, Snuggle, Nodi, Ariel, Tucso**, além de dar telinha para **InnerLinho**);
-> 3. **Preserve** a pessoa, o cenário, o estilo e as pelúcias que já existem.
+> 1. **Brings the shelf characters down to the floor**, alongside the rest of the team (the Flutter bird = **Peep**, and the C# bear = **Snowflake**);
+> 2. **Adds the 7 new members** that aren't there yet (**Bruce, Snuggle, Nodi, Ariel, Tucso**, plus giving **InnerLinho** a screen of its own);
+> 3. **Preserves** the person, the scene, the style and the plushies that already exist.
 
 ---
 
-## 📸 O que a imagem atual realmente é (leia antes de prompar)
+## 📸 What the current image actually is (read before prompting)
 
-Não é ilustração — é uma **fotografia realista de estúdio caseiro**:
+It's not an illustration — it's a **photorealistic home-studio photograph**:
 
-- **Centro**: mulher real, jovem, pele morena, cabelo ondulado longo **lilás/roxo**, brincos de coração rosa, pulseiras de miçangas pastel, anéis, sorriso largo. Veste **hoodie turquesa** com estampa de **coração rosa + carinha de gato branca**. Segura no colo uma **pelúcia de lagosta laranja de óculos redondos pretos**. Ela é a **Lobby**.
-- **Primeiro plano**: pelúcias grandes (30–50 cm) sobre **pedestais quadrados pretos foscos**, em arco ao redor dela — **Chululu** (polvo rosa de bolinhas), **Fishie** (peixe mandarim azul/laranja/amarelo), **Coral** (coral vermelho e laranja), **Wally** (baleia azul).
-- **Atrás de cada pelúcia**: um **monitor/tablet pequeno com moldura colorida** (rosa, branca, preta) exibindo, em fundo escuro, `@Nome (Modelo)`, uma linha menor de skills e uma **arte pixel/vetorial do personagem**.
-- **Fundo**: estante de madeira clara com livros de programação, canecas de lápis, monitores exibindo código em tema escuro, parede azul-petróleo à esquerda com quadro botânico, cortina à direita, **cordão de luzinhas LED azuis/verdes** atravessando as prateleiras.
-- **Prateleira de cima**: pelúcias de **mascotes de tecnologia** — copo do **JS**, pássaro do **Flutter**, elefante roxo do **PHP**, urso polar de suéter verde **C#**, câmera rosa do **Instagram**, kiwi roxo, maçã cinza da **Apple**, robô verde do **Android**.
-- **Técnica**: luz quente de interior, profundidade de campo rasa (fundo desfocado), textura de feltro/tricô visível nas pelúcias, olhos bordados brilhantes.
+- **Center**: a real young woman, tan skin, long wavy **lavender/purple** hair, pink heart earrings, pastel beaded bracelets, rings, wide smile. Wearing a **turquoise hoodie** with a **pink heart + white cat face** print. Holding in her lap an **orange lobster plush with round black glasses**. She is **Lobby**.
+- **Foreground**: large plushies (30–50 cm) on **matte black square pedestals**, arced around her — **Chululu** (pink polka-dot octopus), **Fishie** (blue/orange/yellow mandarin fish), **Coral** (red and orange coral), **Wally** (blue whale).
+- **Behind each plush**: a **small monitor/tablet with a colored bezel** (pink, white, black) showing, on a dark background, `@Name (Model)`, a smaller skills line and a **pixel/vector art of the character**.
+- **Background**: light wooden bookshelf with programming books, pencil cups, monitors showing code in a dark theme, teal-painted wall on the left with a botanical art print, curtain on the right, a **string of blue/green LED fairy lights** crossing the shelves.
+- **Top shelf**: **tech mascot** plushies — the **JS** cup, the **Flutter** bird, the purple **PHP** elephant, the polar bear in a green **C#** sweater, the pink **Instagram** camera, a purple kiwi, the gray **Apple** apple, the green **Android** robot.
+- **Technique**: warm indoor light, shallow depth of field (blurred background), visible felt/knit texture on the plushies, glossy embroidered eyes.
 
-**Personagens que faltam na foto atual:** Peep e Snowflake (só existem como pelúcia na prateleira de cima), Bruce, Snuggle, Nodi, Ariel e Tucso (não existem). InnerLinho é a lagosta no colo, mas está sem telinha.
+**Characters missing from the current photo:** Peep and Snowflake (they only exist as plushies on the top shelf), Bruce, Snuggle, Nodi, Ariel and Tucso (they don't exist). InnerLinho is the lobster in her lap, but has no screen.
 
 ---
 
-## 🛠 Como gerar
+## 🛠 How to generate
 
-Use um modelo que aceite **imagem de referência + instrução de edição** (image-to-image), não um text-to-image puro:
+Use a model that accepts a **reference image + editing instruction** (image-to-image), not a pure text-to-image:
 
-| Ferramenta                              | Serve para                                     |
+| Tool                                    | Good for                                       |
 | --------------------------------------- | ---------------------------------------------- |
-| **Nano Banana Pro** (Gemini 3 Pro Image) | Melhor opção: edição fiel + texto legível      |
-| **Flux.1 Kontext**                      | Ótimo para edições incrementais                |
-| **GPT-Image / DALL·E (modo edição)**    | Bom com texto, menos fiel ao rosto             |
-| **Seedream 4 / Qwen Image Edit**        | Alternativas gratuitas decentes                |
+| **Nano Banana Pro** (Gemini 3 Pro Image) | Best option: faithful editing + readable text   |
+| **Flux.1 Kontext**                      | Great for incremental edits                    |
+| **GPT-Image / DALL·E (edit mode)**      | Good with text, less faithful to the face      |
+| **Seedream 4 / Qwen Image Edit**        | Decent free alternatives                       |
 
-> ⚠️ **Adicionar 7 personagens de uma vez costuma quebrar qualquer modelo.** Use o **Prompt A** se a ferramenta for forte; se o resultado embolar, vá pelo **modo incremental** (3 etapas) logo abaixo.
+> ⚠️ **Adding 7 characters at once tends to break any model.** Use **Prompt A** if the tool is strong; if the result gets muddled, go with the **incremental mode** (3 stages) further below.
 
 ---
 
-## 🅰️ Prompt A — edição da imagem original (principal)
+## 🅰️ Prompt A — editing the original image (main)
 
 ```
 Edit this photograph. Keep it a photorealistic indoor photo — same camera look, same warm lighting, same shallow depth of field, same 3:2 landscape framing. Do NOT turn it into an illustration or anime.
@@ -69,17 +69,17 @@ Photorealistic, cozy creator-studio photo, warm indoor lighting, shallow depth o
 
 ---
 
-## 🔁 Modo incremental (recomendado se o Prompt A embolar)
+## 🔁 Incremental mode (recommended if Prompt A gets muddled)
 
-Rode uma etapa por vez, **sempre alimentando o resultado da etapa anterior** como nova imagem de entrada.
+Run one stage at a time, **always feeding the previous stage's result** in as the new input image.
 
-**Etapa 1 — descer a prateleira**
+**Stage 1 — bring down the shelf**
 
 ```
 Edit this photo, keeping everything else identical. Take the round teal-blue Flutter bird plush and the white polar bear plush in the green "C#" sweater off the top shelf and place them in the foreground with the other plushies, each on its own matte black pedestal with a small screen behind it, at the same scale and in the same photorealistic style. Fill their empty spots on the shelf with a purple-and-orange Kotlin logo cushion and a small potted plant. Keep the woman, her hoodie, the lobster plush she is holding, the background and the existing plushies exactly as they are.
 ```
 
-**Etapa 2 — adicionar os 5 novos (dois de cada vez)**
+**Stage 2 — add the 5 new ones (two at a time)**
 
 ```
 Edit this photo, keeping everything else identical. Add on the left side, on matte black pedestals in the same handmade plush style (felted wool and knit fabric, visible stitching, big glossy embroidered eyes): a soft translucent purple-and-pink jellyfish plush with a glowing rounded bell, dangling ribbon tentacles and a green Node.js hexagon patch; and a coiled bright green crocheted snake plush in chunky yarn with tiny round glasses and a blue-and-yellow Python logo tag. Each gets a small screen behind it with a dark background and sharp readable text. Photorealistic, same lighting, same depth of field.
@@ -89,7 +89,7 @@ Edit this photo, keeping everything else identical. Add on the left side, on mat
 Edit this photo, keeping everything else identical. Add on the right side, on matte black pedestals in the same handmade plush style: a chubby gray-blue great white shark plush with tiny black felt sunglasses holding a small green Android robot plush; a chubby black-and-white penguin plush with orange felt beak and feet and a green terminal patch on its belly reading "$ ./deploy"; and a small mermaid rag doll with turquoise yarn hair, iridescent sequin tail and a tiny felt microphone. Each gets a small screen behind it with a dark background and sharp readable text. Photorealistic, same lighting, same depth of field.
 ```
 
-**Etapa 3 — corrigir os textos das telas**
+**Stage 3 — fix the screen texts**
 
 ```
 Edit this photo. Change only the text on the small screens so it is perfectly sharp and readable, correctly spelled in English, without changing anything else in the image. Use this exact text, one screen per character, matching each screen to the plush in front of it:
@@ -109,7 +109,7 @@ Edit this photo. Change only the text on the small screens so it is perfectly sh
 
 ---
 
-## 🅱️ Prompt B — geração do zero (se não der para editar)
+## 🅱️ Prompt B — generating from scratch (if editing isn't possible)
 
 ```
 A photorealistic cozy creator-studio photograph, 3:2 landscape. At the center, a cheerful young woman with tan skin, long wavy lavender-purple hair, pink heart earrings, pastel beaded bracelets and rings, wearing a turquoise hoodie with a pink heart and white cat face print, smiling warmly at the camera and holding an orange lobster plush with round black glasses in her arms.
@@ -125,23 +125,23 @@ Warm indoor lighting, shallow depth of field, sharp focus on the woman and the f
 
 ---
 
-## 🧩 Ficha dos personagens
+## 🧩 Character sheet
 
-| #   | Personagem     | Emoji | Pelúcia                                                                          | Tela                                          |
+| #   | Character      | Emoji | Plush                                                                            | Screen                                        |
 | --- | -------------- | ----- | -------------------------------------------------------------------------------- | --------------------------------------------- |
-| —   | **Lobby**      | 🦞     | A mulher real (não é pelúcia) — cabelo lilás, hoodie turquesa                     | —                                             |
-| 1   | **Coral**      | 🪸     | ✅ já existe — coral vermelho e laranja ramificado                                 | `@Coral (Nemotron 3 Ultra)`                        |
-| 2   | **InnerLinho** | 🦞     | ✅ já existe — lagosta laranja de óculos redondos, no colo da Lobby                | `@InnerLinho (DeepSeek V4 Flash)` *(adicionar tela)* |
-| 3   | **Fishie**     | 🐠     | ✅ já existe — peixe mandarim azul/laranja/amarelo                                 | `@Fishie (DeepSeek V4 Flash)`                        |
-| 4   | **Peep**       | 🐦     | ⬇️ **descer da prateleira** — pássaro azul redondo, bico laranja, logo do Flutter  | `@Peep (DeepSeek V4 Flash)`                         |
-| 5   | **Bruce**      | 🦈     | ➕ **novo** — tubarão cinza-azulado, óculos escuros de feltro, robô Android no braço | `@Bruce (DeepSeek V4 Flash)`                        |
-| 6   | **Snowflake**  | 🐻‍❄️    | ⬇️ **descer da prateleira** — urso polar branco de suéter verde `C#`               | `@Snowflake (DeepSeek V4 Flash)`                    |
-| 7   | **Snuggle**    | 🐍     | ➕ **novo** — cobra verde de crochê enrolada, óculos redondos, tag do Python       | `@Snuggle (DeepSeek V4 Flash)`                      |
-| 8   | **Nodi**       | 🪼     | ➕ **novo** — água-viva roxa/rosa translúcida, sino brilhante, hexágono Node.js    | `@Nodi (DeepSeek V4 Flash)`                         |
-| 9   | **Ariel**      | 🧜‍♀️     | ➕ **novo** — boneca sereia, cabelo de lã turquesa, cauda de paetê, microfone      | `@Ariel (Laguna S 2.1)`                         |
-| 10  | **Tucso**      | 🐧     | ➕ **novo** — pinguim gordinho, bico laranja, patch de terminal `$ ./deploy`       | `@Tucso (DeepSeek V4 Flash)`                        |
-| 11  | **Wally**      | 🐋     | ✅ já existe — baleia azul                                                         | `@Wally (Nemotron 3.5 Lightning)`                           |
-| 12  | **Chululu**    | 🐙     | ✅ já existe — polvo rosa de bolinhas                                              | `@Chululu (MiMo V2.5)`                        |
+| —   | **Lobby**      | 🦞     | The real woman (not a plush) — lavender hair, turquoise hoodie                    | —                                             |
+| 1   | **Coral**      | 🪸     | ✅ already exists — branching red and orange coral                                 | `@Coral (Nemotron 3 Ultra)`                        |
+| 2   | **InnerLinho** | 🦞     | ✅ already exists — orange lobster with round glasses, in Lobby's lap              | `@InnerLinho (DeepSeek V4 Flash)` *(add screen)* |
+| 3   | **Fishie**     | 🐠     | ✅ already exists — blue/orange/yellow mandarin fish                               | `@Fishie (DeepSeek V4 Flash)`                        |
+| 4   | **Peep**       | 🐦     | ⬇️ **bring down from the shelf** — round blue bird, orange beak, Flutter logo      | `@Peep (DeepSeek V4 Flash)`                         |
+| 5   | **Bruce**      | 🦈     | ➕ **new** — gray-blue shark, felt sunglasses, Android robot under its arm         | `@Bruce (DeepSeek V4 Flash)`                        |
+| 6   | **Snowflake**  | 🐻‍❄️    | ⬇️ **bring down from the shelf** — white polar bear in a green `C#` sweater        | `@Snowflake (DeepSeek V4 Flash)`                    |
+| 7   | **Snuggle**    | 🐍     | ➕ **new** — coiled green crocheted snake, round glasses, Python tag               | `@Snuggle (DeepSeek V4 Flash)`                      |
+| 8   | **Nodi**       | 🪼     | ➕ **new** — translucent purple/pink jellyfish, glowing bell, Node.js hexagon      | `@Nodi (DeepSeek V4 Flash)`                         |
+| 9   | **Ariel**      | 🧜‍♀️     | ➕ **new** — mermaid doll, turquoise yarn hair, sequin tail, microphone            | `@Ariel (Laguna S 2.1)`                         |
+| 10  | **Tucso**      | 🐧     | ➕ **new** — chubby penguin, orange beak, `$ ./deploy` terminal patch              | `@Tucso (DeepSeek V4 Flash)`                        |
+| 11  | **Wally**      | 🐋     | ✅ already exists — blue whale                                                     | `@Wally (Nemotron 3.5 Lightning)`                           |
+| 12  | **Chululu**    | 🐙     | ✅ already exists — pink polka-dot octopus                                         | `@Chululu (MiMo V2.5)`                        |
 
 ---
 
@@ -153,23 +153,23 @@ anime, cartoon, 2d illustration, flat vector art, cel shading, 3d render, cgi, p
 
 ---
 
-## ✅ Checklist do resultado
+## ✅ Result checklist
 
-- [ ] Mesma mulher, mesmo rosto, mesmo cabelo lilás, mesmo hoodie turquesa com coração + gatinho
-- [ ] Lagosta de óculos ainda no colo dela (**InnerLinho**), agora com telinha própria
-- [ ] **Peep** (pássaro Flutter) e **Snowflake** (urso C#) **fora da prateleira**, no chão com os outros
-- [ ] Buracos da prateleira preenchidos (nada de espaço vazio)
-- [ ] **Bruce, Snuggle, Nodi, Ariel e Tucso** presentes, no mesmo estilo de pelúcia artesanal
-- [ ] **12 pelúcias** no total (11 nos pedestais + a lagosta no colo)
-- [ ] Todas as telas com `@nome (modelo)` **legível e sem texto embolado**
-- [ ] Nenhum personagem escondido, cortado ou sobreposto
-- [ ] Estilo **fotorrealista**, luz quente, fundo desfocado — nada de anime
-- [ ] Proporção **3:2 paisagem** (gere em 1536×1024)
+- [ ] Same woman, same face, same lavender hair, same turquoise hoodie with heart + kitty
+- [ ] Lobster with glasses still in her lap (**InnerLinho**), now with its own screen
+- [ ] **Peep** (Flutter bird) and **Snowflake** (C# bear) **off the shelf**, on the floor with the others
+- [ ] Gaps on the shelf filled in (no empty space)
+- [ ] **Bruce, Snuggle, Nodi, Ariel and Tucso** present, in the same handmade plush style
+- [ ] **12 plushies** in total (11 on pedestals + the lobster in her lap)
+- [ ] Every screen with `@name (model)` **readable and not garbled**
+- [ ] No character hidden, cropped or overlapping
+- [ ] **Photorealistic** style, warm light, blurred background — no anime
+- [ ] **3:2 landscape** ratio (generate at 1536×1024)
 
 ---
 
-## 📝 Notas
+## 📝 Notes
 
-- A imagem atual tem texto embolado nas telas (`MiMo V2-S`, `MiniMax M6`, `Nemetren`, skills ilegíveis). Os nomes corretos vêm do `AGENTS.md` e dos arquivos em `agents/` — use os da tabela acima.
-- Se o modelo não conseguir 12 personagens numa foto só, prefira **descer os da prateleira primeiro** (é o que muda a composição) e depois adicionar os novos aos poucos.
-- Depois de gerar, substitua o `lobby_team.png` na raiz do repositório — o `README.md` já aponta para ele.
+- The current image has garbled text on the screens (`MiMo V2-S`, `MiniMax M6`, `Nemetren`, illegible skills). The correct names come from `AGENTS.md` and the files in `agents/` — use the ones from the table above.
+- If the model can't manage 12 characters in a single photo, prefer **bringing the shelf ones down first** (that's what changes the composition) and then adding the new ones little by little.
+- After generating, replace `lobby_team.png` in the repository root — `README.md` already points to it.

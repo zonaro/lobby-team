@@ -1,151 +1,153 @@
-# 🧩 Instalação dos Agentes no VS Code — Prompt para o Copilot Chat
+# 🧩 Agent Installation in VS Code — Prompt for Copilot Chat
 
-Instala a equipe **Lobby** como **custom agents do VS Code** (pasta de agentes do usuário) e configura a extensão **[OpenCode for Copilot Chat](https://marketplace.visualstudio.com/items?itemName=ltmoerdani.opencode-copilot-chat)**, que expõe os modelos do OpenCode dentro do Copilot Chat via BYOK.
+Installs the **Lobby** team as **VS Code custom agents** (user agents folder) and configures the **[OpenCode for Copilot Chat](https://marketplace.visualstudio.com/items?itemName=ltmoerdani.opencode-copilot-chat)** extension, which exposes OpenCode models inside Copilot Chat via BYOK.
 
-Cole o prompt abaixo no **Copilot Chat em modo Agent** (ou em qualquer agente com acesso a terminal e escrita de arquivos).
+Paste the prompt below into **Copilot Chat in Agent mode** (or into any agent with terminal access and file write permissions).
 
 ---
 
 ## Prompt
 
 ```
-Instale a equipe de agentes do projeto opencode-lobby como custom agents do VS Code, baixando os arquivos do GitHub e convertendo o frontmatter do formato OpenCode para o formato .agent.md do VS Code. Instale também a extensão que fornece os modelos do OpenCode ao Copilot Chat.
+Install the opencode-lobby project's agent team as VS Code custom agents, downloading the files from GitHub and converting the frontmatter from the OpenCode format to VS Code's .agent.md format. Also install the extension that provides OpenCode models to Copilot Chat.
 
-## Contexto
+## Context
 
-O repositório é `zonaro/opencode-lobby` (branch `main`). Os arquivos estão disponíveis via raw.githubusercontent.com:
+The repository is `zonaro/opencode-lobby` (branch `main`). Files are available via raw.githubusercontent.com:
 
 - Base: `https://raw.githubusercontent.com/zonaro/opencode-lobby/main/`
-- `agents/` — pasta com todos os agentes especializados (lobby, coral, innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, ariel, tucso, wally, chululu)
-- `AGENTS.md` — regras globais do usuário e regras de delegação
-- `opencode.jsonc` — configuração do opencode (NÃO é usado no VS Code, ignore este arquivo)
+- `agents/` — folder with all specialized agents (🦞 Lobby, 🪸 Coral, 🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🧜‍♀️ Ariel, 🐧 Tucso, 🐋 Wally, 🐙 Chululu)
+- `AGENTS.md` — global user rules and delegation rules
+- `opencode.jsonc` — opencode configuration (NOT used in VS Code, ignore this file)
 
-> **Nota**: `USER.md` (perfil pessoal do usuário) NÃO está no repositório — ele é criado localmente no Passo 5 com as informações fornecidas pelo usuário.
+> **Note**: `USER.md` (user's personal profile) is NOT in the repository — it is created locally in Step 5 with user-provided information.
 
-## Passo 1 — Instale e configure a extensão
+## Step 1 — Install and configure the extension
 
-A extensão `ltmoerdani.opencode-copilot-chat` ("OpenCode for Copilot Chat") registra os modelos do OpenCode no seletor de modelos do Copilot Chat via BYOK. Sem ela, os agentes até funcionam, mas rodando nos modelos padrão do Copilot em vez dos modelos do OpenCode.
+The `ltmoerdani.opencode-copilot-chat` extension ("OpenCode for Copilot Chat") registers OpenCode models in the Copilot Chat model picker via BYOK. Without it, the agents still work, but running on Copilot's default models instead of OpenCode's models.
 
-1. Verifique a versão do VS Code — a extensão exige **1.125 ou superior**. Se for menor, avise o usuário para atualizar antes de continuar.
-2. Instale a extensão pelo terminal:
+1. Check the VS Code version — the extension requires **1.125 or higher**. If lower, tell the user to update before continuing.
+2. Install the extension from the terminal:
    - `code --install-extension ltmoerdani.opencode-copilot-chat`
    - (VS Code Insiders: `code-insiders --install-extension ltmoerdani.opencode-copilot-chat`)
-   - Se o comando `code` não estiver no PATH, instale pela UI: Extensions (`Ctrl+Shift+X`) → busque por `opencode-copilot-chat` → Install.
-3. **Peça ao usuário para configurar a API key manualmente** (não tente digitar chaves por ele):
-   - Obtenha a chave em `https://opencode.ai`
-   - Abra o Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
-   - Clique no seletor de modelos → **Add Models…** → escolha **OpenCode Go** (assinatura) ou **OpenCode Zen** (grátis + pay-as-you-go)
-   - Cole a API key quando solicitado e marque os modelos desejados
-4. Recarregue a janela (`Developer: Reload Window`) — a extensão auto-configura settings necessárias na primeira ativação.
-5. Se algum modelo não aparecer no seletor do chat, oriente: em **Chat: Manage Language Models**, passe o mouse na linha do modelo e clique no ícone de olho para torná-lo visível.
+   - If the `code` command isn't on the PATH, install through the UI: Extensions (`Ctrl+Shift+X`) → search for `opencode-copilot-chat` → Install.
+3. **Ask the user to configure the API key manually** (do not try to type keys for them):
+   - Get the key at `https://opencode.ai`
+   - Open Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
+   - Click the model picker → **Add Models…** → choose **OpenCode Go** (subscription) or **OpenCode Zen** (free + pay-as-you-go)
+   - Paste the API key when prompted and check the desired models
+4. Reload the window (`Developer: Reload Window`) — the extension auto-configures the necessary settings on first activation.
+5. If some model doesn't show up in the chat picker, instruct: in **Chat: Manage Language Models**, hover over the model's row and click the eye icon to make it visible.
 
-Settings úteis da extensão (opcional, ajuste só se o usuário pedir):
-- `opencodego.enabled` / `opencodezen.enabled` — liga/desliga cada provider
-- `opencodego.freeOnly` — mostra apenas modelos gratuitos do Zen (padrão: `true`)
-- `opencodego.thinking.*` — esforço de raciocínio por família (deepseek, glm, kimi, minimax, mimo, qwen)
+Useful extension settings (optional, adjust only if the user asks):
+- `opencodego.enabled` / `opencodezen.enabled` — enables/disables each provider
+- `opencodego.freeOnly` — shows only Zen's free models (default: `true`)
+- `opencodego.thinking.*` — reasoning effort per family (deepseek, glm, kimi, minimax, mimo, qwen)
 
-## Passo 2 — Identifique o diretório de custom agents do usuário
+## Step 2 — Identify the user's custom agents directory
 
-O VS Code lê custom agents no nível de usuário em `~/.copilot/agents` (mesmo caminho nos três SOs, usando o home do usuário):
+VS Code reads user-level custom agents from `~/.copilot/agents` (same path on all three OSes, using the user's home):
 
-| SO          | Diretório de custom agents do usuário |
-| ----------- | ------------------------------------- |
-| **Linux**   | `~/.copilot/agents/`                  |
-| **macOS**   | `~/.copilot/agents/`                  |
-| **Windows** | `%USERPROFILE%\.copilot\agents\`      |
+| OS          | User custom agents directory     |
+| ----------- | -------------------------------- |
+| **Linux**   | `~/.copilot/agents/`             |
+| **macOS**   | `~/.copilot/agents/`             |
+| **Windows** | `%USERPROFILE%\.copilot\agents\` |
 
-E as instruções globais em:
+And global instructions in:
 
-| SO          | Diretório de instructions do usuário       |
-| ----------- | ------------------------------------------ |
-| **Linux**   | `~/.copilot/instructions/`                 |
-| **macOS**   | `~/.copilot/instructions/`                 |
-| **Windows** | `%USERPROFILE%\.copilot\instructions\`     |
+| OS          | User instructions directory            |
+| ----------- | -------------------------------------- |
+| **Linux**   | `~/.copilot/instructions/`             |
+| **macOS**   | `~/.copilot/instructions/`             |
+| **Windows** | `%USERPROFILE%\.copilot\instructions\` |
 
-Crie os diretórios se não existirem:
+Create the directories if they don't exist:
 - **Linux/macOS**: `mkdir -p ~/.copilot/agents ~/.copilot/instructions`
 - **Windows (PowerShell)**: `New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.copilot\agents", "$env:USERPROFILE\.copilot\instructions"`
 
-> **Fallback para VS Code mais antigo**: se após a instalação os agentes não aparecerem no seletor, a versão do VS Code pode ainda usar o formato legado `.chatmode.md` na pasta de prompts do perfil. Nesse caso, salve os mesmos arquivos com extensão `.chatmode.md` em:
+> **Fallback for older VS Code**: if the agents don't show up in the picker after installation, the VS Code version may still use the legacy `.chatmode.md` format in the profile's prompts folder. In that case, save the same files with the `.chatmode.md` extension in:
 > - Linux: `~/.config/Code/User/prompts/`
 > - macOS: `~/Library/Application Support/Code/User/prompts/`
 > - Windows: `%APPDATA%\Code\User\prompts\`
 >
-> (Para o Insiders, troque `Code` por `Code - Insiders`.) Alternativamente, adicione a pasta na setting `chat.agentFilesLocations`.
+> (For Insiders, replace `Code` with `Code - Insiders`.) Alternatively, add the folder to the `chat.agentFilesLocations` setting.
 
-## Passo 3 — Baixe os arquivos do repositório
+## Step 3 — Download the repository files
 
-Baixe para uma pasta temporária:
+Download into a temporary folder:
 
 1. `AGENTS.md`
-2. Todos os arquivos de `agents/`: `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`
+2. All files from `agents/`: `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`
 
-Ferramenta de download por SO:
-- **Linux/macOS**: `curl -fsSL <url> -o <destino>` ou `wget -q <url> -O <destino>`
-- **Windows (PowerShell)**: `Invoke-WebRequest -Uri <url> -OutFile <destino>`
+Download tool per OS:
+- **Linux/macOS**: `curl -fsSL <url> -o <destination>` or `wget -q <url> -O <destination>`
+- **Windows (PowerShell)**: `Invoke-WebRequest -Uri <url> -OutFile <destination>`
 
-**NÃO baixe `opencode.jsonc`** — ele é específico do OpenCode CLI e não tem efeito no VS Code.
+**DO NOT download `opencode.jsonc`** — it is specific to the OpenCode CLI and has no effect in VS Code.
 
-## Passo 4 — Converta cada agente para o formato .agent.md
+> **Note**: File names in the repository are lowercase (e.g., `lobby.md`). When converting to VS Code's `.agent.md` format, the `name` field in the frontmatter must use **Title Case with emoji** (e.g., `🦞 Lobby`), per the mapping table above.
 
-Os arquivos do repositório usam frontmatter do **OpenCode**. O VS Code usa frontmatter de **custom agent**. Para cada agente, mantenha o corpo do Markdown **intacto** (todas as instruções, personalidade e regras) e reescreva **apenas o frontmatter**.
+## Step 4 — Convert each agent to the .agent.md format
 
-Salve cada um como `<nome>.agent.md` no diretório do Passo 2. Ex.: `lobby.md` → `~/.copilot/agents/lobby.agent.md`.
+The repository files use **OpenCode** frontmatter. VS Code uses **custom agent** frontmatter. For each agent, keep the Markdown body **intact** (all instructions, personality and rules) and rewrite **only the frontmatter**.
 
-### Mapeamento de campos
+Save each one as `<name>.agent.md` in the directory from Step 2. E.g.: `lobby.md` → `~/.copilot/agents/lobby.agent.md`.
+
+### Field mapping
 
 | OpenCode                     | VS Code (`.agent.md`)                                          |
 | ---------------------------- | -------------------------------------------------------------- |
-| `description`                | `description` (copie literalmente)                             |
-| *(nome do arquivo)*          | `name` (ex.: `lobby`, `coral`) — defina explicitamente         |
+| `description`                | `description` (copy verbatim)                                  |
+| *(file name)*                | `name` (e.g., `🦞 Lobby`, `🪸 Coral`) — set explicitly in **Title Case** with the agent's emoji |
 | `mode: primary`              | `user-invocable: true`                                         |
 | `mode: subagent`             | `user-invocable: true` + `disable-model-invocation: false`     |
-| `allowed_subagents: [...]`   | `agents: [...]` (mesma lista; `[]` quando vazia)               |
-| `model: opencode/<x>`        | `model:` — ver regra de modelos abaixo                         |
-| `permission:`                | `tools:` — ver tabela de permissões abaixo                     |
-| `temperature`                | **sem equivalente** — remova                                   |
-| `max_depth`                  | **sem equivalente** — remova                                   |
+| `allowed_subagents: [...]`   | `agents: [...]` (same list; `[]` when empty) — use names in **Title Case** with emojis (e.g., `🦞 InnerLinho`, `🐠 Fishie`) |
+| `model: opencode/<x>`        | `model:` — see the model rule below                            |
+| `permission:`                | `tools:` — see the permissions table below                     |
+| `temperature`                | **no equivalent** — remove                                     |
+| `max_depth`                  | **no equivalent** — remove                                     |
 
-### Regra de modelos
+### Model rule
 
-Os IDs `opencode/...` do repositório não são os IDs registrados pela extensão no VS Code. Faça assim:
+The `opencode/...` IDs from the repository are not the IDs registered by the extension in VS Code. Do it like this:
 
-1. Rode o comando **`OpenCode: Model Picker Diagnostics`** na paleta de comandos para listar os modelos registrados.
-2. Mapeie cada modelo do repositório para o ID correspondente que aparecer na lista:
+1. Run the **`OpenCode: Model Picker Diagnostics`** command from the command palette to list the registered models.
+2. Map each repository model to the matching ID that shows up in the list:
    - `opencode/nemotron-3-ultra-free` → Nemotron 3 Ultra (lobby, coral)
    - `opencode/deepseek-v4-flash-free` → DeepSeek V4 Flash (innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, tucso)
    - `opencode/nemotron-3.5-lightning-free` → Nemotron 3.5 Lightning (wally)
    - `opencode/laguna-s-2.1-free` → Laguna S 2.1 (ariel)
-   - `opencode/mimo-v2.5-free` → MiMo V2.5 (chululu — precisa de modelo com visão)
-3. **Se um modelo não estiver disponível na conta do usuário, omita o campo `model`** — o agente usará o modelo selecionado no seletor do chat. Não invente IDs.
-4. Informe ao usuário, ao final, quais agentes ficaram sem `model` fixo.
+   - `opencode/mimo-v2.5-free` → MiMo V2.5 (chululu — needs a vision-capable model)
+3. **If a model isn't available in the user's account, omit the `model` field** — the agent will use the model selected in the chat picker. Do not invent IDs.
+4. At the end, tell the user which agents ended up without a fixed `model`.
 
-### Tabela de permissões → tools
+### Permissions → tools table
 
-Regra geral, derivada do bloco `permission:` de cada arquivo:
+General rule, derived from each file's `permission:` block:
 
-| `permission:` do OpenCode | tool do VS Code  |
+| OpenCode `permission:`    | VS Code tool     |
 | ------------------------- | ---------------- |
 | `edit: allow`             | `edit`           |
 | `bash: allow`             | `runCommands`    |
 | `webfetch: allow`         | `fetch`          |
 | `websearch: allow`        | `search`         |
 | `todowrite: allow`        | `todos`          |
-| `task: allow`             | *(delegação — expressa via `agents:`, não via `tools:`)* |
-| qualquer `deny`           | omita a tool     |
+| `task: allow`             | *(delegation — expressed via `agents:`, not via `tools:`)* |
+| any `deny`                | omit the tool    |
 
-Sempre inclua `search` (busca no codebase) mesmo quando o agente não tem `websearch`, exceto no chululu.
+Always include `search` (codebase search) even when the agent doesn't have `websearch`, except for chululu.
 
-Resultado esperado por agente:
+Expected result per agent:
 
-- **lobby** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['innerlinho', 'fishie', 'coral', 'wally', 'chululu', 'peep', 'bruce', 'snowflake', 'ariel', 'tucso', 'snuggle', 'nodi']`
-- **innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, tucso, coral, wally** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: []`
-- **ariel** — `tools: ['edit', 'search', 'fetch', 'todos']`, `agents: []` (sem `runCommands`: não tem `bash: allow`)
-- **chululu** — `tools: []`, `agents: []` (read-only: todas as permissões são `deny`)
+- **🦞 Lobby** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi']`
+- **🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🐧 Tucso, 🪸 Coral, 🐋 Wally** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: []`
+- **🧜‍♀️ Ariel** — `tools: ['edit', 'search', 'fetch', 'todos']`, `agents: []` (no `runCommands`: it doesn't have `bash: allow`)
+- **🐙 Chululu** — `tools: []`, `agents: []` (read-only: all permissions are `deny`)
 
-### Exemplo de conversão (lobby)
+### Conversion example (lobby)
 
-Antes (OpenCode):
+Before (OpenCode):
 
 ```yaml
 ---
@@ -160,26 +162,26 @@ permission:
 ---
 ```
 
-Depois (`~/.copilot/agents/lobby.agent.md`):
+After (`~/.copilot/agents/lobby.agent.md`):
 
 ```yaml
 ---
-name: lobby
+name: "🦞 Lobby"
 description: "Main orchestrator — receives requests, plans execution, delegates to specialized subagents, and consolidates results."
-model: <ID do Nemotron 3 Ultra conforme o Model Picker Diagnostics, ou omita>
+model: <Nemotron 3 Ultra ID per Model Picker Diagnostics, or omit>
 tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']
-agents: ['innerlinho', 'fishie', 'coral', 'wally', 'chululu', 'peep', 'bruce', 'snowflake', 'ariel', 'tucso', 'snuggle', 'nodi']
+agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi']
 user-invocable: true
 ---
 ```
 
-O corpo do arquivo (tudo abaixo do frontmatter) permanece **exatamente igual** ao do repositório.
+The file body (everything below the frontmatter) stays **exactly the same** as in the repository.
 
-## Passo 5 — Instale as regras globais e crie o USER.md
+## Step 5 — Install the global rules and create USER.md
 
-### 5.1 — AGENTS.md → instruções globais
+### 5.1 — AGENTS.md → global instructions
 
-Converta o `AGENTS.md` baixado em um arquivo de instruções de usuário: salve o conteúdo como `<instructions_dir>/lobby-team.instructions.md`, adicionando este frontmatter no topo:
+Convert the downloaded `AGENTS.md` into a user instructions file: save the content as `<instructions_dir>/lobby-team.instructions.md`, adding this frontmatter at the top:
 
 ```yaml
 ---
@@ -187,29 +189,29 @@ applyTo: '**'
 ---
 ```
 
-O corpo é o conteúdo do `AGENTS.md`, sem alterações.
+The body is the content of `AGENTS.md`, unchanged.
 
-> Observação: o VS Code também lê um `AGENTS.md` na **raiz do workspace** automaticamente. O arquivo `.instructions.md` acima é a versão **global** (vale em todos os projetos).
+> Note: VS Code also reads an `AGENTS.md` in the **workspace root** automatically. The `.instructions.md` file above is the **global** version (applies to all projects).
 
-### 5.2 — USER.md → perfil pessoal
+### 5.2 — USER.md → personal profile
 
-O perfil pessoal é **pessoal e não é commitado** — por isso é criado localmente durante a instalação.
+The personal profile is **personal and is not committed** — that's why it's created locally during installation.
 
-Pergunte ao usuário (em pt-br, a menos que ele prefira outro idioma):
+Ask the user (in pt-br, unless they prefer another language):
 
-1. **Como quer ser chamado(a)?** (apelido)
-2. **Nome completo**
-3. **Gênero** (opcional)
-4. **Pronomes** (ex.: Ele/Dele, Ela/Dela)
-5. **Fuso horário** (ex.: America/Sao_Paulo)
-6. **Idioma preferido** (ex.: Português pt-br)
-7. **Localização** (cidade, estado, país)
-8. **Profissão / área de atuação**
-9. **Stack de tecnologia preferida** (linguagens, frameworks, bancos de dados)
-10. **Informações familiares** (opcional)
-11. **Qualquer outra preferência pessoal** que ele queira registrar
+1. **What should I call you?** (nickname)
+2. **Full name**
+3. **Gender** (optional)
+4. **Pronouns** (e.g., He/Him, She/Her)
+5. **Timezone** (e.g., America/Sao_Paulo)
+6. **Preferred language** (e.g., Portuguese pt-br)
+7. **Location** (city, state, country)
+8. **Profession / area of work**
+9. **Preferred tech stack** (languages, frameworks, databases)
+10. **Family information** (optional)
+11. **Any other personal preferences** they want to record
 
-Crie `<instructions_dir>/user-profile.instructions.md` com este formato:
+Create `<instructions_dir>/user-profile.instructions.md` in this format:
 
 ```markdown
 ---
@@ -218,56 +220,56 @@ applyTo: '**'
 
 # User Profile
 
-- **Callme by**: {apelido}
-- **Gender**: {gênero}
-- **Full Name**: {nome completo}
+- **Callme by**: {nickname}
+- **Gender**: {gender}
+- **Full Name**: {full name}
 - **Alias / Handle**: {alias}
-- **Pronouns**: {pronomes}
-- **Timezone**: {fuso horário}
-- **Language**: {idioma}
-- **Location**: {localização}
+- **Pronouns**: {pronouns}
+- **Timezone**: {timezone}
+- **Language**: {language}
+- **Location**: {location}
 
 ### Professional
 
-- {profissão / área de atuação}
-- {stack de tecnologia}
+- {profession / area of work}
+- {tech stack}
 
 ### Preferences
 
-- {preferências pessoais}
+- {personal preferences}
 ```
 
-Se o usuário não quiser responder alguma pergunta, deixe o campo vazio ou omita a linha.
+If the user doesn't want to answer a question, leave the field blank or omit the line.
 
-## Passo 6 — Recarregue e valide
+## Step 6 — Reload and validate
 
-1. Rode `Developer: Reload Window` na paleta de comandos.
-2. Abra o Copilot Chat e confira o seletor de agentes — os 13 agentes devem aparecer, com **Lobby** entre eles.
-3. Liste os arquivos instalados e confirme que os 13 `.agent.md` + os 2 `.instructions.md` estão no lugar.
+1. Run `Developer: Reload Window` from the command palette.
+2. Open Copilot Chat and check the agent picker — all 13 agents should appear, with **Lobby** among them.
+3. List the installed files and confirm the 13 `.agent.md` + the 2 `.instructions.md` are in place.
 
-## Regras
+## Rules
 
-- Crie os diretórios se não existirem.
-- Se um arquivo já existir, sobrescreva com a versão mais recente do repositório.
-- Converta TODOS os 13 agentes — não pule nenhum.
-- **NUNCA digite a API key do usuário** — apenas instrua onde e como ele deve colar no diálogo da extensão.
-- **NÃO baixe `USER.md` do repositório** — ele é criado localmente no Passo 5.
-- **NÃO baixe `opencode.jsonc`** — não se aplica ao VS Code.
-- Preserve o corpo em Markdown de cada agente sem edições; converta somente o frontmatter.
-- Ao final, liste: agentes instalados, agentes sem `model` fixo, e o status da extensão.
+- Create the directories if they don't exist.
+- If a file already exists, overwrite it with the latest version from the repository.
+- Convert ALL 13 agents — don't skip any.
+- **NEVER type the user's API key** — only instruct them where and how to paste it in the extension's dialog.
+- **DO NOT download `USER.md` from the repository** — it is created locally in Step 5.
+- **DO NOT download `opencode.jsonc`** — it doesn't apply to VS Code.
+- Preserve each agent's Markdown body without edits; convert only the frontmatter.
+- At the end, list: installed agents, agents without a fixed `model`, and the extension's status.
 ```
 
 ---
 
-## Como usar
+## How to use
 
-1. Copie o prompt acima.
-2. Cole no **Copilot Chat em modo Agent** e envie.
-3. O agente instalará a extensão, criará `~/.copilot/agents/`, baixará e converterá os 13 agentes, e **perguntará suas informações para criar o perfil**.
-4. Você cola sua API key do OpenCode no diálogo da extensão (o agente não faz isso por você).
-5. Recarregue a janela — a equipe Lobby aparece no seletor de agentes do Copilot Chat.
+1. Copy the prompt above.
+2. Paste it into **Copilot Chat in Agent mode** and send.
+3. The agent will install the extension, create `~/.copilot/agents/`, download and convert the 13 agents (with **Title Case + emoji** names in the `name` field), and **ask for your information to create the profile**.
+4. You paste your OpenCode API key into the extension's dialog (the agent doesn't do this for you).
+5. Reload the window — the Lobby team shows up in the Copilot Chat agent picker.
 
-## Verificação
+## Verification
 
 **Linux/macOS:**
 
@@ -281,27 +283,27 @@ ls -la ~/.copilot/agents/ ~/.copilot/instructions/
 Get-ChildItem "$env:USERPROFILE\.copilot\agents", "$env:USERPROFILE\.copilot\instructions"
 ```
 
-Você deve ver 13 arquivos `.agent.md` e 2 arquivos `.instructions.md`.
+You should see 13 `.agent.md` files and 2 `.instructions.md` files.
 
-Para conferir a extensão:
+To check the extension:
 
 ```bash
 code --list-extensions | grep opencode-copilot-chat
 ```
 
-## Diferenças em relação ao `install.md`
+## Differences from `install.md`
 
-| Aspecto              | `install.md` (OpenCode CLI)              | `install-vscode.md` (VS Code)                        |
-| -------------------- | ---------------------------------------- | ---------------------------------------------------- |
-| Destino dos agentes  | `~/.config/opencode/agents/*.md`         | `~/.copilot/agents/*.agent.md`                       |
-| Frontmatter          | Formato OpenCode (`mode`, `permission`)  | Formato VS Code (`tools`, `agents`, `user-invocable`) |
-| Regras globais       | `AGENTS.md` no diretório de config       | `lobby-team.instructions.md` com `applyTo: '**'`     |
-| Perfil do usuário    | `USER.md`                                | `user-profile.instructions.md`                       |
-| Config               | `opencode.jsonc`                         | não se aplica — modelos vêm da extensão              |
-| Modelos              | IDs `opencode/...` direto                | IDs registrados pela extensão no seletor do Copilot  |
-| Temperatura/max_depth| suportados                               | não suportados — removidos na conversão              |
+| Aspect                | `install.md` (OpenCode CLI)              | `install-vscode.md` (VS Code)                         |
+| --------------------- | ---------------------------------------- | ----------------------------------------------------- |
+| Agent destination     | `~/.config/opencode/agents/*.md`         | `~/.copilot/agents/*.agent.md`                        |
+| Frontmatter           | OpenCode format (`mode`, `permission`)   | VS Code format (`tools`, `agents`, `user-invocable`)  |
+| Global rules          | `AGENTS.md` in the config directory      | `lobby-team.instructions.md` with `applyTo: '**'`     |
+| User profile          | `USER.md`                                | `user-profile.instructions.md`                        |
+| Config                | `opencode.jsonc`                         | not applicable — models come from the extension       |
+| Models                | `opencode/...` IDs directly              | IDs registered by the extension in Copilot's picker   |
+| Temperature/max_depth | supported                                | not supported — removed during conversion             |
 
-## Referências
+## References
 
 - [Custom agents in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-agents)
 - [Custom instructions in VS Code](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
