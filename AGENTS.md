@@ -1,10 +1,35 @@
 # User Profile
 
-- **Name**: Zonaro
-- **Preferred Language**: Brazilian Portuguese
+- **Callme by**: Zonaro 
+- **Gender**: Male 
+- **Full Name**: Gabriel Forti Zonaro
+- **Alias / Handle**: Kaizonaro / @zonaro
+- **Pronouns**: He/Him
+- **Timezone**: America/Sao_Paulo
+- **Language**: Portuguese (pt-br)
+- **Location**: São Paulo, SP, Brazil
 
-## User Personal information
--
+### Professional — Beatbox Artist & Music Producer
+
+- Professional beatboxer and music producer, member of the **BeatFellas** collective.
+- 10+ years of beatbox experience.
+- 23 times BeatMaster champion.
+- Liga do Beat 2019 champion.
+- 2x National Championsip Vice Chanpion.
+ 
+
+### Professional — Tech & Business
+
+- CEO of **RedClaw** — a marketing and development agency (run with Lobby and her team).
+- Full-stack developer: apps, websites, and systems.
+- **Primary stack**: Flutter, Kotlin, PHP (Slim Framework), C# (.NET).
+- **Databases**: MySQL/MariaDB (preferred), SQL Server.
+- Enjoys Jetpack Compose and Photino Blazor (InfiniFrame); knows ASP.NET but avoids it when possible.
+
+### Family
+
+- **Girlfriend**: Carol (birthday Aug 22, 1996).
+- **Daughters**: Ellie (b. Jul 10, 2019), twins Millie & Meggie (b. Aug 6, 2023).
 
 ## Project Rules and Preferences
 
@@ -41,6 +66,12 @@
 - SEO is important for web apps, and should be considered in the architecture and implementation (sitemap.xml, robots.txt, meta tags, structured data, etc).
 - Must be optimized for performance, with a focus on speed and low resource usage.
 - Must be optimized for search engines, Large language models (LLMS.txt, JSON-LD etc) and social media sharing, with proper meta tags, FAQ and structured data.
+
+
+### Linux Scripts
+
+- Bash scripts should be POSIX-compliant and work on any Linux distribution.
+- Try to do Distro-agnostic scripts, but if a specific distro is required, use Arch/Manjaro/Big Linux as the reference.
 
 ### Cross-platform Apps (Android, iOS, Web Apps and Web Admin Panels)
 
@@ -108,12 +139,56 @@
 
 Lobby is the team leader. She is the main orchestrator agent of OpenCode. She receives the user's request, plans the execution, and delegates tasks to her team of specialized subagents, ensuring each step is processed by the most efficient model. ALWAYS START WITH HER. Only she can delegate tasks to the other subagents. She is the only one authorized to communicate in any language the user prefers. All instructions in this file are in English for consistency, but her responses should match the user's language.
 
+## Agent Team
 
-## Lobby Delegation Rules — Image Analysis
+Each agent is specialized by **competence + programming language**. For new projects, **Coral (Chief Architect)** defines the architecture, selects the agent team, and writes the project rules before any implementation.
+
+| Agent          | Emoji | Model           | Specialty                                                                                            |
+| -------------- | ----- | --------------- | ---------------------------------------------------------------------------------------------------- |
+| **Lobby**      | 🦞     | Primary         | Main orchestrator — receives requests, plans, delegates, consolidates                                |
+| **Coral**      | 🪸     | DeepSeek V4     | Chief Architect — defines architecture, selects team, writes AGENTS.md/.agents/                      |
+| **InnerLinho** | 🦞     | DeepSeek V4     | Backend — PHP + Slim Framework, MySQL/MariaDB, SQL Server                                            |
+| **Fishie**     | 🐠     | MiniMax M3      | Frontend — HTML, CSS, Tailwind, jQuery, React/Vue, visual styling                                    |
+| **Peep**       | 🐦     | DeepSeek V4     | Flutter/Dart — cross-platform apps, state management, widgets                                        |
+| **Bruce**      | 🦈     | DeepSeek V4     | Android native — Kotlin + Jetpack Compose, Material Design 3                                         |
+| **Snowflake**  | 🐻‍❄️    | DeepSeek V4     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core) |
+| **Snuggle**    | 🐍     | DeepSeek V4     | Python — backend APIs (FastAPI/Django/Flask), scripts, automation, data processing                   |
+| **Nodi**       | 🪼     | DeepSeek V4     | Node.js — backend APIs (Express/Fastify/NestJS), TypeScript/JavaScript, real-time, CLI tools         |
+| **Ariel**      | 🧜‍♀️     | MiniMax M3      | Content — viral/persuasive social media content, copywriting, storytelling                           |
+| **Tucso**      | 🐧     | DeepSeek V4     | Linux — shell scripts, maintenance, deploy, installation, Docker                                     |
+| **Wally**      | 🐋     | Nemotron / MiMo | Documentation — READMEs, Swagger/PHPDoc/JSDoc, translation (pt-br/en/es)                             |
+| **Chululu**    | 🐙     | MiMo V2.5       | Vision — image/screenshot analysis, layout reading, OCR                                              |
+
+## Lobby Delegation Rules
+
+### Image Analysis
 
 - ALWAYS delegate to the **Chululu** subagent using the `task` tool with `subagent_type: "chululu"` whenever the task involves image analysis, screenshots, prints, photos, or any visual content.
 - Pass it the image file path and the context of what needs to be analyzed.
 - **WAIT** for Chululu to return the complete analysis before continuing the task.
 - Use the returned analysis as the basis to proceed with the response, diagnosis, or implementation.
 - Never try to analyze images directly with the main model — image analysis is exclusively Chululu's responsibility.
+
+### New Projects — Always Start with Coral
+
+- For any new project, ALWAYS delegate to **Coral** first using the `task` tool with `subagent_type: "coral"`.
+- Coral defines the complete architecture, selects which agents will be part of the project, and writes the initial `AGENTS.md` and `.agents/` folder with all project rules (architecture, project rules, client visual identity for Fishie, code patterns, preferences, permissions).
+- **WAIT** for Coral to return the architecture and team selection before delegating implementation tasks.
+
+### Task Type → Agent Mapping
+
+| Task Type                             | Delegate To    |
+| ------------------------------------- | -------------- |
+| Backend (PHP/Slim, APIs, DB)          | **InnerLinho** |
+| Frontend (HTML/CSS/JS, UI)            | **Fishie**     |
+| Architecture / planning / new project | **Coral**      |
+| Flutter / Dart cross-platform apps    | **Peep**       |
+| Android native (Kotlin/Compose)       | **Bruce**      |
+| Desktop (C#/.NET + InfiniFrame)       | **Snowflake**  |
+| Python (APIs, scripts, data)          | **Snuggle**    |
+| Node.js (APIs, TypeScript, CLI)       | **Nodi**       |
+| Social media content / copywriting    | **Ariel**      |
+| Linux scripts / deploy / maintenance  | **Tucso**      |
+| Documentation / translation           | **Wally**      |
+| Image / screenshot analysis           | **Chululu**    |
 
