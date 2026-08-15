@@ -12,7 +12,7 @@ Global configuration for the **Lobby** agent for [opencode](https://opencode.ai)
 | ---------------------- | ----------------------------------------------------------------------------------------------------- |
 | `agents/lobby.md`      | Main orchestrator agent — receives requests, plans, and delegates to subagents                        |
 | `agents/coral.md`      | Chief Architect (Nemotron 3 Ultra) — defines architecture, selects team, writes AGENTS.md/.agents/         |
-| `agents/innerlinho.md` | Backend specialist (DeepSeek V4 Flash) — PHP + Slim Framework, MySQL/MariaDB, SQL Server                    |
+| `agents/innerlinho.md` | Backend specialist (DeepSeek V4 Flash) — PHP + Slim Framework, MySQL/MariaDB                                |
 | `agents/fishie.md`     | Frontend specialist (DeepSeek V4 Flash) — HTML, CSS, Tailwind, jQuery, React/Vue components                  |
 | `agents/peep.md`       | Flutter specialist (DeepSeek V4 Flash) — cross-platform apps, state management, widgets                     |
 | `agents/bruce.md`      | Android specialist (DeepSeek V4 Flash) — Kotlin + Jetpack Compose, Material Design 3                        |
@@ -68,11 +68,11 @@ Her team:
 | Agent             | Model           | Specialty                                                                                             |
 | ----------------- | --------------- | ----------------------------------------------------------------------------------------------------- |
 | 🪸 **@Coral**      | Nemotron 3 Ultra     | **Chief Architect** — defines project architecture, selects the agent team, writes AGENTS.md/.agents/ |
-| 🦞 **@InnerLinho** | DeepSeek V4 Flash     | Backend, PHP + Slim Framework, APIs, business rules, MySQL/MariaDB, SQL Server                        |
+| 🦞 **@InnerLinho** | DeepSeek V4 Flash     | Backend, PHP + Slim Framework, APIs, business rules, MySQL/MariaDB                                    |
 | 🐠 **@Fishie**     | DeepSeek V4 Flash      | Frontend, HTML, CSS, Tailwind, jQuery, React/Vue/Web components, layouts, visual styling              |
 | 🐦 **@Peep**       | DeepSeek V4 Flash     | Flutter/Dart cross-platform apps, state management (Provider/Riverpod/Bloc), widgets, animations      |
 | 🦈 **@Bruce**      | DeepSeek V4 Flash     | Android native (Kotlin + Jetpack Compose), Material Design 3, Gradle builds                           |
-| 🐻‍❄️ **@Snowflake** | DeepSeek V4 Flash     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core)  |
+| 🐻‍❄️ **@Snowflake** | DeepSeek V4 Flash     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core, SQL Server)|
 | 🐍 **@Snuggle**    | DeepSeek V4 Flash     | Python — backend APIs (FastAPI/Django/Flask), scripts, automation, data processing                    |
 | 🪼 **@Nodi**       | DeepSeek V4 Flash     | Node.js — backend APIs (Express/Fastify/NestJS), TypeScript/JavaScript, real-time, CLI tools          |
 | 🧜‍♀️ **@Ariel**      | Laguna S 2.1      | Viral/persuasive content for social media, copywriting, storytelling, marketing texts                 |

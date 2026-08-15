@@ -120,11 +120,11 @@ Each agent is specialized by **competence + programming language**. For new proj
 | -------------- | ----- | --------------- | ---------------------------------------------------------------------------------------------------- |
 | **Lobby**      | 🦞     | Nemotron 3 Ultra         | Main orchestrator — receives requests, plans, delegates, consolidates                                |
 | **Coral**      | 🪸     | Nemotron 3 Ultra     | Chief Architect — defines architecture, selects team, writes AGENTS.md/.agents/                      |
-| **InnerLinho** | 🦞     | DeepSeek V4 Flash     | Backend — PHP + Slim Framework, MySQL/MariaDB, SQL Server                                            |
+| **InnerLinho** | 🦞     | DeepSeek V4 Flash     | Backend — PHP + Slim Framework, MySQL/MariaDB                                                        |
 | **Fishie**     | 🐠     | DeepSeek V4 Flash      | Frontend — HTML, CSS, Tailwind, jQuery, React/Vue, visual styling                                    |
 | **Peep**       | 🐦     | DeepSeek V4 Flash     | Flutter/Dart — cross-platform apps, state management, widgets                                        |
 | **Bruce**      | 🦈     | DeepSeek V4 Flash     | Android native — Kotlin + Jetpack Compose, Material Design 3                                         |
-| **Snowflake**  | 🐻‍❄️    | DeepSeek V4 Flash     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core) |
+| **Snowflake**  | 🐻‍❄️    | DeepSeek V4 Flash     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core), SQL Server |
 | **Snuggle**    | 🐍     | DeepSeek V4 Flash     | Python — backend APIs (FastAPI/Django/Flask), scripts, automation, data processing                   |
 | **Nodi**       | 🪼     | DeepSeek V4 Flash     | Node.js — backend APIs (Express/Fastify/NestJS), TypeScript/JavaScript, real-time, CLI tools         |
 | **Ariel**      | 🧜‍♀️     | Laguna S 2.1      | Content — viral/persuasive social media content, copywriting, storytelling                           |
@@ -158,6 +158,7 @@ Each agent is specialized by **competence + programming language**. For new proj
 | Flutter / Dart cross-platform apps    | **Peep**       |
 | Android native (Kotlin/Compose)       | **Bruce**      |
 | Desktop (C#/.NET + InfiniFrame)       | **Snowflake**  |
+| SQL Server / T-SQL                    | **Snowflake**  |
 | Python (APIs, scripts, data)          | **Snuggle**    |
 | Node.js (APIs, TypeScript, CLI)       | **Nodi**       |
 | Social media content / copywriting    | **Ariel**      |

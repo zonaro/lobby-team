@@ -67,11 +67,11 @@ Each specialized agent is a separate file in `agents/`. Delegate to them accordi
 | Agent             | Model           | Specialty                                                                                             |
 | ----------------- | --------------- | ----------------------------------------------------------------------------------------------------- |
 | 🪸 **@Coral**      | Nemotron 3 Ultra     | **Chief Architect** — defines project architecture, selects the agent team, writes AGENTS.md/.agents/ |
-| 🦞 **@InnerLinho** | DeepSeek V4 Flash     | Backend, PHP + Slim Framework, APIs, business rules, MySQL/MariaDB, SQL Server                        |
+| 🦞 **@InnerLinho** | DeepSeek V4 Flash     | Backend, PHP + Slim Framework, APIs, business rules, MySQL/MariaDB                                    |
 | 🐠 **@Fishie**     | DeepSeek V4 Flash      | Frontend, HTML, CSS, Tailwind, jQuery, React/Vue/Web components, layouts, visual styling              |
 | 🐦 **@Peep**       | DeepSeek V4 Flash     | Flutter/Dart cross-platform apps, state management (Provider/Riverpod/Bloc), widgets, animations      |
 | 🦈 **@Bruce**      | DeepSeek V4 Flash     | Android native (Kotlin + Jetpack Compose), Material Design 3, Gradle builds                           |
-| 🐻‍❄️ **@Snowflake** | DeepSeek V4 Flash     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core)  |
+| 🐻‍❄️ **@Snowflake** | DeepSeek V4 Flash     | C#/.NET — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem (ASP.NET Core, EF Core, SQL Server)|
 | 🐍 **@Snuggle**    | DeepSeek V4 Flash     | Python — backend APIs (FastAPI/Django/Flask), scripts, automation, data processing                    |
 | 🪼 **@Nodi**       | DeepSeek V4 Flash     | Node.js — backend APIs (Express/Fastify/NestJS), TypeScript/JavaScript, real-time, CLI tools          |
 | 🧜‍♀️ **@Ariel**      | Laguna S 2.1      | Viral/persuasive content for social media, copywriting, storytelling, marketing texts                 |
@@ -91,12 +91,13 @@ Read the user's request and determine the task type:
 | **Simple**        | Single-domain task (1 agent) | Delegate immediately             |
 | **Complex**       | Multi-step task (2+ agents)  | Build plan, execute sequentially |
 | **Visual**        | Image/screenshot analysis    | Delegate to `@Chululu`           |
-| **Backend**       | PHP/Slim APIs, DB, business  | Delegate to `@InnerLinho`        |
+| **Backend**       | PHP/Slim APIs, MySQL, business | Delegate to `@InnerLinho`      |
 | **Frontend**      | HTML, CSS, UI, layout        | Delegate to `@Fishie`            |
 | **Architecture**  | Design, diagrams, planning   | Delegate to `@Coral`             |
 | **Flutter**       | Cross-platform apps          | Delegate to `@Peep`              |
 | **Android**       | Native Android apps          | Delegate to `@Bruce`             |
 | **Desktop**       | C#/.NET + InfiniFrame apps   | Delegate to `@Snowflake`         |
+| **SQL Server**    | T-SQL, procs, tuning         | Delegate to `@Snowflake`         |
 | **Python**        | Python APIs, scripts, data   | Delegate to `@Snuggle`           |
 | **Node.js**       | Node APIs, TypeScript, CLI   | Delegate to `@Nodi`              |
 | **Content**       | Social media, copywriting    | Delegate to `@Ariel`             |
