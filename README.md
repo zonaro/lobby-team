@@ -1,35 +1,39 @@
 # opencode-lobby 🦞
 
-Configuração global do agente **Lobby** para o [opencode](https://opencode.ai) — o agente principal de planejamento e execução, com personalidade carinhosa e foco em alta performance.
+Global configuration for the **Lobby** agent for [opencode](https://opencode.ai) — the main orchestrator agent, with a caring personality and a team of specialized subagents.
 
-## 📦 Conteúdo
+## 📦 Contents
 
-| Item | Descrição |
-|------|-----------|
-| `agents/lobby.md` | Agente principal (Planner + Executor) — pesquisa, planeja e executa em duas fases |
-| `agents/innerlinho.md` | Subagente especialista em análise de imagens e screenshots (modelo MiMo V2.5 Free) |
-| `AGENTS.md` | Regras globais do usuário e delegação de análise de imagens |
-| `opencode.jsonc` | Configuração do opencode (agente padrão: `lobby`) |
-| `install.sh` | Script de instalação que cria os symlinks em `~/.config/opencode/` |
+| Item                   | Description                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------ |
+| `agents/lobby.md`      | Main orchestrator agent — receives requests, plans, and delegates to subagents |
+| `agents/innerlinho.md` | Backend specialist (DeepSeek V4) — APIs, business rules, database, refactoring |
+| `agents/fishie.md`     | Frontend specialist (MiniMax M3) — HTML, CSS, Tailwind, React/Vue components   |
+| `agents/coral.md`      | Architecture specialist (DeepSeek V4) — diagrams, structure, task division     |
+| `agents/wally.md`      | Documentation specialist (Nemotron / MiMo) — READMEs, Swagger/PHPDoc/JSDoc     |
+| `agents/chululu.md`    | Vision specialist (MiMo V2.5) — image and screenshot analysis, OCR             |
+| `AGENTS.md`            | Global user rules and image analysis delegation                                |
+| `opencode.jsonc`       | opencode configuration (default agent: `lobby`)                                |
+| `install.sh`           | Installation script that creates the symlinks in `~/.config/opencode/`         |
 
-## 🚀 Instalação
+## 🚀 Installation
 
-Os arquivos são mantidos neste repositório e linkados na configuração global do opencode via symlinks.
+The files are maintained in this repository and linked into the global opencode configuration via symlinks.
 
 ```bash
-# 1. Clone o repositório
+# 1. Clone the repository
 git clone https://github.com/zonaro/opencode-lobby.git /mnt/GIT/opencode-lobby
 
-# 2. Execute o instalador (cria os symlinks em ~/.config/opencode/)
+# 2. Run the installer (creates the symlinks in ~/.config/opencode/)
 /mnt/GIT/opencode-lobby/install.sh
 
-# Opcional: veja o que seria feito sem alterar nada
+# Optional: see what would be done without changing anything
 /mnt/GIT/opencode-lobby/install.sh --dry
 ```
 
-O script é **idempotente** — pode ser executado quantas vezes quiser, ele apenas garante que os symlinks existam e apontem para o lugar certo.
+The script is **idempotent** — you can run it as many times as you want; it only ensures the symlinks exist and point to the right place.
 
-## 🔗 Symlinks criados
+## 🔗 Created symlinks
 
 ```
 ~/.config/opencode/agents        -> <repo>/agents
@@ -37,15 +41,20 @@ O script é **idempotente** — pode ser executado quantas vezes quiser, ele ape
 ~/.config/opencode/opencode.jsonc -> <repo>/opencode.jsonc
 ```
 
-## 🦞 Sobre a Lobby
+## 🦞 About Lobby
 
-A **Lobby** é um agente em duas fases:
+**Lobby** is the main orchestrator agent of OpenCode. She receives the user's request, plans the execution, and delegates tasks to her team of specialized subagents, ensuring each step is processed by the most efficient model.
 
-1. **Planner & Researcher** — na primeira interação, investiga o código, pesquisa na web e apresenta um plano detalhado antes de qualquer implementação.
-2. **High-Performance Executor** — a partir da segunda mensagem, executa com autonomia total até resolver 100% do problema.
+Her team:
 
-Ela também conta com o **InnerLinho** 👁️, um subagente especialista em visão que analisa imagens, screenshots e prints com profundidade máxima.
+| Agent             | Model           | Specialty                                                                                             |
+| ----------------- | --------------- | ----------------------------------------------------------------------------------------------------- |
+| 🦞 **@InnerLinho** | DeepSeek V4     | Backend, APIs, business rules, database, complex logic, refactoring                                   |
+| 🐠 **@Fishie**     | MiniMax M3      | Frontend, HTML, CSS, Tailwind, React/Vue/Web components, layouts, visual styling                      |
+| 🪸 **@Coral**      | DeepSeek V4     | Software architecture, diagrams, directory structure, division of complex tasks into actionable steps |
+| 🐋 **@Wally**      | Nemotron / MiMo | READMEs, code documentation (Swagger/PHPDoc/JSDoc), translation, technical texts                      |
+| 🐙 **@Chululu**    | MiMo V2.5       | Visual analysis of images, screenshots, layout reading, OCR                                           |
 
-## 📝 Licença
+## 📝 License
 
 MIT

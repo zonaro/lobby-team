@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 #
-# install.sh — Instala os arquivos de configuração do opencode-lobby
-# criando symlinks em ~/.config/opencode/ apontando para este diretório.
+# install.sh — Installs the opencode-lobby configuration files
+# by creating symlinks in ~/.config/opencode/ pointing to this directory.
 #
-# Uso:
-#   ./install.sh          # instala (cria/atualiza os symlinks)
-#   ./install.sh --dry    # mostra o que seria feito, sem alterar nada
+# Usage:
+#   ./install.sh          # installs (creates/updates the symlinks)
+#   ./install.sh --dry    # shows what would be done, without changing anything
 #
 set -euo pipefail
 
-# Diretório onde o script está (origem dos arquivos) — caminho relativo ao script
+# Directory where the script is located (source of the files) — relative to the script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Diretório de destino (configuração do opencode)
+# Destination directory (opencode configuration)
 CONFIG_DIR="${HOME}/.config/opencode"
 
-# Itens que serão linkados (pasta e arquivos)
+# Items that will be linked (folder and files)
 ITEMS=("agents" "AGENTS.md" "opencode.jsonc")
 
 DRY_RUN=false
@@ -24,8 +24,8 @@ if [[ "${1:-}" == "--dry" ]]; then
 fi
 
 echo "== opencode-lobby installer =="
-echo "Origem : ${SCRIPT_DIR}"
-echo "Destino: ${CONFIG_DIR}"
+echo "Source : ${SCRIPT_DIR}"
+echo "Target : ${CONFIG_DIR}"
 echo
 
 mkdir -p "${CONFIG_DIR}"
@@ -35,28 +35,28 @@ for item in "${ITEMS[@]}"; do
   dst="${CONFIG_DIR}/${item}"
 
   if [[ ! -e "${src}" ]]; then
-    echo "AVISO: origem não encontrada, pulando: ${src}"
+    echo "WARN: source not found, skipping: ${src}"
     continue
   fi
 
-  # Já é um symlink válido apontando para a origem? Nada a fazer.
+  # Already a valid symlink pointing to the source? Nothing to do.
   if [[ -L "${dst}" ]] && [[ "$(readlink -f "${dst}")" == "$(readlink -f "${src}")" ]]; then
-    echo "OK   : ${dst} já está linkado -> ${src}"
+    echo "OK   : ${dst} already linked -> ${src}"
     continue
   fi
 
-  # Existe algo no destino (arquivo, pasta ou symlink quebrado)? Remove antes.
+  # Does something exist at the destination (file, folder, or broken symlink)? Remove it first.
   if [[ -e "${dst}" || -L "${dst}" ]]; then
     if [[ "${DRY_RUN}" == true ]]; then
-      echo "DRY  : removeria ${dst}"
+      echo "DRY  : would remove ${dst}"
     else
-      echo "RM   : removendo ${dst}"
+      echo "RM   : removing ${dst}"
       rm -rf "${dst}"
     fi
   fi
 
   if [[ "${DRY_RUN}" == true ]]; then
-    echo "DRY  : criaria symlink ${dst} -> ${src}"
+    echo "DRY  : would create symlink ${dst} -> ${src}"
   else
     ln -s "${src}" "${dst}"
     echo "LINK : ${dst} -> ${src}"
@@ -65,7 +65,7 @@ done
 
 echo
 if [[ "${DRY_RUN}" == true ]]; then
-  echo "Modo dry-run — nada foi alterado."
+  echo "Dry-run mode — nothing was changed."
 else
-  echo "Instalação concluída com sucesso!"
+  echo "Installation completed successfully!"
 fi
