@@ -1,35 +1,8 @@
 # User Profile
 
-- **Callme by**: Zonaro 
-- **Gender**: Male 
-- **Full Name**: Gabriel Forti Zonaro
-- **Alias / Handle**: Kaizonaro / @zonaro
-- **Pronouns**: He/Him
-- **Timezone**: America/Sao_Paulo
-- **Language**: Portuguese (pt-br)
-- **Location**: São Paulo, SP, Brazil
+The user's personal profile (name, preferences, family, professional info) is stored in **`USER.md`** in this repository. This file is **not tracked by git** (see `.gitignore`) and is created during installation by the `install.md` prompt, which asks the user for their information.
 
-### Professional — Beatbox Artist & Music Producer
-
-- Professional beatboxer and music producer, member of the **BeatFellas** collective.
-- 10+ years of beatbox experience.
-- 23 times BeatMaster champion.
-- Liga do Beat 2019 champion.
-- 2x National Championsip Vice Chanpion.
- 
-
-### Professional — Tech & Business
-
-- CEO of **RedClaw** — a marketing and development agency (run with Lobby and her team).
-- Full-stack developer: apps, websites, and systems.
-- **Primary stack**: Flutter, Kotlin, PHP (Slim Framework), C# (.NET).
-- **Databases**: MySQL/MariaDB (preferred), SQL Server.
-- Enjoys Jetpack Compose and Photino Blazor (InfiniFrame); knows ASP.NET but avoids it when possible.
-
-### Family
-
-- **Girlfriend**: Carol (birthday Aug 22, 1996).
-- **Daughters**: Ellie (b. Jul 10, 2019), twins Millie & Meggie (b. Aug 6, 2023).
+> **Note**: `USER.md` is personal and machine-specific. Do not commit it. If it doesn't exist, ask the user for their profile info or reference `~/.config/opencode/USER.md`.
 
 ## Project Rules and Preferences
 

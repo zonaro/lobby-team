@@ -18,6 +18,8 @@ O repositório é `zonaro/opencode-lobby` (branch `main`). Os arquivos estão di
 - `AGENTS.md` — regras globais do usuário e regras de delegação
 - `opencode.jsonc` — configuração do opencode (default_agent: lobby)
 
+> **Nota**: `USER.md` (perfil pessoal do usuário) NÃO está no repositório — ele é criado localmente no Passo 3 com as informações fornecidas pelo usuário.
+
 ## Passo 1 — Identifique o sistema operacional
 
 Detecte o SO em que você está rodando e determine o diretório de configuração do OpenCode:
@@ -45,11 +47,56 @@ Crie os diretórios necessários antes de baixar:
 - **Linux/macOS**: `mkdir -p <config_dir>/agents`
 - **Windows**: `New-Item -ItemType Directory -Force -Path <config_dir>\agents` (PowerShell)
 
+## Passo 3 — Crie o USER.md com as informações do usuário
+
+O `USER.md` contém o perfil pessoal do usuário (nome, preferências, família, informações profissionais). Ele é **pessoal e não deve ser commitado** — por isso é criado localmente durante a instalação.
+
+Pergunte ao usuário as seguintes informações (em pt-br, a menos que ele prefira outro idioma):
+
+1. **Como quer ser chamado(a)?** (apelido)
+2. **Nome completo**
+3. **Gênero** (opcional)
+4. **Pronomes** (ex.: Ele/Dele, Ela/Dela)
+5. **Fuso horário** (ex.: America/Sao_Paulo)
+6. **Idioma preferido** (ex.: Português pt-br)
+7. **Localização** (cidade, estado, país)
+8. **Profissão / área de atuação**
+9. **Stack de tecnologia preferida** (linguagens, frameworks, bancos de dados)
+10. **Informações familiares** (opcional)
+11. **Qualquer outra preferência pessoal** que ele queira registrar
+
+Crie o arquivo `<config_dir>/USER.md` com as respostas, seguindo este formato:
+
+```markdown
+# User Profile
+
+- **Callme by**: {apelido}
+- **Gender**: {gênero}
+- **Full Name**: {nome completo}
+- **Alias / Handle**: {alias}
+- **Pronouns**: {pronomes}
+- **Timezone**: {fuso horário}
+- **Language**: {idioma}
+- **Location**: {localização}
+
+### Professional
+
+- {profissão / área de atuação}
+- {stack de tecnologia}
+
+### Preferences
+
+- {preferências pessoais}
+```
+
+Se o usuário não quiser responder alguma pergunta, deixe o campo vazio ou omita a linha.
+
 ## Regras
 
 - Crie o diretório de configuração se ele não existir.
 - Se um arquivo já existir, sobrescreva com a versão mais recente do repositório.
 - Baixe TODOS os arquivos da pasta `agents/` — não pule nenhum.
+- **NÃO baixe `USER.md` do repositório** — ele é criado localmente no Passo 3 com as informações do usuário.
 - Ao final, liste os arquivos instalados e confirme que todos foram baixados com sucesso.
 ```
 
@@ -59,7 +106,7 @@ Crie os diretórios necessários antes de baixar:
 
 1. Copie o prompt acima.
 2. Cole no OpenCode e envie.
-3. O OpenCode identificará o SO, baixará os arquivos do GitHub e os colocará no diretório de configuração correto.
+3. O OpenCode identificará o SO, baixará os arquivos do GitHub, os colocará no diretório de configuração correto e **perguntará suas informações para criar o `USER.md`**.
 4. Pronto! A equipe Lobby estará disponível globalmente.
 
 ## Verificação
