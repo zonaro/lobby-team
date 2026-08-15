@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="lobby_team.png" alt="Lobby Team" width="100%">
+</p>
+
 # opencode-lobby 🦞
 
 Global configuration for the **Lobby** agent for [opencode](https://opencode.ai) — the main orchestrator agent, with a caring personality and a team of specialized subagents.
