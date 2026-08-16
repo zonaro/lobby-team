@@ -16,7 +16,7 @@ Install the opencode-lobby project's agent team as VS Code custom agents, downlo
 The repository is `zonaro/opencode-lobby` (branch `main`). Files are available via raw.githubusercontent.com:
 
 - Base: `https://raw.githubusercontent.com/zonaro/opencode-lobby/main/`
-- `agents/` — folder with all specialized agents (🦞 Lobby, 🪸 Coral, 🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🧜‍♀️ Ariel, 🐧 Tucso, 🐋 Wally, 🐙 Chululu, 🐬 Dolfi, 🐡 Puffy, 🦑 Calamari)
+- `agents/` — folder with all specialized agents (👩🏽‍🎤 Lobby, 🪸 Coral, 🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🧜‍♀️ Ariel, 🐧 Tucso, 🐋 Wally, 🐙 Chululu, 🐬 Dolfi, 🐡 Puffy, 🦑 Calamari)
 - `AGENTS.md` — global user rules and delegation rules
 - `opencode.jsonc` — opencode configuration (NOT used in VS Code, ignore this file)
 
@@ -88,7 +88,7 @@ Download tool per OS:
 
 **DO NOT download `opencode.jsonc`** — it is specific to the OpenCode CLI and has no effect in VS Code.
 
-> **Note**: File names in the repository are lowercase (e.g., `lobby.md`). When converting to VS Code's `.agent.md` format, the `name` field in the frontmatter must use **Title Case with emoji** (e.g., `🦞 Lobby`), per the mapping table above.
+> **Note**: File names in the repository are lowercase (e.g., `lobby.md`). When converting to VS Code's `.agent.md` format, the `name` field in the frontmatter must use **Title Case with emoji** (e.g., `👩🏽‍🎤 Lobby`), per the mapping table above.
 
 ## Step 4 — Convert each agent to the .agent.md format
 
@@ -101,7 +101,7 @@ Save each one as `<name>.agent.md` in the directory from Step 2. E.g.: `lobby.md
 | OpenCode                     | VS Code (`.agent.md`)                                          |
 | ---------------------------- | -------------------------------------------------------------- |
 | `description`                | `description` (copy verbatim)                                  |
-| *(file name)*                | `name` (e.g., `🦞 Lobby`, `🪸 Coral`) — set explicitly in **Title Case** with the agent's emoji |
+| *(file name)*                | `name` (e.g., `👩🏽‍🎤 Lobby`, `🪸 Coral`) — set explicitly in **Title Case** with the agent's emoji |
 | `mode: primary`              | `user-invocable: true`                                         |
 | `mode: subagent`             | `user-invocable: true` + `disable-model-invocation: false`     |
 | `allowed_subagents: [...]`   | `agents: [...]` (same list; `[]` when empty) — use names in **Title Case** with emojis (e.g., `🦞 InnerLinho`, `🐠 Fishie`) |
@@ -147,7 +147,7 @@ Every agent that has `allowed_subagents: ["puffy", "calamari"]` in its OpenCode 
 
 Expected result per agent:
 
-- **🦞 Lobby** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi', '🐬 Dolfi', '🐡 Puffy', '🦑 Calamari']`
+- **👩🏽‍🎤 Lobby** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi', '🐬 Dolfi', '🐡 Puffy', '🦑 Calamari']`
 - **🦞 InnerLinho, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🐧 Tucso, 🪸 Coral, 🐋 Wally, 🐬 Dolfi** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🐡 Puffy', '🦑 Calamari']`
 - **🐠 Fishie** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🐡 Puffy', '🦑 Calamari', '🐬 Dolfi']` (can delegate SVG icon work to Dolfi directly during UI creation)
 - **🧜‍♀️ Ariel** — `tools: ['edit', 'search', 'fetch', 'todos']`, `agents: ['🐡 Puffy', '🦑 Calamari']` (no `runCommands`: it doesn't have `bash: allow`)
@@ -176,7 +176,7 @@ After (`~/.copilot/agents/lobby.agent.md`):
 
 ```yaml
 ---
-name: "🦞 Lobby"
+name: "👩🏽‍🎤 Lobby"
 description: "Main orchestrator — receives requests, plans execution, delegates to specialized subagents, and consolidates results."
 model: <Nemotron 3 Ultra ID per Model Picker Diagnostics, or omit>
 tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']

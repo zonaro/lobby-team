@@ -151,7 +151,7 @@ Warm indoor lighting, shallow depth of field, sharp focus on the woman and the f
 
 | #   | Character      | Emoji | Plush                                                                            | Screen                                        |
 | --- | -------------- | ----- | -------------------------------------------------------------------------------- | --------------------------------------------- |
-| —   | **Lobby**      | 🦞     | The real woman (not a plush) — lavender hair, turquoise hoodie                    | —                                             |
+| —   | **Lobby**      | 👩🏽‍🎤     | The real woman (not a plush) — lavender hair, turquoise hoodie                    | —                                             |
 | 1   | **Coral**      | 🪸     | ✅ already exists — branching red and orange coral                                 | `@Coral (Nemotron 3 Ultra)`                        |
 | 2   | **InnerLinho** | 🦞     | ✅ already exists — orange lobster with round glasses, in Lobby's lap              | `@InnerLinho (DeepSeek V4 Flash)` *(add screen)* |
 | 3   | **Fishie**     | 🐠     | ✅ already exists — blue/orange/yellow mandarin fish                               | `@Fishie (DeepSeek V4 Flash)`                        |

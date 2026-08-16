@@ -120,7 +120,7 @@ Each agent is specialized by **competence + programming language**. For new proj
 
 | Agent          | Emoji | Model           | Specialty                                                                                            |
 | -------------- | ----- | --------------- | ---------------------------------------------------------------------------------------------------- |
-| **Lobby**      | 🦞     | Nemotron 3 Ultra         | Main orchestrator — receives requests, plans, delegates, consolidates                                |
+| **Lobby**      | 👩🏽‍🎤     | Nemotron 3 Ultra         | Main orchestrator — receives requests, plans, delegates, consolidates                                |
 | **Coral**      | 🪸     | Nemotron 3 Ultra     | Chief Architect — defines architecture, selects team, writes AGENTS.md/.agents/                      |
 | **InnerLinho** | 🦞     | DeepSeek V4 Flash     | Backend — PHP + Slim Framework, MySQL/MariaDB                                                        |
 | **Fishie**     | 🐠     | DeepSeek V4 Flash      | Frontend — HTML, CSS, Tailwind, jQuery, React/Vue, visual styling                                    |

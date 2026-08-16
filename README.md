@@ -2,7 +2,7 @@
   <img src="lobby_team.png" alt="Lobby Team" width="100%">
 </p>
 
-# opencode-lobby 🦞
+# opencode-lobby 👩🏽‍🎤
 
 Global configuration for the **Lobby** agent for [opencode](https://opencode.ai) — the main orchestrator agent, with a caring personality and a team of specialized subagents.
 
@@ -62,7 +62,7 @@ The installation is **idempotent** — you can run it as many times as you want;
 ~/.config/opencode/opencode.jsonc -> <repo>/opencode.jsonc
 ```
 
-## 🦞 About Lobby
+## 👩🏽‍🎤 About Lobby
 
 **Lobby** is the main orchestrator agent of OpenCode. She receives the user's request, plans the execution, and delegates tasks to her team of specialized subagents, ensuring each step is processed by the most efficient model.
 
