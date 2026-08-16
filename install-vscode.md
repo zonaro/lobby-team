@@ -16,11 +16,13 @@ Install the opencode-lobby project's agent team as VS Code custom agents, downlo
 The repository is `zonaro/opencode-lobby` (branch `main`). Files are available via raw.githubusercontent.com:
 
 - Base: `https://raw.githubusercontent.com/zonaro/opencode-lobby/main/`
-- `agents/` — folder with all specialized agents (🦞 Lobby, 🪸 Coral, 🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🧜‍♀️ Ariel, 🐧 Tucso, 🐋 Wally, 🐙 Chululu)
+- `agents/` — folder with all specialized agents (🦞 Lobby, 🪸 Coral, 🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🧜‍♀️ Ariel, 🐧 Tucso, 🐋 Wally, 🐙 Chululu, 🐡 Puffy, 🦑 Calamari)
 - `AGENTS.md` — global user rules and delegation rules
 - `opencode.jsonc` — opencode configuration (NOT used in VS Code, ignore this file)
 
 > **Note**: `USER.md` (user's personal profile) is NOT in the repository — it is created locally in Step 5 with user-provided information.
+
+> **Note**: 🐡 `puffy.md` and 🦑 `calamari.md` run on **Google Gemini** models, not on OpenCode Zen — the `ltmoerdani.opencode-copilot-chat` extension from Step 1 does not provide them. They need a separate Gemini key configured via VS Code's own **BYOK** (Bring Your Own Key) feature, done manually by the user in Step 7. Every other agent works without it.
 
 ## Step 1 — Install and configure the extension
 
@@ -78,7 +80,7 @@ Create the directories if they don't exist:
 Download into a temporary folder:
 
 1. `AGENTS.md`
-2. All files from `agents/`: `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`
+2. All files from `agents/`: `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`, `puffy.md`, `calamari.md`
 
 Download tool per OS:
 - **Linux/macOS**: `curl -fsSL <url> -o <destination>` or `wget -q <url> -O <destination>`
@@ -119,8 +121,11 @@ The `opencode/...` IDs from the repository are not the IDs registered by the ext
    - `opencode/nemotron-3.5-lightning-free` → Nemotron 3.5 Lightning (wally)
    - `opencode/laguna-s-2.1-free` → Laguna S 2.1 (ariel)
    - `opencode/mimo-v2.5-free` → MiMo V2.5 (chululu — needs a vision-capable model)
-3. **If a model isn't available in the user's account, omit the `model` field** — the agent will use the model selected in the chat picker. Do not invent IDs.
-4. At the end, tell the user which agents ended up without a fixed `model`.
+   - `google/gemini-3.7-flash` → the Gemini model added via VS Code's own BYOK (see Step 7), NOT via this extension (puffy)
+   - `google/gemini-3.5-flash-lite` → the Gemini Flash-Lite model added via VS Code's own BYOK (see Step 7), NOT via this extension (calamari)
+3. **If a model isn't available in the user's account, omit the `model` field** — the agent will use the model selected in the chat picker. Do not invent IDs. For Puffy/Calamari specifically, omit `model` until the user has completed Step 7 — after that, set it to whatever name the Gemini BYOK model shows up as in the picker.
+4. Puffy and Calamari rely on Gemini's native **Google Search Grounding** (`googleSearch`) in OpenCode — VS Code/Copilot Chat has no equivalent native tool, so this capability does not carry over. In the conversion, they fall back to the `search`/`fetch` tools only; note this limitation to the user.
+5. At the end, tell the user which agents ended up without a fixed `model`.
 
 ### Permissions → tools table
 
@@ -136,14 +141,18 @@ General rule, derived from each file's `permission:` block:
 | `task: allow`             | *(delegation — expressed via `agents:`, not via `tools:`)* |
 | any `deny`                | omit the tool    |
 
-Always include `search` (codebase search) even when the agent doesn't have `websearch`, except for chululu.
+Always include `search` (codebase search) even when the agent doesn't have `websearch`, except for chululu, puffy and calamari (they are read-only research agents — see below).
+
+Every agent that has `allowed_subagents: ["puffy", "calamari"]` in its OpenCode frontmatter (all specialists except Chululu, Puffy and Calamari themselves) now also carries `task: allow`, so its `agents:` list in VS Code must include `'🐡 Puffy'` and `'🦑 Calamari'`, not stay empty.
 
 Expected result per agent:
 
-- **🦞 Lobby** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi']`
-- **🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🐧 Tucso, 🪸 Coral, 🐋 Wally** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: []`
-- **🧜‍♀️ Ariel** — `tools: ['edit', 'search', 'fetch', 'todos']`, `agents: []` (no `runCommands`: it doesn't have `bash: allow`)
-- **🐙 Chululu** — `tools: []`, `agents: []` (read-only: all permissions are `deny`)
+- **🦞 Lobby** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi', '🐡 Puffy', '🦑 Calamari']`
+- **🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🐧 Tucso, 🪸 Coral, 🐋 Wally** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🐡 Puffy', '🦑 Calamari']`
+- **🧜‍♀️ Ariel** — `tools: ['edit', 'search', 'fetch', 'todos']`, `agents: ['🐡 Puffy', '🦑 Calamari']` (no `runCommands`: it doesn't have `bash: allow`)
+- **🐙 Chululu** — `tools: []`, `agents: []` (read-only: all permissions are `deny`, and it never delegates by design)
+- **🐡 Puffy** — `tools: ['search', 'fetch']`, `agents: []` (read-only research agent: no `edit`, `runCommands`, or `todos`)
+- **🦑 Calamari** — `tools: ['search', 'fetch']`, `agents: []` (read-only fact-check agent: no `edit`, `runCommands`, or `todos`)
 
 ### Conversion example (lobby)
 
@@ -244,19 +253,36 @@ If the user doesn't want to answer a question, leave the field blank or omit the
 ## Step 6 — Reload and validate
 
 1. Run `Developer: Reload Window` from the command palette.
-2. Open Copilot Chat and check the agent picker — all 13 agents should appear, with **Lobby** among them.
-3. List the installed files and confirm the 13 `.agent.md` + the 2 `.instructions.md` are in place.
+2. Open Copilot Chat and check the agent picker — all 15 agents should appear, with **Lobby** among them.
+3. List the installed files and confirm the 15 `.agent.md` + the 2 `.instructions.md` are in place.
+
+## Step 7 — Configure the Google/Gemini API key (required for 🐡 Puffy and 🦑 Calamari)
+
+Puffy and Calamari run on Google Gemini models instead of the OpenCode Zen models the extension provides. VS Code has its own, separate **BYOK** (Bring Your Own Key) feature for this — it has nothing to do with the `ltmoerdani.opencode-copilot-chat` extension installed in Step 1.
+
+**Do this manually with the user — never ask for the key value or type it yourself:**
+
+1. Tell the user to get a free API key from Google AI Studio: `https://aistudio.google.com/apikey`.
+2. Ask the user to add it themselves in VS Code:
+   - Open the Chat view, click the model picker → **Manage Models…** → select **Google**.
+   - Paste the API key when prompted, then check the Gemini model(s) to enable (e.g. Gemini 3.7 Flash, Gemini 3.5 Flash Lite).
+   - Alternatively: run **`Chat: Manage Language Models`** from the Command Palette and add the **Google** provider from there.
+3. Once added, the Gemini model(s) appear in the same model picker used by any custom agent — go back to `puffy.agent.md` and `calamari.agent.md` and set `model:` to the exact name now shown in the picker (per Step 4's model rule).
+
+**Note**: BYOK models in VS Code are billed directly by Google against the user's own API key — they do not count against GitHub Copilot request quotas, and are unrelated to the OpenCode Go/Zen billing from Step 1.
+
+If the user skips this step, the rest of the team keeps working normally — only 🐡 Puffy and 🦑 Calamari will show up without a working model until the key is configured (leave their `model:` field empty in that case, per the model rule above).
 
 ## Rules
 
 - Create the directories if they don't exist.
 - If a file already exists, overwrite it with the latest version from the repository.
-- Convert ALL 13 agents — don't skip any.
-- **NEVER type the user's API key** — only instruct them where and how to paste it in the extension's dialog.
+- Convert ALL 15 agents — don't skip any.
+- **NEVER type the user's API key** — only instruct them where and how to paste it in the extension's dialog (Step 1) or VS Code's BYOK dialog (Step 7).
 - **DO NOT download `USER.md` from the repository** — it is created locally in Step 5.
 - **DO NOT download `opencode.jsonc`** — it doesn't apply to VS Code.
 - Preserve each agent's Markdown body without edits; convert only the frontmatter.
-- At the end, list: installed agents, agents without a fixed `model`, and the extension's status.
+- At the end, list: installed agents, agents without a fixed `model`, the extension's status, and whether the Google BYOK key (Step 7) was configured.
 ```
 
 ---
@@ -265,9 +291,10 @@ If the user doesn't want to answer a question, leave the field blank or omit the
 
 1. Copy the prompt above.
 2. Paste it into **Copilot Chat in Agent mode** and send.
-3. The agent will install the extension, create `~/.copilot/agents/`, download and convert the 13 agents (with **Title Case + emoji** names in the `name` field), and **ask for your information to create the profile**.
+3. The agent will install the extension, create `~/.copilot/agents/`, download and convert the 15 agents (with **Title Case + emoji** names in the `name` field), and **ask for your information to create the profile**.
 4. You paste your OpenCode API key into the extension's dialog (the agent doesn't do this for you).
-5. Reload the window — the Lobby team shows up in the Copilot Chat agent picker.
+5. **You configure your Google API key yourself** for 🐡 Puffy and 🦑 Calamari — get a free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and add it via the Chat model picker → **Manage Models…** → **Google** (this is separate from step 4 and unrelated to the OpenCode extension).
+6. Reload the window — the Lobby team shows up in the Copilot Chat agent picker.
 
 ## Verification
 
@@ -283,13 +310,15 @@ ls -la ~/.copilot/agents/ ~/.copilot/instructions/
 Get-ChildItem "$env:USERPROFILE\.copilot\agents", "$env:USERPROFILE\.copilot\instructions"
 ```
 
-You should see 13 `.agent.md` files and 2 `.instructions.md` files.
+You should see 15 `.agent.md` files and 2 `.instructions.md` files.
 
 To check the extension:
 
 ```bash
 code --list-extensions | grep opencode-copilot-chat
 ```
+
+To check the Google BYOK key, open the Chat model picker in VS Code — a Gemini model should be listed and selectable; if it's missing, redo Step 7.
 
 ## Differences from `install.md`
 
@@ -302,6 +331,7 @@ code --list-extensions | grep opencode-copilot-chat
 | Config                | `opencode.jsonc`                         | not applicable — models come from the extension       |
 | Models                | `opencode/...` IDs directly              | IDs registered by the extension in Copilot's picker   |
 | Temperature/max_depth | supported                                | not supported — removed during conversion             |
+| Puffy/Calamari's Gemini key | `/connect` → **Google** (or `GOOGLE_GENERATIVE_AI_API_KEY`) | Chat model picker → **Manage Models…** → **Google** (BYOK) |
 
 ## References
 

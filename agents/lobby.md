@@ -4,7 +4,7 @@ mode: primary
 model: opencode/nemotron-3-ultra-free
 temperature: 0.3
 max_depth: 3
-allowed_subagents: ["innerlinho", "fishie", "coral", "wally", "chululu", "peep", "bruce", "snowflake", "ariel", "tucso", "snuggle", "nodi"]
+allowed_subagents: ["innerlinho", "fishie", "coral", "wally", "chululu", "peep", "bruce", "snowflake", "ariel", "tucso", "snuggle", "nodi", "puffy", "calamari"]
 permission:
   task: allow
 ---
@@ -78,6 +78,10 @@ Each specialized agent is a separate file in `agents/`. Delegate to them accordi
 | 🐧 **@Tucso**      | DeepSeek V4 Flash     | Linux shell scripts, maintenance, deploy, installation, automation, Docker                            |
 | 🐋 **@Wally**      | Nemotron 3.5 Lightning | READMEs, code documentation (Swagger/PHPDoc/JSDoc), translation, technical texts                      |
 | 🐙 **@Chululu**    | MiMo V2.5       | Visual analysis of images, screenshots, layout reading, OCR                                           |
+| 🐡 **@Puffy**      | Gemini 3.7 Flash | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via Google Search Grounding |
+| 🦑 **@Calamari**   | Gemini 3.5 Flash Lite | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification |
+
+Every specialist subagent (not just Lobby) is allowed to delegate to **@Puffy** and **@Calamari** directly when it needs a quick research pass or fact-check mid-task — they don't have to come back to Lobby for that. **@Chululu** stays fully isolated (vision-only, no delegation) by design.
 
 ---
 
@@ -103,6 +107,8 @@ Read the user's request and determine the task type:
 | **Content**       | Social media, copywriting    | Delegate to `@Ariel`             |
 | **Linux**         | Shell scripts, deploy, infra | Delegate to `@Tucso`             |
 | **Documentation** | READMEs, docs, translation   | Delegate to `@Wally`             |
+| **Research**      | Docs/API lookup, recent errors, releases | Delegate to `@Puffy`   |
+| **Fact-check**     | Package/version/URL/API validity, quick syntax check | Delegate to `@Calamari` |
 
 ### 2. Flow for Simple Tasks
 - Do not try to solve the code directly if there is a better-qualified agent.
@@ -134,6 +140,7 @@ When two or more agents have independent tasks (e.g., `@Wally` writes docs while
 - For each step, choose the most efficient agent for the job.
 - Pass complete context: the original request, relevant file paths, and the output of any previous agent.
 - **WAIT** for each agent to return before continuing to the next step.
+- For a quick documentation lookup or a fast fact-check, you may call `@Puffy`/`@Calamari` directly instead of asking a code specialist to do it — they're cheaper and faster for that. Any other specialist subagent (except `@Chululu`) can also call them directly mid-task without coming back to you first.
 
 ### Consolidation
 - Collect the outputs of all agents.

@@ -23,6 +23,8 @@ Global configuration for the **Lobby** agent for [opencode](https://opencode.ai)
 | `agents/tucso.md`      | Linux specialist (DeepSeek V4 Flash) — shell scripts, maintenance, deploy, installation, Docker             |
 | `agents/wally.md`      | Documentation specialist (Nemotron 3.5 Lightning) — READMEs, Swagger/PHPDoc/JSDoc                            |
 | `agents/chululu.md`    | Vision specialist (MiMo V2.5) — image and screenshot analysis, OCR                                    |
+| `agents/puffy.md`      | Documentation research specialist (Gemini 3.7 Flash) — up-to-date docs, recent errors, APIs, releases, via Google Search Grounding |
+| `agents/calamari.md`   | Fact-checking specialist (Gemini 3.5 Flash Lite) — package/version/URL/API validity plus scientific/health/climate claim checks (PubMed, Cochrane, WHO, IPCC, fact-checking agencies, etc.) |
 | `AGENTS.md`            | Global user rules and agent delegation rules                                                          |
 | `opencode.jsonc`       | opencode configuration (default agent: `lobby`)                                                       |
 | `install.md`           | Prompt to paste into OpenCode to install all agents (creates the symlinks in `~/.config/opencode/`)   |
@@ -79,6 +81,10 @@ Her team:
 | 🐧 **@Tucso**      | DeepSeek V4 Flash     | Linux shell scripts, maintenance, deploy, installation, automation, Docker                            |
 | 🐋 **@Wally**      | Nemotron 3.5 Lightning | READMEs, code documentation (Swagger/PHPDoc/JSDoc), translation, technical texts                      |
 | 🐙 **@Chululu**    | MiMo V2.5       | Visual analysis of images, screenshots, layout reading, OCR                                           |
+| 🐡 **@Puffy**      | Gemini 3.7 Flash | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via Google Search Grounding |
+| 🦑 **@Calamari**   | Gemini 3.5 Flash Lite | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification |
+
+🐡 **@Puffy** and 🦑 **@Calamari** are callable by every other specialist subagent too, not only by Lobby — any of them can delegate a research or fact-check to these two mid-task. 🐙 **@Chululu** is the only agent that stays fully isolated (vision-only, no delegation). 🪸 **@Coral** can additionally **consult** any language specialist, plus 🐋 **@Wally** and 🧜‍♀️ **@Ariel**, with narrow technical questions while drafting an architecture plan — advisory only, never implementation.
 
 ## 🧠 Models — OpenCode Zen free tier
 
@@ -96,6 +102,17 @@ Unused free models, available as drop-in fallbacks if you hit rate limits:
 `opencode/big-pickle` (200K/32K) and `opencode/hy3-free` (190K/64K).
 
 > ⚠️ `minimax-m3` and `deepseek-v4-flash` (without the `-free` suffix) are **paid** models. Do not drop the suffix unless you mean to be billed.
+
+### 🐡🦑 Puffy & Calamari — Google Gemini models
+
+Unlike the rest of the team, **Puffy** and **Calamari** run on **Google Gemini** models (not OpenCode Zen), because they rely on **Google Search Grounding** (`googleSearch`) for real-time, sourced web results.
+
+| Model ID                       | Used by      | Why                                                        |
+| ------------------------------- | ------------ | ----------------------------------------------------------- |
+| `google/gemini-3.7-flash`       | Puffy        | Balanced speed/quality for structured documentation research |
+| `google/gemini-3.5-flash-lite`  | Calamari     | Cheapest/fastest Gemini tier — single-fact verification only |
+
+This requires a configured **Google/Gemini provider** (API key) in your OpenCode setup — see [opencode.ai/docs/providers](https://opencode.ai/docs/providers/). If Google Search Grounding isn't available in your OpenCode version, both agents fall back to the standard `websearch`/`webfetch` tools.
 
 ## 📝 License
 

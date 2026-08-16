@@ -14,11 +14,13 @@ Install the global agent configuration for the opencode-lobby project by downloa
 The repository is `zonaro/opencode-lobby` (branch `main`). Files are available via raw.githubusercontent.com:
 
 - Base: `https://raw.githubusercontent.com/zonaro/opencode-lobby/main/`
-- `agents/` — folder with all specialized agents (lobby, coral, innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, ariel, tucso, wally, chululu)
+- `agents/` — folder with all specialized agents (lobby, coral, innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, ariel, tucso, wally, chululu, puffy, calamari)
 - `AGENTS.md` — global user rules and delegation rules
 - `opencode.jsonc` — opencode configuration (default_agent: lobby)
 
 > **Note**: `USER.md` (user's personal profile) is NOT in the repository — it is created locally in Step 3 with user-provided information.
+
+> **Note**: 🐡 `puffy.md` and 🦑 `calamari.md` run on **Google Gemini** models (`google/gemini-3.7-flash` and `google/gemini-3.5-flash-lite`), not on OpenCode Zen — they need a separate Google API key, configured manually by the user in Step 4. Every other agent works without it.
 
 ## Step 1 — Identify the operating system
 
@@ -37,7 +39,7 @@ Download each file from the repository and place it in the OpenCode configuratio
 1. `AGENTS.md` → `<config_dir>/AGENTS.md`
 2. `opencode.jsonc` → `<config_dir>/opencode.jsonc`
 3. All files from `agents/` → `<config_dir>/agents/`:
-   - `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`
+   - `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`, `puffy.md`, `calamari.md`
 
 Use the appropriate download tool for the OS:
 - **Linux/macOS**: `curl -fsSL <url> -o <destination>` or `wget -q <url> -O <destination>`
@@ -91,13 +93,30 @@ Create the file `<config_dir>/USER.md` with the answers, following this format:
 
 If the user doesn't want to answer a question, leave the field blank or omit the line.
 
+## Step 4 — Configure the Google/Gemini API key (required for 🐡 Puffy and 🦑 Calamari)
+
+Puffy and Calamari are the only two agents on Google Gemini models instead of OpenCode Zen, because they rely on Gemini's native Google Search Grounding. This needs its own credential, separate from whatever is already configured for the rest of the team.
+
+**Do this manually with the user — never ask for the key value or type it yourself:**
+
+1. Tell the user to get a free API key from Google AI Studio: `https://aistudio.google.com/apikey`.
+2. Ask the user to run this themselves, either:
+   - Inside OpenCode's TUI: the `/connect` command → select the **Google** provider (not "Google Vertex AI" — that one needs a GCP service account, not a plain API key) → paste the key when prompted.
+   - Or from the shell: `opencode auth login`, then pick **Google** and paste the key.
+3. Confirm it worked by running `opencode auth list` — `google` should be listed as configured.
+
+**Alternative (no `/connect`):** the user can instead export the environment variable `GOOGLE_GENERATIVE_AI_API_KEY` in their shell profile (`~/.bashrc`, `~/.zshrc`, or the Windows equivalent) — this is the standard variable for the Google Generative AI provider. Some OpenCode Gemini plugins also accept `GEMINI_API_KEY` as an alias; if the `GOOGLE_GENERATIVE_AI_API_KEY` route doesn't pick up, try that instead.
+
+If the user skips this step, the rest of the team keeps working normally — only 🐡 Puffy and 🦑 Calamari will fail to start until the key is configured.
+
 ## Rules
 
 - Create the configuration directory if it doesn't exist.
 - If a file already exists, overwrite with the latest version from the repository.
 - Download ALL files from the `agents/` folder — don't skip any.
 - **DO NOT download `USER.md` from the repository** — it's created locally in Step 3 with user information.
-- At the end, list the installed files and confirm all were downloaded successfully.
+- **NEVER type or ask the user to paste their Google API key into the chat** — only tell them where and how to configure it themselves (Step 4).
+- At the end, list the installed files, confirm all were downloaded successfully, and remind the user to complete Step 4 if they haven't already.
 ```
 
 ---
@@ -107,7 +126,8 @@ If the user doesn't want to answer a question, leave the field blank or omit the
 1. Copy the prompt above.
 2. Paste into OpenCode and send.
 3. OpenCode will identify the OS, download files from GitHub, place them in the correct configuration directory, and **ask for your information to create `USER.md`**.
-4. Done! The Lobby team will be available globally.
+4. **Configure your Google API key yourself** when OpenCode gets to Step 4 — get a free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and run `/connect` (or `opencode auth login`) to add it under the **Google** provider. This is required for 🐡 Puffy and 🦑 Calamari; every other agent works without it.
+5. Done! The Lobby team will be available globally.
 
 ## Verification
 
@@ -126,3 +146,11 @@ Get-ChildItem "$env:USERPROFILE\.config\opencode\agents"
 ```
 
 You should see all agent files downloaded from the repository.
+
+To confirm the Google/Gemini key is configured (needed for 🐡 Puffy and 🦑 Calamari):
+
+```bash
+opencode auth list
+```
+
+`google` should appear in the list.

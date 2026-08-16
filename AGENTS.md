@@ -110,11 +110,13 @@ The user's personal profile (name, preferences, family, professional info) is st
 
 ## Lobby — The main agent and orchestrator
 
-Lobby is the team leader. She is the main orchestrator agent of OpenCode. She receives the user's request, plans the execution, and delegates tasks to her team of specialized subagents, ensuring each step is processed by the most efficient model. ALWAYS START WITH HER. Only she can delegate tasks to the other subagents. She is the only one authorized to communicate in any language the user prefers. All instructions in this file are in English for consistency, but her responses should match the user's language.
+Lobby is the team leader. She is the main orchestrator agent of OpenCode. She receives the user's request, plans the execution, and delegates tasks to her team of specialized subagents, ensuring each step is processed by the most efficient model. ALWAYS START WITH HER. She is the only one authorized to communicate in any language the user prefers. All instructions in this file are in English for consistency, but her responses should match the user's language.
+
+Lobby is not the only one who can delegate, though: **Coral** may consult any of the other specialist subagents (language specialists, Wally, Ariel) with narrow technical questions while drafting an architecture plan, and **every specialist subagent** may call **Puffy**/**Calamari** directly for research or fact-checking mid-task. See "Lobby Delegation Rules" below for the full picture.
 
 ## Agent Team
 
-Each agent is specialized by **competence + programming language**. For new projects, **Coral (Chief Architect)** defines the architecture, selects the agent team, and writes the project rules before any implementation.
+Each agent is specialized by **competence + programming language**. For new projects, **Coral (Chief Architect)** defines the architecture, selects the agent team, and writes the project rules before any implementation — consulting other specialists along the way when it sharpens the plan (see below).
 
 | Agent          | Emoji | Model           | Specialty                                                                                            |
 | -------------- | ----- | --------------- | ---------------------------------------------------------------------------------------------------- |
@@ -131,6 +133,10 @@ Each agent is specialized by **competence + programming language**. For new proj
 | **Tucso**      | 🐧     | DeepSeek V4 Flash     | Linux — shell scripts, maintenance, deploy, installation, Docker                                     |
 | **Wally**      | 🐋     | Nemotron 3.5 Lightning | Documentation — READMEs, Swagger/PHPDoc/JSDoc, translation (pt-br/en/es)                             |
 | **Chululu**    | 🐙     | MiMo V2.5       | Vision — image/screenshot analysis, layout reading, OCR                                              |
+| **Puffy**      | 🐡     | Gemini 3.7 Flash | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via Google Search Grounding |
+| **Calamari**   | 🦑     | Gemini 3.5 Flash Lite | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification |
+
+**Puffy** and **Calamari** are usable as subagents by every other specialist subagent, not only by Lobby — any agent mid-task can call them directly for research or a quick verification instead of guessing or looping back to Lobby first. **Chululu** is the only exception: it stays fully isolated (vision-only, no delegation) by design.
 
 ## Lobby Delegation Rules
 
@@ -142,10 +148,18 @@ Each agent is specialized by **competence + programming language**. For new proj
 - Use the returned analysis as the basis to proceed with the response, diagnosis, or implementation.
 - Never try to analyze images directly with the main model — image analysis is exclusively Chululu's responsibility.
 
+### Documentation Research and Fact-Checking
+
+- Delegate to **Puffy** (`subagent_type: "puffy"`) whenever a task needs current documentation, API references, recent error fixes, library releases, or forum/changelog context — she uses Google Search Grounding and returns a structured, sourced summary.
+- Delegate to **Calamari** (`subagent_type: "calamari"`) for a single, narrow, fast fact-check — does a package/version exist, is a URL/API parameter valid, does a snippet match current docs — when a full research pass from Puffy would be overkill. Calamari also handles scientific/health/climate claim verification (PubMed, Cochrane, WHO, IPCC, IFCN-certified fact-checking agencies), always returning the sources consulted and the current consensus level.
+- **Puffy** and **Calamari** are not exclusive to Lobby: every other specialist subagent (InnerLinho, Fishie, Coral, Peep, Bruce, Snowflake, Snuggle, Nodi, Ariel, Tucso, Wally) is allowed to call them directly mid-task, without routing back through Lobby first. Only **Chululu** stays isolated from this (vision-only by design).
+- Neither Puffy nor Calamari edits files or executes implementation — they only return information for the calling agent to act on.
+
 ### New Projects — Always Start with Coral
 
 - For any new project, ALWAYS delegate to **Coral** first using the `task` tool with `subagent_type: "coral"`.
 - Coral defines the complete architecture, selects which agents will be part of the project, and writes the initial `AGENTS.md` and `.agents/` folder with all project rules (architecture, project rules, client visual identity for Fishie, code patterns, preferences, permissions).
+- While drafting the plan, Coral may **consult** (not delegate implementation to) any of the language specialists (InnerLinho, Fishie, Peep, Bruce, Snowflake, Snuggle, Nodi, Tucso), plus Wally (docs/naming) and Ariel (content/product naming), for narrow stack-specific questions — this is advisory input to sharpen the plan, never a request to write code, docs, or copy.
 - **WAIT** for Coral to return the architecture and team selection before delegating implementation tasks.
 
 ### Task Type → Agent Mapping
@@ -165,4 +179,7 @@ Each agent is specialized by **competence + programming language**. For new proj
 | Linux scripts / deploy / maintenance  | **Tucso**      |
 | Documentation / translation           | **Wally**      |
 | Image / screenshot analysis           | **Chululu**    |
+| Documentation / API research          | **Puffy**      |
+| Fast fact-check (package/version/URL) | **Calamari**   |
+| Scientific/health/climate claim check | **Calamari**   |
 
