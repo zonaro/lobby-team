@@ -16,7 +16,7 @@ Install the opencode-lobby project's agent team as VS Code custom agents, downlo
 The repository is `zonaro/opencode-lobby` (branch `main`). Files are available via raw.githubusercontent.com:
 
 - Base: `https://raw.githubusercontent.com/zonaro/opencode-lobby/main/`
-- `agents/` — folder with all specialized agents (🦞 Lobby, 🪸 Coral, 🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🧜‍♀️ Ariel, 🐧 Tucso, 🐋 Wally, 🐙 Chululu, 🐡 Puffy, 🦑 Calamari)
+- `agents/` — folder with all specialized agents (🦞 Lobby, 🪸 Coral, 🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🧜‍♀️ Ariel, 🐧 Tucso, 🐋 Wally, 🐙 Chululu, 🐬 Dolfi, 🐡 Puffy, 🦑 Calamari)
 - `AGENTS.md` — global user rules and delegation rules
 - `opencode.jsonc` — opencode configuration (NOT used in VS Code, ignore this file)
 
@@ -80,7 +80,7 @@ Create the directories if they don't exist:
 Download into a temporary folder:
 
 1. `AGENTS.md`
-2. All files from `agents/`: `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`, `puffy.md`, `calamari.md`
+2. All files from `agents/`: `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`, `dolfi.md`, `puffy.md`, `calamari.md`
 
 Download tool per OS:
 - **Linux/macOS**: `curl -fsSL <url> -o <destination>` or `wget -q <url> -O <destination>`
@@ -117,7 +117,7 @@ The `opencode/...` IDs from the repository are not the IDs registered by the ext
 1. Run the **`OpenCode: Model Picker Diagnostics`** command from the command palette to list the registered models.
 2. Map each repository model to the matching ID that shows up in the list:
    - `opencode/nemotron-3-ultra-free` → Nemotron 3 Ultra (lobby, coral)
-   - `opencode/deepseek-v4-flash-free` → DeepSeek V4 Flash (innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, tucso)
+   - `opencode/deepseek-v4-flash-free` → DeepSeek V4 Flash (innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, tucso, dolfi)
    - `opencode/nemotron-3.5-lightning-free` → Nemotron 3.5 Lightning (wally)
    - `opencode/laguna-s-2.1-free` → Laguna S 2.1 (ariel)
    - `opencode/mimo-v2.5-free` → MiMo V2.5 (chululu — needs a vision-capable model)
@@ -147,8 +147,9 @@ Every agent that has `allowed_subagents: ["puffy", "calamari"]` in its OpenCode 
 
 Expected result per agent:
 
-- **🦞 Lobby** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi', '🐡 Puffy', '🦑 Calamari']`
-- **🦞 InnerLinho, 🐠 Fishie, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🐧 Tucso, 🪸 Coral, 🐋 Wally** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🐡 Puffy', '🦑 Calamari']`
+- **🦞 Lobby** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi', '🐬 Dolfi', '🐡 Puffy', '🦑 Calamari']`
+- **🦞 InnerLinho, 🐦 Peep, 🦈 Bruce, 🐻‍❄️ Snowflake, 🐍 Snuggle, 🪼 Nodi, 🐧 Tucso, 🪸 Coral, 🐋 Wally, 🐬 Dolfi** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🐡 Puffy', '🦑 Calamari']`
+- **🐠 Fishie** — `tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']`, `agents: ['🐡 Puffy', '🦑 Calamari', '🐬 Dolfi']` (can delegate SVG icon work to Dolfi directly during UI creation)
 - **🧜‍♀️ Ariel** — `tools: ['edit', 'search', 'fetch', 'todos']`, `agents: ['🐡 Puffy', '🦑 Calamari']` (no `runCommands`: it doesn't have `bash: allow`)
 - **🐙 Chululu** — `tools: []`, `agents: []` (read-only: all permissions are `deny`, and it never delegates by design)
 - **🐡 Puffy** — `tools: ['search', 'fetch']`, `agents: []` (read-only research agent: no `edit`, `runCommands`, or `todos`)
@@ -165,7 +166,7 @@ mode: primary
 model: opencode/nemotron-3-ultra-free
 temperature: 0.3
 max_depth: 3
-allowed_subagents: ["innerlinho", "fishie", "coral", "wally", "chululu", "peep", "bruce", "snowflake", "ariel", "tucso", "snuggle", "nodi"]
+allowed_subagents: ["innerlinho", "fishie", "coral", "wally", "chululu", "peep", "bruce", "snowflake", "ariel", "tucso", "snuggle", "nodi", "dolfi"]
 permission:
   task: allow
 ---
@@ -179,7 +180,7 @@ name: "🦞 Lobby"
 description: "Main orchestrator — receives requests, plans execution, delegates to specialized subagents, and consolidates results."
 model: <Nemotron 3 Ultra ID per Model Picker Diagnostics, or omit>
 tools: ['edit', 'search', 'runCommands', 'fetch', 'todos']
-agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi']
+agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi', '🐬 Dolfi']
 user-invocable: true
 ---
 ```
@@ -253,8 +254,8 @@ If the user doesn't want to answer a question, leave the field blank or omit the
 ## Step 6 — Reload and validate
 
 1. Run `Developer: Reload Window` from the command palette.
-2. Open Copilot Chat and check the agent picker — all 15 agents should appear, with **Lobby** among them.
-3. List the installed files and confirm the 15 `.agent.md` + the 2 `.instructions.md` are in place.
+2. Open Copilot Chat and check the agent picker — all 16 agents should appear, with **Lobby** among them.
+3. List the installed files and confirm the 16 `.agent.md` + the 2 `.instructions.md` are in place.
 
 ## Step 7 — Configure the Google/Gemini API key (required for 🐡 Puffy and 🦑 Calamari)
 
@@ -277,7 +278,7 @@ If the user skips this step, the rest of the team keeps working normally — onl
 
 - Create the directories if they don't exist.
 - If a file already exists, overwrite it with the latest version from the repository.
-- Convert ALL 15 agents — don't skip any.
+- Convert ALL 16 agents — don't skip any.
 - **NEVER type the user's API key** — only instruct them where and how to paste it in the extension's dialog (Step 1) or VS Code's BYOK dialog (Step 7).
 - **DO NOT download `USER.md` from the repository** — it is created locally in Step 5.
 - **DO NOT download `opencode.jsonc`** — it doesn't apply to VS Code.
@@ -291,7 +292,7 @@ If the user skips this step, the rest of the team keeps working normally — onl
 
 1. Copy the prompt above.
 2. Paste it into **Copilot Chat in Agent mode** and send.
-3. The agent will install the extension, create `~/.copilot/agents/`, download and convert the 15 agents (with **Title Case + emoji** names in the `name` field), and **ask for your information to create the profile**.
+3. The agent will install the extension, create `~/.copilot/agents/`, download and convert the 16 agents (with **Title Case + emoji** names in the `name` field), and **ask for your information to create the profile**.
 4. You paste your OpenCode API key into the extension's dialog (the agent doesn't do this for you).
 5. **You configure your Google API key yourself** for 🐡 Puffy and 🦑 Calamari — get a free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and add it via the Chat model picker → **Manage Models…** → **Google** (this is separate from step 4 and unrelated to the OpenCode extension).
 6. Reload the window — the Lobby team shows up in the Copilot Chat agent picker.
@@ -310,7 +311,7 @@ ls -la ~/.copilot/agents/ ~/.copilot/instructions/
 Get-ChildItem "$env:USERPROFILE\.copilot\agents", "$env:USERPROFILE\.copilot\instructions"
 ```
 
-You should see 15 `.agent.md` files and 2 `.instructions.md` files.
+You should see 16 `.agent.md` files and 2 `.instructions.md` files.
 
 To check the extension:
 

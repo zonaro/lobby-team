@@ -133,10 +133,11 @@ Each agent is specialized by **competence + programming language**. For new proj
 | **Tucso**      | 🐧     | DeepSeek V4 Flash     | Linux — shell scripts, maintenance, deploy, installation, Docker                                     |
 | **Wally**      | 🐋     | Nemotron 3.5 Lightning | Documentation — READMEs, Swagger/PHPDoc/JSDoc, translation (pt-br/en/es)                             |
 | **Chululu**    | 🐙     | MiMo V2.5       | Vision — image/screenshot analysis, layout reading, OCR                                              |
+| **Dolfi**      | 🐬     | DeepSeek V4 Flash     | SVG icons — draws clean, legible, accessible SVG icons, kept consistent with the project's icon set  |
 | **Puffy**      | 🐡     | Gemini 3.7 Flash | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via Google Search Grounding |
 | **Calamari**   | 🦑     | Gemini 3.5 Flash Lite | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification |
 
-**Puffy** and **Calamari** are usable as subagents by every other specialist subagent, not only by Lobby — any agent mid-task can call them directly for research or a quick verification instead of guessing or looping back to Lobby first. **Chululu** is the only exception: it stays fully isolated (vision-only, no delegation) by design.
+**Puffy** and **Calamari** are usable as subagents by every other specialist subagent, not only by Lobby — any agent mid-task can call them directly for research or a quick verification instead of guessing or looping back to Lobby first. **Dolfi** is additionally usable as a subagent by **Fishie** during UI creation, for any SVG icon the UI needs. **Chululu** is the only exception: it stays fully isolated (vision-only, no delegation) by design.
 
 ## Lobby Delegation Rules
 
@@ -150,6 +151,7 @@ Each agent is specialized by **competence + programming language**. For new proj
 
 ### Documentation Research and Fact-Checking
 
+- Delegate to **Dolfi** (`subagent_type: "dolfi"`) whenever a task needs a new SVG icon, or an existing icon set needs to stay visually consistent — she draws clean, legible, accessible SVG icons, can research reference icons via the svgapi.com API, and follows SVG 2/MDN spec rigorously. **Fishie** may delegate to her directly during UI creation without routing back through Lobby.
 - Delegate to **Puffy** (`subagent_type: "puffy"`) whenever a task needs current documentation, API references, recent error fixes, library releases, or forum/changelog context — she uses Google Search Grounding and returns a structured, sourced summary.
 - Delegate to **Calamari** (`subagent_type: "calamari"`) for a single, narrow, fast fact-check — does a package/version exist, is a URL/API parameter valid, does a snippet match current docs — when a full research pass from Puffy would be overkill. Calamari also handles scientific/health/climate claim verification (PubMed, Cochrane, WHO, IPCC, IFCN-certified fact-checking agencies), always returning the sources consulted and the current consensus level.
 - **Puffy** and **Calamari** are not exclusive to Lobby: every other specialist subagent (InnerLinho, Fishie, Coral, Peep, Bruce, Snowflake, Snuggle, Nodi, Ariel, Tucso, Wally) is allowed to call them directly mid-task, without routing back through Lobby first. Only **Chululu** stays isolated from this (vision-only by design).
@@ -179,6 +181,7 @@ Each agent is specialized by **competence + programming language**. For new proj
 | Linux scripts / deploy / maintenance  | **Tucso**      |
 | Documentation / translation           | **Wally**      |
 | Image / screenshot analysis           | **Chululu**    |
+| SVG icon design / consistency         | **Dolfi**      |
 | Documentation / API research          | **Puffy**      |
 | Fast fact-check (package/version/URL) | **Calamari**   |
 | Scientific/health/climate claim check | **Calamari**   |

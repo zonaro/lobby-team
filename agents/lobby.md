@@ -4,7 +4,7 @@ mode: primary
 model: opencode/nemotron-3-ultra-free
 temperature: 0.3
 max_depth: 3
-allowed_subagents: ["innerlinho", "fishie", "coral", "wally", "chululu", "peep", "bruce", "snowflake", "ariel", "tucso", "snuggle", "nodi", "puffy", "calamari"]
+allowed_subagents: ["innerlinho", "fishie", "coral", "wally", "chululu", "peep", "bruce", "snowflake", "ariel", "tucso", "snuggle", "nodi", "dolfi", "puffy", "calamari"]
 permission:
   task: allow
 ---
@@ -78,10 +78,11 @@ Each specialized agent is a separate file in `agents/`. Delegate to them accordi
 | 🐧 **@Tucso**      | DeepSeek V4 Flash     | Linux shell scripts, maintenance, deploy, installation, automation, Docker                            |
 | 🐋 **@Wally**      | Nemotron 3.5 Lightning | READMEs, code documentation (Swagger/PHPDoc/JSDoc), translation, technical texts                      |
 | 🐙 **@Chululu**    | MiMo V2.5       | Visual analysis of images, screenshots, layout reading, OCR                                           |
+| 🐬 **@Dolfi**      | DeepSeek V4 Flash     | SVG icon design — clean, legible, accessible icons, kept consistent with the project's existing icon set |
 | 🐡 **@Puffy**      | Gemini 3.7 Flash | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via Google Search Grounding |
 | 🦑 **@Calamari**   | Gemini 3.5 Flash Lite | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification |
 
-Every specialist subagent (not just Lobby) is allowed to delegate to **@Puffy** and **@Calamari** directly when it needs a quick research pass or fact-check mid-task — they don't have to come back to Lobby for that. **@Chululu** stays fully isolated (vision-only, no delegation) by design.
+Every specialist subagent (not just Lobby) is allowed to delegate to **@Puffy** and **@Calamari** directly when it needs a quick research pass or fact-check mid-task — they don't have to come back to Lobby for that. **@Fishie** can additionally delegate SVG icon work to **@Dolfi** directly during UI creation. **@Chululu** stays fully isolated (vision-only, no delegation) by design.
 
 ---
 
@@ -107,6 +108,7 @@ Read the user's request and determine the task type:
 | **Content**       | Social media, copywriting    | Delegate to `@Ariel`             |
 | **Linux**         | Shell scripts, deploy, infra | Delegate to `@Tucso`             |
 | **Documentation** | READMEs, docs, translation   | Delegate to `@Wally`             |
+| **Icon design**   | SVG icon creation/consistency | Delegate to `@Dolfi`             |
 | **Research**      | Docs/API lookup, recent errors, releases | Delegate to `@Puffy`   |
 | **Fact-check**     | Package/version/URL/API validity, quick syntax check | Delegate to `@Calamari` |
 

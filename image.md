@@ -3,10 +3,10 @@
 > **Goal**: start from the **current** image (`lobby_team.png`, 1537×1023, 3:2 landscape) and produce a new version that:
 >
 > 1. **Brings the shelf characters down to the floor**, alongside the rest of the team (the Flutter bird = **Peep**, and the C# bear = **Snowflake**);
-> 2. **Adds the 9 new members** that aren't there yet (**Bruce, Snuggle, Nodi, Ariel, Tucso, Puffy, Calamari**, plus giving **InnerLinho** a screen of its own);
+> 2. **Adds the 10 new members** that aren't there yet (**Bruce, Snuggle, Nodi, Ariel, Tucso, Puffy, Calamari, Dolfi**, plus giving **InnerLinho** a screen of its own);
 > 3. **Preserves** the person, the scene, the style and the plushies that already exist.
 
-The team grew twice since the current photo was taken: first with Bruce, Snuggle, Nodi, Ariel and Tucso, and now with **🐡 Puffy** and **🦑 Calamari** (the research/fact-checking duo). This document does the whole jump in **one** pass instead of two, so you only need to generate once.
+The team grew three times since the current photo was taken: first with Bruce, Snuggle, Nodi, Ariel and Tucso, then with **🐡 Puffy** and **🦑 Calamari** (the research/fact-checking duo), and now with **🐬 Dolfi** (the SVG icon designer). This document does the whole jump in **one** pass instead of three, so you only need to generate once.
 
 ---
 
@@ -21,7 +21,7 @@ It's not an illustration — it's a **photorealistic home-studio photograph**:
 - **Top shelf**: **tech mascot** plushies — the **JS** cup, the **Flutter** bird, the purple **PHP** elephant, the polar bear in a green **C#** sweater, the pink **Instagram** camera, a purple kiwi, the gray **Apple** apple, the green **Android** robot.
 - **Technique**: warm indoor light, shallow depth of field (blurred background), visible felt/knit texture on the plushies, glossy embroidered eyes.
 
-**Characters missing from the current photo:** Peep and Snowflake (they only exist as plushies on the top shelf), Bruce, Snuggle, Nodi, Ariel, Tucso, Puffy and Calamari (they don't exist yet). InnerLinho is the lobster in her lap, but has no screen.
+**Characters missing from the current photo:** Peep and Snowflake (they only exist as plushies on the top shelf), Bruce, Snuggle, Nodi, Ariel, Tucso, Puffy, Calamari and Dolfi (they don't exist yet). InnerLinho is the lobster in her lap, but has no screen.
 
 ---
 
@@ -53,7 +53,7 @@ KEEP EXACTLY AS IS:
 CHANGE 1 — BRING THE SHELF CHARACTERS DOWN:
 Remove the round teal-blue Flutter bird plush and the white polar bear plush in the green "C#" sweater from the top shelf, and place them in the foreground with the rest of the team, each standing on its own matte black pedestal with its own small screen behind it, at the same scale as the other plushies. Fill the two empty spots on the top shelf with other soft tech-mascot plushies (a purple-and-orange Kotlin logo cushion and a small potted plant), so the shelf still looks full.
 
-CHANGE 2 — ADD 7 NEW PLUSH TEAM MEMBERS, in the exact same handmade plush style as the existing ones (soft felted wool and knit fabric, visible stitching, chunky simple shapes, big glossy embroidered eyes, cute friendly faces), each on its own matte black pedestal with a small screen behind it:
+CHANGE 2 — ADD 8 NEW PLUSH TEAM MEMBERS, in the exact same handmade plush style as the existing ones (soft felted wool and knit fabric, visible stitching, chunky simple shapes, big glossy embroidered eyes, cute friendly faces), each on its own matte black pedestal with a small screen behind it:
 - A chubby gray-blue great white shark plush with a white belly, tiny black felt sunglasses, and a small green Android robot plush tucked under one fin.
 - A coiled bright green crocheted snake plush in chunky yarn, wearing tiny round glasses, with a small blue-and-yellow Python logo tag stitched to its side.
 - A soft translucent purple-and-pink jellyfish plush with a rounded glowing bell and long dangling ribbon tentacles, with a green Node.js hexagon patch on its bell.
@@ -61,9 +61,10 @@ CHANGE 2 — ADD 7 NEW PLUSH TEAM MEMBERS, in the exact same handmade plush styl
 - A chubby black-and-white penguin plush with an orange felt beak and feet, with a small green terminal-screen patch on its belly reading "$ ./deploy".
 - A round, spiky pufferfish plush in warm sandy-orange with a tan polka-dot belly, tiny blunt felt spikes, and big round glossy eyes, holding a small brass magnifying glass in one fin, with a tiny multicolor "G" search-icon patch stitched to its side. This is **Puffy**.
 - A deep purple-and-magenta squid plush with a rounded mantle, big glossy eyes, and eight short curled felt tentacles, wearing a tiny detective-style deerstalker cap, with a small checkmark ("✓") patch and a miniature felt stopwatch charm stitched to its side. This is **Calamari**.
+- A sleek gray-and-white bottlenose dolphin plush with a curved friendly smile and big glossy eyes, holding a tiny felt drawing stylus/pen in one flipper, with three small stitched vector-shape patches (a circle, a square, a triangle outline) on its side. Keep it clearly a dolphin — streamlined body, single dorsal fin, curved beak-like snout — visually distinct from the blue whale (Wally) already in the scene. This is **Dolfi**.
 
 COMPOSITION:
-Arrange all 13 foreground plushies in two or three staggered tiers forming a wide arc around the woman, so every character is visible and nothing is hidden: the four existing plushies stay in the lower front tier, the rest sit slightly behind and higher on taller black pedestals. Keep the woman clearly the center of the photo. Do not crowd or overlap the faces — widen the arc and add a subtle back tier if needed to fit everyone without cropping anyone.
+Arrange all 14 foreground plushies in two or three staggered tiers forming a wide arc around the woman, so every character is visible and nothing is hidden: the four existing plushies stay in the lower front tier, the rest sit slightly behind and higher on taller black pedestals. Keep the woman clearly the center of the photo. Do not crowd or overlap the faces — widen the arc and add a subtle back tier if needed to fit everyone without cropping anyone.
 
 SCREENS:
 Every plush has a small monitor or tablet behind it with a colored bezel matching its own colors. Each screen has a dark background and shows, in clean sharp readable white text, the character handle and model in the top line, a short skill line in smaller gray text below it, and a pixel-art portrait of that character in the middle. All screen text must be crisp and correctly spelled English, never garbled.
@@ -73,7 +74,7 @@ Photorealistic, cozy creator-studio photo, warm indoor lighting, shallow depth o
 
 ---
 
-## 🔁 Incremental mode (recommended — this is a big jump, 5 stages)
+## 🔁 Incremental mode (recommended — this is a big jump, 6 stages)
 
 Run one stage at a time, **always feeding the previous stage's result** in as the new input image.
 
@@ -101,7 +102,13 @@ Edit this photo, keeping everything else identical. Add on the right side, on ma
 Edit this photo, keeping everything else identical. Add two more plushies, in the same handmade plush style, on matte black pedestals slightly behind the existing arc so nobody is cropped or hidden: a round, spiky pufferfish plush in warm sandy-orange with a tan polka-dot belly, tiny blunt felt spikes and big round glossy eyes, holding a small brass magnifying glass, with a tiny multicolor "G" search-icon patch on its side — this is Puffy; and a deep purple-and-magenta squid plush with a rounded mantle, big glossy eyes and eight short curled felt tentacles, wearing a tiny detective-style deerstalker cap, with a small checkmark patch and a miniature felt stopwatch charm on its side — this is Calamari. Each gets its own small screen behind it with a dark background and sharp readable text, bezel color matching its own plush colors (warm orange for Puffy, deep magenta/purple for Calamari). Photorealistic, same lighting, same depth of field, widen the arc slightly if needed so no character overlaps or gets cut off.
 ```
 
-**Stage 5 — fix the screen texts**
+**Stage 5 — add Dolfi (the newest member)**
+
+```
+Edit this photo, keeping everything else identical. Add one more plush, in the same handmade plush style, on a matte black pedestal slightly behind the existing arc so nobody is cropped or hidden: a sleek gray-and-white bottlenose dolphin plush with a curved friendly smile and big glossy embroidered eyes, holding a tiny felt drawing stylus/pen in one flipper, with three small stitched vector-shape patches (a circle, a square, a triangle outline) on its side. Keep it clearly a dolphin — streamlined body, single dorsal fin, curved beak-like snout — visually distinct from the blue whale plush already in the scene. This is Dolfi. It gets its own small screen behind it with a dark background and sharp readable text, light blue/cyan bezel matching its colors. Photorealistic, same lighting, same depth of field, widen the arc slightly if needed so no character overlaps or gets cut off.
+```
+
+**Stage 6 — fix the screen texts**
 
 ```
 Edit this photo. Change only the text on the small screens so it is perfectly sharp and readable, correctly spelled in English, without changing anything else in the image. Use this exact text, one screen per character, matching each screen to the plush in front of it:
@@ -119,6 +126,7 @@ Edit this photo. Change only the text on the small screens so it is perfectly sh
 @Tucso (DeepSeek V4 Flash) / Linux · Bash · Docker
 @Puffy (Gemini 3.7 Flash) / Docs Research · Google Search Grounding
 @Calamari (Gemini 3.5 Flash Lite) / Fast Fact-Check · Science · Versions
+@Dolfi (DeepSeek V4 Flash) / SVG Icons · Accessibility · Design Systems
 ```
 
 ---
@@ -128,7 +136,7 @@ Edit this photo. Change only the text on the small screens so it is perfectly sh
 ```
 A photorealistic cozy creator-studio photograph, 3:2 landscape. At the center, a cheerful young woman with tan skin, long wavy lavender-purple hair, pink heart earrings, pastel beaded bracelets and rings, wearing a turquoise hoodie with a pink heart and white cat face print, smiling warmly at the camera and holding an orange lobster plush with round black glasses in her arms.
 
-Around her, arranged in a wide arc on matte black display pedestals across two or three staggered tiers, sit fourteen large handmade plush characters — soft felted wool and knit fabric, visible stitching, chunky simple shapes, big glossy embroidered eyes: a pink polka-dot octopus; a blue-orange-yellow mandarin fish; a red-and-orange branching coral; a blue whale; a round teal-blue bird with an orange beak and a Flutter logo on its belly; a white polar bear in a green "C#" sweater; a gray-blue great white shark with tiny black felt sunglasses holding a small green Android robot; a coiled bright green crocheted snake with round glasses and a Python logo tag; a translucent purple-and-pink jellyfish with a glowing bell, ribbon tentacles and a green Node.js hexagon patch; a mermaid rag doll with turquoise yarn hair and an iridescent sequin tail holding a tiny felt microphone; a black-and-white penguin with orange felt beak and feet and a green terminal patch on its belly; a round spiky pufferfish in sandy-orange with a tan polka-dot belly, tiny felt spikes and a small brass magnifying glass; and a deep purple-and-magenta squid with a rounded mantle, curled felt tentacles, a tiny deerstalker cap and a small checkmark patch.
+Around her, arranged in a wide arc on matte black display pedestals across two or three staggered tiers, sit fifteen large handmade plush characters — soft felted wool and knit fabric, visible stitching, chunky simple shapes, big glossy embroidered eyes: a pink polka-dot octopus; a blue-orange-yellow mandarin fish; a red-and-orange branching coral; a blue whale; a round teal-blue bird with an orange beak and a Flutter logo on its belly; a white polar bear in a green "C#" sweater; a gray-blue great white shark with tiny black felt sunglasses holding a small green Android robot; a coiled bright green crocheted snake with round glasses and a Python logo tag; a translucent purple-and-pink jellyfish with a glowing bell, ribbon tentacles and a green Node.js hexagon patch; a mermaid rag doll with turquoise yarn hair and an iridescent sequin tail holding a tiny felt microphone; a black-and-white penguin with orange felt beak and feet and a green terminal patch on its belly; a round spiky pufferfish in sandy-orange with a tan polka-dot belly, tiny felt spikes and a small brass magnifying glass; a deep purple-and-magenta squid with a rounded mantle, curled felt tentacles, a tiny deerstalker cap and a small checkmark patch; and a sleek gray-and-white bottlenose dolphin with a curved friendly smile, a single dorsal fin, holding a tiny felt drawing stylus, with small circle/square/triangle vector-shape patches on its side.
 
 Behind each plush stands a small monitor with a colored bezel matching its colors, dark screen showing a handle and model name in crisp white text, a short skill line in gray, and a pixel-art portrait of that character.
 
@@ -158,6 +166,7 @@ Warm indoor lighting, shallow depth of field, sharp focus on the woman and the f
 | 12  | **Chululu**    | 🐙     | ✅ already exists — pink polka-dot octopus                                         | `@Chululu (MiMo V2.5)`                        |
 | 13  | **Puffy**      | 🐡     | ➕ **new** — sandy-orange spiky pufferfish, brass magnifying glass, "G" search patch | `@Puffy (Gemini 3.7 Flash)`                    |
 | 14  | **Calamari**   | 🦑     | ➕ **new** — deep purple/magenta squid, deerstalker cap, checkmark patch, stopwatch charm | `@Calamari (Gemini 3.5 Flash Lite)`            |
+| 15  | **Dolfi**      | 🐬     | ➕ **new** — gray/white bottlenose dolphin, felt stylus, circle/square/triangle patches | `@Dolfi (DeepSeek V4 Flash)`                   |
 
 ---
 
@@ -175,9 +184,10 @@ anime, cartoon, 2d illustration, flat vector art, cel shading, 3d render, cgi, p
 - [ ] Lobster with glasses still in her lap (**InnerLinho**), now with its own screen
 - [ ] **Peep** (Flutter bird) and **Snowflake** (C# bear) **off the shelf**, on the floor with the others
 - [ ] Gaps on the shelf filled in (no empty space)
-- [ ] **Bruce, Snuggle, Nodi, Ariel, Tucso, Puffy and Calamari** present, in the same handmade plush style
+- [ ] **Bruce, Snuggle, Nodi, Ariel, Tucso, Puffy, Calamari and Dolfi** present, in the same handmade plush style
 - [ ] **Puffy** reads as a pufferfish (not a random orange blob) and **Calamari** reads as a squid (not an octopus — Chululu already is one, keep the tentacle counts/shapes visibly different)
-- [ ] **15 characters** in total (Lobby + 13 pedestal plushies + the lobster in her lap)
+- [ ] **Dolfi** reads as a dolphin (streamlined body, single dorsal fin, curved beak-like snout) — visibly distinct from **Wally** the whale (round body, no beak, larger scale)
+- [ ] **16 characters** in total (Lobby + 14 pedestal plushies + the lobster in her lap)
 - [ ] Every screen with `@name (model)` **readable and not garbled**
 - [ ] No character hidden, cropped or overlapping
 - [ ] **Photorealistic** style, warm light, blurred background — no anime
@@ -188,6 +198,7 @@ anime, cartoon, 2d illustration, flat vector art, cel shading, 3d render, cgi, p
 ## 📝 Notes
 
 - The current image has garbled text on the screens (`MiMo V2-S`, `MiniMax M6`, `Nemetren`, illegible skills). The correct names come from `AGENTS.md` and the files in `agents/` — use the ones from the table above.
-- If the model can't manage 9 new/moved characters in a single photo, use the **incremental mode** above — it splits the work into 5 smaller, more reliable edits.
+- If the model can't manage 10 new/moved characters in a single photo, use the **incremental mode** above — it splits the work into 6 smaller, more reliable edits.
 - **Chululu is an octopus, Calamari is a squid** — keep them visually distinct (octopus: round bulbous head, 8 short splayed arms with round suckers, no fins; squid: longer streamlined mantle, a triangular fin pair at the top, 8 shorter arms plus 2 longer tentacles) so the two don't read as duplicates.
+- **Wally is a whale, Dolfi is a dolphin** — keep them visually distinct (whale: large round body, no beak, small flippers, no dorsal fin visible; dolphin: smaller streamlined body, curved beak-like snout, single triangular dorsal fin) so the two don't read as duplicates.
 - After generating, replace `lobby_team.png` in the repository root — `README.md` already points to it.

@@ -23,6 +23,7 @@ Global configuration for the **Lobby** agent for [opencode](https://opencode.ai)
 | `agents/tucso.md`      | Linux specialist (DeepSeek V4 Flash) — shell scripts, maintenance, deploy, installation, Docker             |
 | `agents/wally.md`      | Documentation specialist (Nemotron 3.5 Lightning) — READMEs, Swagger/PHPDoc/JSDoc                            |
 | `agents/chululu.md`    | Vision specialist (MiMo V2.5) — image and screenshot analysis, OCR                                    |
+| `agents/dolfi.md`      | SVG icon specialist (DeepSeek V4 Flash) — draws clean, legible, accessible icons, kept consistent with the project's icon set |
 | `agents/puffy.md`      | Documentation research specialist (Gemini 3.7 Flash) — up-to-date docs, recent errors, APIs, releases, via Google Search Grounding |
 | `agents/calamari.md`   | Fact-checking specialist (Gemini 3.5 Flash Lite) — package/version/URL/API validity plus scientific/health/climate claim checks (PubMed, Cochrane, WHO, IPCC, fact-checking agencies, etc.) |
 | `AGENTS.md`            | Global user rules and agent delegation rules                                                          |
@@ -81,10 +82,11 @@ Her team:
 | 🐧 **@Tucso**      | DeepSeek V4 Flash     | Linux shell scripts, maintenance, deploy, installation, automation, Docker                            |
 | 🐋 **@Wally**      | Nemotron 3.5 Lightning | READMEs, code documentation (Swagger/PHPDoc/JSDoc), translation, technical texts                      |
 | 🐙 **@Chululu**    | MiMo V2.5       | Visual analysis of images, screenshots, layout reading, OCR                                           |
+| 🐬 **@Dolfi**      | DeepSeek V4 Flash | SVG icon design — clean, legible, accessible icons, kept consistent with the project's icon set     |
 | 🐡 **@Puffy**      | Gemini 3.7 Flash | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via Google Search Grounding |
 | 🦑 **@Calamari**   | Gemini 3.5 Flash Lite | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification |
 
-🐡 **@Puffy** and 🦑 **@Calamari** are callable by every other specialist subagent too, not only by Lobby — any of them can delegate a research or fact-check to these two mid-task. 🐙 **@Chululu** is the only agent that stays fully isolated (vision-only, no delegation). 🪸 **@Coral** can additionally **consult** any language specialist, plus 🐋 **@Wally** and 🧜‍♀️ **@Ariel**, with narrow technical questions while drafting an architecture plan — advisory only, never implementation.
+🐡 **@Puffy** and 🦑 **@Calamari** are callable by every other specialist subagent too, not only by Lobby — any of them can delegate a research or fact-check to these two mid-task. 🐬 **@Dolfi** is additionally callable by 🐠 **@Fishie** directly during UI creation, for any SVG icon the UI needs. 🐙 **@Chululu** is the only agent that stays fully isolated (vision-only, no delegation). 🪸 **@Coral** can additionally **consult** any language specialist, plus 🐋 **@Wally**, 🧜‍♀️ **@Ariel** and 🐬 **@Dolfi**, with narrow technical questions while drafting an architecture plan — advisory only, never implementation.
 
 ## 🧠 Models — OpenCode Zen free tier
 
