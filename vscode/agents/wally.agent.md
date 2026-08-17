@@ -6,10 +6,6 @@ tools: ['agent', 'edit', 'search', 'execute', 'read', 'web', 'vscode', 'todo']
 agents: ['🐡 Puffy', '🦑 Calamari']
 user-invocable: true
 disable-model-invocation: false
-handoffs:
-  - label: "Back to Lobby"
-    agent: "👩🏽‍🎤 Lobby"
-    prompt: "Documentation is done. Here is a summary of what was written; consolidate and continue."
 ---
 
 # Wally 🐋 — Documentation Specialist Subagent

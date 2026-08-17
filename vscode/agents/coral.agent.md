@@ -6,34 +6,6 @@ tools: ['agent', 'edit', 'search', 'execute', 'read', 'web', 'vscode', 'todo']
 agents: ['🐡 Puffy', '🦑 Calamari', '🦞 InnerLinho', '🐠 Fishie', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🐍 Snuggle', '🪼 Nodi', '🐧 Tucso', '🧜‍♀️ Ariel', '🐋 Wally', '🐬 Dolfi']
 user-invocable: true
 disable-model-invocation: false
-handoffs:
-  - label: "Back to Lobby"
-    agent: "👩🏽‍🎤 Lobby"
-    prompt: "Here is the architecture plan and the selected agent team. Orchestrate the implementation following this plan."
-  - label: "Start Backend"
-    agent: "🦞 InnerLinho"
-    prompt: "Implement the backend following the architecture plan I just produced (see AGENTS.md/.agents/)."
-  - label: "Start Frontend"
-    agent: "🐠 Fishie"
-    prompt: "Implement the frontend following the architecture plan and the client visual identity I documented."
-  - label: "Start Flutter"
-    agent: "🐦 Peep"
-    prompt: "Implement the Flutter app following the architecture plan I just produced."
-  - label: "Start Android"
-    agent: "🦈 Bruce"
-    prompt: "Implement the native Android app following the architecture plan I just produced."
-  - label: "Start Desktop"
-    agent: "🐻‍❄️ Snowflake"
-    prompt: "Implement the C#/.NET desktop app following the architecture plan I just produced."
-  - label: "Start Python"
-    agent: "🐍 Snuggle"
-    prompt: "Implement the Python work following the architecture plan I just produced."
-  - label: "Start Node.js"
-    agent: "🪼 Nodi"
-    prompt: "Implement the Node.js work following the architecture plan I just produced."
-  - label: "Start Linux"
-    agent: "🐧 Tucso"
-    prompt: "Implement the Linux scripts/deployment following the architecture plan I just produced."
 ---
 
 # Coral 🪸 — Chief Architect Subagent

@@ -6,10 +6,6 @@ tools: ['search', 'web', 'vscode']
 agents: []
 user-invocable: true
 disable-model-invocation: false
-handoffs:
-  - label: "Back to Lobby"
-    agent: "👩🏽‍🎤 Lobby"
-    prompt: "Here is the research summary with sources. Use it to continue the task."
 ---
 
 # Puffy 🐡 — Documentation Research Subagent

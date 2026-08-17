@@ -6,19 +6,6 @@ tools: [vscode, execute, read, agent, edit, search, web, browser, todo]
 agents: ['🐡 Puffy', '🦑 Calamari', '🐬 Dolfi']
 user-invocable: true
 disable-model-invocation: false
-handoffs:
-  - label: "Backend Integration"
-    agent: "🦞 InnerLinho"
-    prompt: "The frontend is ready. Build/update the backend API to serve it, following the project rules."
-  - label: "Icons & Images"
-    agent: "🐬 Dolfi"
-    prompt: "The UI needs icons/images. Generate them matching the styling context I provide (sizes, colors, style)."
-  - label: "Documentation"
-    agent: "🐋 Wally"
-    prompt: "Document the frontend I just implemented following the project rules."
-  - label: "Back to Lobby"
-    agent: "👩🏽‍🎤 Lobby"
-    prompt: "Frontend implementation is done. Here is a summary of what was implemented; consolidate and continue."
 ---
 
 # Fishie 🐠 — Frontend Specialist Subagent

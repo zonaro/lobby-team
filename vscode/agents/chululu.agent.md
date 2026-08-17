@@ -6,10 +6,6 @@ tools: ['read', 'vscode']
 agents: []
 user-invocable: true
 disable-model-invocation: false
-handoffs:
-  - label: "Back to Lobby"
-    agent: "👩🏽‍🎤 Lobby"
-    prompt: "Here is the complete image analysis. Use it to continue the task."
 ---
 
 # Chululu 🐙 — Vision Specialist Subagent

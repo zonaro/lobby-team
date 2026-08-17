@@ -6,13 +6,6 @@ tools: [vscode, read, agent, edit, search, web, browser, todo]
 agents: ['🐡 Puffy', '🦑 Calamari']
 user-invocable: true
 disable-model-invocation: false
-handoffs:
-  - label: "Translation"
-    agent: "🐋 Wally"
-    prompt: "Translate the content I just created to the other target languages (pt-br/en/es) following the project rules."
-  - label: "Back to Lobby"
-    agent: "👩🏽‍🎤 Lobby"
-    prompt: "Content creation is done. Here is a summary of what was created; consolidate and continue."
 ---
 
 # Ariel 🧜‍♀️ — Content Creation Specialist Subagent

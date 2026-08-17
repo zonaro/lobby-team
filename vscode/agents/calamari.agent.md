@@ -6,10 +6,6 @@ tools: [vscode, read/readFile, search, web, browser]
 agents: []
 user-invocable: true
 disable-model-invocation: false
-handoffs:
-  - label: "Back to Lobby"
-    agent: "👩🏽‍🎤 Lobby"
-    prompt: "Here is the fact-check verdict with sources. Use it to continue the task."
 ---
 
 # Calamari 🦑 — Fact-Checking Subagent

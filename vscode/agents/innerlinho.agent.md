@@ -6,16 +6,6 @@ tools: ['agent', 'edit', 'search', 'execute', 'read', 'web', 'vscode', 'todo']
 agents: ['🐡 Puffy', '🦑 Calamari']
 user-invocable: true
 disable-model-invocation: false
-handoffs:
-  - label: "Frontend Integration"
-    agent: "🐠 Fishie"
-    prompt: "The backend API is ready. Build/update the frontend to consume it, following the project rules and visual identity."
-  - label: "Documentation"
-    agent: "🐋 Wally"
-    prompt: "Document the backend I just implemented (README, API docs, Swagger/PHPDoc) following the project rules."
-  - label: "Back to Lobby"
-    agent: "👩🏽‍🎤 Lobby"
-    prompt: "Backend implementation is done. Here is a summary of what was implemented; consolidate and continue."
 ---
 
 # InnerLinho 🦞 — Backend Specialist Subagent (PHP/Slim)
