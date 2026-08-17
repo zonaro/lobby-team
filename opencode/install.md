@@ -13,14 +13,16 @@ Install the global agent configuration for the lobby-team project by downloading
 
 The repository is `zonaro/lobby-team` (branch `main`). Files are available via raw.githubusercontent.com:
 
-- Base: `https://raw.githubusercontent.com/zonaro/lobby-team/main/`
+- Base: `https://raw.githubusercontent.com/zonaro/lobby-team/main/opencode/`
+- Root: `https://raw.githubusercontent.com/zonaro/lobby-team/main/`
 - `agents/` — folder with all specialized agents (lobby, coral, innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, ariel, tucso, wally, chululu, dolfi, puffy, calamari)
-- `AGENTS.md` — global user rules and delegation rules
+- `lobby-team.instructions.md` — global user rules and delegation rules (installed as `AGENTS.md`)
 - `opencode.jsonc` — opencode configuration (default_agent: lobby)
+- `skills/` (at the repo root, shared with VS Code) — optional skills (image generators, story illustrator); written to be **software-agnostic** (work on any agent) and fine-tuned in Step 4
 
 > **Note**: `USER.md` (user's personal profile) is NOT in the repository — it is created locally in Step 3 with user-provided information.
 
-> **Note**: 🐡 `puffy.md` and 🦑 `calamari.md` run on **Google Gemini** models (`google/gemini-3.7-flash` and `google/gemini-3.5-flash-lite`), not on OpenCode Zen — they need a separate Google API key, configured manually by the user in Step 4. Every other agent works without it.
+> **Note**: 🐡 `puffy.md` and 🦑 `calamari.md` run on **OpenCode Zen free** models (`opencode/nemotron-3.5-lightning-free` and `opencode/deepseek-v4-flash-free`), just like the rest of the team — no separate API key needed.
 
 ## Step 1 — Identify the operating system
 
@@ -36,18 +38,22 @@ Detect the OS you're running on and determine the OpenCode configuration directo
 
 Download each file from the repository and place it in the OpenCode configuration directory identified in Step 1:
 
-1. `AGENTS.md` → `<config_dir>/AGENTS.md`
+1. `lobby-team.instructions.md` → `<config_dir>/AGENTS.md` (OpenCode reads global rules from `AGENTS.md`)
 2. `opencode.jsonc` → `<config_dir>/opencode.jsonc`
 3. All files from `agents/` → `<config_dir>/agents/`:
    - `lobby.md`, `coral.md`, `innerlinho.md`, `fishie.md`, `peep.md`, `bruce.md`, `snowflake.md`, `snuggle.md`, `nodi.md`, `ariel.md`, `tucso.md`, `wally.md`, `chululu.md`, `dolfi.md`, `puffy.md`, `calamari.md`
+4. (Optional) All folders from `skills/` (at the repo root, NOT under `opencode/`) → `<config_dir>/skills/`:
+   - `level-1-image-generator/`, `level-2-image-generator/`, `level-3-image-generator/`, `story-illustrator/`
+   - Use the root base URL for these: `https://raw.githubusercontent.com/zonaro/lobby-team/main/skills/<folder>/...`
+   - After downloading, fine-tune them for this environment (see **Step 4**).
 
 Use the appropriate download tool for the OS:
 - **Linux/macOS**: `curl -fsSL <url> -o <destination>` or `wget -q <url> -O <destination>`
 - **Windows**: `Invoke-WebRequest -Uri <url> -OutFile <destination>` (PowerShell)
 
 Create necessary directories before downloading:
-- **Linux/macOS**: `mkdir -p <config_dir>/agents`
-- **Windows**: `New-Item -ItemType Directory -Force -Path <config_dir>\agents` (PowerShell)
+- **Linux/macOS**: `mkdir -p <config_dir>/agents <config_dir>/skills`
+- **Windows**: `New-Item -ItemType Directory -Force -Path <config_dir>\agents, <config_dir>\skills` (PowerShell)
 
 ## Step 3 — Create USER.md with user information
 
@@ -93,30 +99,31 @@ Create the file `<config_dir>/USER.md` with the answers, following this format:
 
 If the user doesn't want to answer a question, leave the field blank or omit the line.
 
-## Step 4 — Configure the Google/Gemini API key (required for 🐡 Puffy and 🦑 Calamari)
+## Step 4 — Fine-tune the installed skills for this environment
 
-Puffy and Calamari are the only two agents on Google Gemini models instead of OpenCode Zen, because they rely on Gemini's native Google Search Grounding. This needs its own credential, separate from whatever is already configured for the rest of the team.
+The skills in `skills/` are written to be **software-agnostic** — they run on OpenCode, VS Code, and other agents. Fine-tune them for this OpenCode install:
 
-**Do this manually with the user — never ask for the key value or type it yourself:**
-
-1. Tell the user to get a free API key from Google AI Studio: `https://aistudio.google.com/apikey`.
-2. Ask the user to run this themselves, either:
-   - Inside OpenCode's TUI: the `/connect` command → select the **Google** provider (not "Google Vertex AI" — that one needs a GCP service account, not a plain API key) → paste the key when prompted.
-   - Or from the shell: `opencode auth login`, then pick **Google** and paste the key.
-3. Confirm it worked by running `opencode auth list` — `google` should be listed as configured.
-
-**Alternative (no `/connect`):** the user can instead export the environment variable `GOOGLE_GENERATIVE_AI_API_KEY` in their shell profile (`~/.bashrc`, `~/.zshrc`, or the Windows equivalent) — this is the standard variable for the Google Generative AI provider. Some OpenCode Gemini plugins also accept `GEMINI_API_KEY` as an alias; if the `GOOGLE_GENERATIVE_AI_API_KEY` route doesn't pick up, try that instead.
-
-If the user skips this step, the rest of the team keeps working normally — only 🐡 Puffy and 🦑 Calamari will fail to start until the key is configured.
+1. **Resolve `<skill_dir>`** — the skill files use `<skill_dir>` as a placeholder for the skill folder's absolute path (here: `<config_dir>/skills/<name>/`). Update any path references in the `SKILL.md` files and scripts so they resolve to the installed location.
+2. **Check runtime dependencies** per skill:
+   - `level-1-image-generator` — Python + Pillow + numpy (`pip install pillow numpy --break-system-packages`)
+   - `level-2-image-generator` — Node.js + npm + xvfb (`bash <config_dir>/skills/level-2-image-generator/scripts/setup.sh`)
+   - `level-3-image-generator` — Python + `requests` + `python-dotenv`
+   - `story-illustrator` — Python stdlib only (no extra deps)
+3. **Tell the user which skills need an API key** in a `.env` at the project root:
+   - `level-3-image-generator` → `CF_ACCOUNT_ID`, `CF_API_TOKEN`
+   - `story-illustrator` → `FAL_KEY`
+4. **Verify discoverability** — each `<config_dir>/skills/<name>/SKILL.md` frontmatter `name` should match its folder, and the skill should load when invoked.
+5. Report which skills are ready and which still need a key or a dependency.
 
 ## Rules
 
 - Create the configuration directory if it doesn't exist.
 - If a file already exists, overwrite with the latest version from the repository.
 - Download ALL files from the `agents/` folder — don't skip any.
+- Download ALL folders from the `skills/` folder (optional but recommended).
+- After downloading, **fine-tune the skills for this environment** (Step 4): resolve `<skill_dir>` paths, check dependencies, and list which need API keys.
 - **DO NOT download `USER.md` from the repository** — it's created locally in Step 3 with user information.
-- **NEVER type or ask the user to paste their Google API key into the chat** — only tell them where and how to configure it themselves (Step 4).
-- At the end, list the installed files, confirm all were downloaded successfully, and remind the user to complete Step 4 if they haven't already.
+- At the end, list the installed files and confirm all were downloaded successfully.
 ```
 
 ---
@@ -126,8 +133,7 @@ If the user skips this step, the rest of the team keeps working normally — onl
 1. Copy the prompt above.
 2. Paste into OpenCode and send.
 3. OpenCode will identify the OS, download files from GitHub, place them in the correct configuration directory, and **ask for your information to create `USER.md`**.
-4. **Configure your Google API key yourself** when OpenCode gets to Step 4 — get a free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and run `/connect` (or `opencode auth login`) to add it under the **Google** provider. This is required for 🐡 Puffy and 🦑 Calamari; every other agent works without it.
-5. Done! The Lobby team will be available globally.
+4. Done! The Lobby team will be available globally.
 
 ## Verification
 
@@ -146,11 +152,3 @@ Get-ChildItem "$env:USERPROFILE\.config\opencode\agents"
 ```
 
 You should see all agent files downloaded from the repository.
-
-To confirm the Google/Gemini key is configured (needed for 🐡 Puffy and 🦑 Calamari):
-
-```bash
-opencode auth list
-```
-
-`google` should appear in the list.

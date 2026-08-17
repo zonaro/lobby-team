@@ -8,27 +8,16 @@ Global configuration for the **Lobby** agent for [opencode](https://opencode.ai)
 
 ## 📦 Contents
 
-| Item                   | Description                                                                                                                                                                                 |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `agents/lobby.md`      | Main orchestrator agent — receives requests, plans, and delegates to subagents                                                                                                              |
-| `agents/coral.md`      | Chief Architect (Nemotron 3 Ultra) — defines architecture, selects team, writes AGENTS.md/.agents/                                                                                          |
-| `agents/innerlinho.md` | Backend specialist (DeepSeek V4 Flash) — PHP + Slim Framework, MySQL/MariaDB                                                                                                                |
-| `agents/fishie.md`     | Frontend specialist (DeepSeek V4 Flash) — HTML, CSS, Tailwind, jQuery, React/Vue components                                                                                                 |
-| `agents/peep.md`       | Flutter specialist (DeepSeek V4 Flash) — cross-platform apps, state management, widgets                                                                                                     |
-| `agents/bruce.md`      | Android specialist (DeepSeek V4 Flash) — Kotlin + Jetpack Compose, Material Design 3                                                                                                        |
-| `agents/snowflake.md`  | C#/.NET specialist (DeepSeek V4 Flash) — Desktop-first with InfiniFrame/Photino Blazor, full .NET ecosystem                                                                                 |
-| `agents/snuggle.md`    | Python specialist (DeepSeek V4 Flash) — backend APIs, scripts, automation, data processing                                                                                                  |
-| `agents/nodi.md`       | Node.js specialist (DeepSeek V4 Flash) — backend APIs, TypeScript/JavaScript, real-time, CLI                                                                                                |
-| `agents/ariel.md`      | Content specialist (Laguna S 2.1) — viral/persuasive social media content, copywriting                                                                                                      |
-| `agents/tucso.md`      | Linux specialist (DeepSeek V4 Flash) — shell scripts, maintenance, deploy, installation, Docker                                                                                             |
-| `agents/wally.md`      | Documentation specialist (Nemotron 3.5 Lightning) — READMEs, Swagger/PHPDoc/JSDoc                                                                                                           |
-| `agents/chululu.md`    | Vision specialist (MiMo V2.5) — image and screenshot analysis, OCR                                                                                                                          |
-| `agents/dolfi.md`      | SVG icon specialist (DeepSeek V4 Flash) — draws clean, legible, accessible icons, kept consistent with the project's icon set                                                               |
-| `agents/puffy.md`      | Documentation research specialist (Gemini 3.7 Flash) — up-to-date docs, recent errors, APIs, releases, via Google Search Grounding                                                          |
-| `agents/calamari.md`   | Fact-checking specialist (Gemini 3.5 Flash Lite) — package/version/URL/API validity plus scientific/health/climate claim checks (PubMed, Cochrane, WHO, IPCC, fact-checking agencies, etc.) |
-| `AGENTS.md`            | Global user rules and agent delegation rules                                                                                                                                                |
-| `opencode.jsonc`       | opencode configuration (default agent: `lobby`)                                                                                                                                             |
-| `install.md`           | Prompt to paste into OpenCode to install all agents (creates the symlinks in `~/.config/opencode/`)                                                                                         |
+| Item                          | Description                                                                                                                          |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `opencode/agents/*.md`        | 16 specialized agents in OpenCode format (lobby, coral, innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, ariel, tucso, wally, chululu, dolfi, puffy, calamari) |
+| `opencode/lobby-team.instructions.md` | Global user rules and agent delegation rules (installed as `AGENTS.md`)                                              |
+| `opencode/opencode.jsonc`     | opencode configuration (default agent: `lobby`)                                                                                      |
+| `opencode/install.md`         | Prompt to paste into OpenCode to install all agents                                                                                  |
+| `vscode/agents/*.agent.md`    | The same 16 agents, ready-made in VS Code's `.agent.md` format (no conversion needed)                                                |
+| `vscode/instructions/lobby-team.instructions.md` | Global rules in VS Code's instructions format (`applyTo: '**'`)                                        |
+| `vscode/install.md`           | Prompt to paste into Copilot Chat to install the agents in VS Code                                                                   |
+| `skills/*/SKILL.md`           | Optional skills shared by both platforms (image generators, story illustrator)                                                        |
 
 ## 🚀 Installation
 
@@ -61,8 +50,8 @@ Her team:
 | 🐋 **@Wally**      | Nemotron 3.5 Lightning | READMEs, code documentation (Swagger/PHPDoc/JSDoc), translation, technical texts                                 |
 | 🐙 **@Chululu**    | MiMo V2.5              | Visual analysis of images, screenshots, layout reading, OCR                                                      |
 | 🐬 **@Dolfi**      | DeepSeek V4 Flash      | SVG icon design — clean, legible, accessible icons, kept consistent with the project's icon set                  |
-| 🐡 **@Puffy**      | Gemini 3.7 Flash       | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via Google Search Grounding        |
-| 🦑 **@Calamari**   | Gemini 3.5 Flash Lite  | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification         |
+| 🐡 **@Puffy**      | Nemotron 3.5 Lightning | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via web search                     |
+| 🦑 **@Calamari**   | DeepSeek V4 Flash      | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification         |
 
 🐡 **@Puffy** and 🦑 **@Calamari** are callable by every other specialist subagent too, not only by Lobby — any of them can delegate a research or fact-check to these two mid-task. 🐬 **@Dolfi** is additionally callable by 🐠 **@Fishie** directly during UI creation, for any SVG icon the UI needs. 🐙 **@Chululu** is the only agent that stays fully isolated (vision-only, no delegation). 🪸 **@Coral** can additionally **consult** any language specialist, plus 🐋 **@Wally**, 🧜‍♀️ **@Ariel** and 🐬 **@Dolfi**, with narrow technical questions while drafting an architecture plan — advisory only, never implementation.
 
@@ -70,29 +59,27 @@ Her team:
 
 The whole team runs on [OpenCode Zen](https://opencode.ai/docs/zen/) **free** models. Exact IDs as of August 2026:
 
-| Model ID                               | Context | Max output | Vision | Used by                                         |
-| -------------------------------------- | ------- | ---------- | ------ | ----------------------------------------------- |
-| `opencode/nemotron-3-ultra-free`       | 1M      | 128K       | ❌      | Lobby, Coral — need the biggest context         |
-| `opencode/deepseek-v4-flash-free`      | 200K    | 128K       | ❌      | All code specialists                            |
-| `opencode/nemotron-3.5-lightning-free` | 262K    | 262K       | ❌      | Wally — largest output budget of any free model |
-| `opencode/laguna-s-2.1-free`           | 256K    | 32K        | ❌      | Ariel — general prose, not code-tuned           |
-| `opencode/mimo-v2.5-free`              | 200K    | 32K        | ✅      | Chululu — **the only free model with vision**   |
+| Model ID                               | Context | Max output | Vision | Used by                                                |
+| -------------------------------------- | ------- | ---------- | ------ | ------------------------------------------------------ |
+| `opencode/nemotron-3-ultra-free`       | 1M      | 128K       | ❌      | Lobby, Coral — need the biggest context                |
+| `opencode/deepseek-v4-flash-free`      | 200K    | 128K       | ❌      | All code specialists, Calamari                         |
+| `opencode/nemotron-3.5-lightning-free` | 262K    | 262K       | ❌      | Wally, Puffy — largest output budget of any free model |
+| `opencode/laguna-s-2.1-free`           | 256K    | 32K        | ❌      | Ariel — general prose, not code-tuned                  |
+| `opencode/mimo-v2.5-free`              | 200K    | 32K        | ✅      | Chululu — **the only free model with vision**          |
 
 Unused free models, available as drop-in fallbacks if you hit rate limits:
 `opencode/big-pickle` (200K/32K) and `opencode/hy3-free` (190K/64K).
 
 > ⚠️ `minimax-m3` and `deepseek-v4-flash` (without the `-free` suffix) are **paid** models. Do not drop the suffix unless you mean to be billed.
 
-### 🐡🦑 Puffy & Calamari — Google Gemini models
+### 🐡🦑 Puffy & Calamari — OpenCode Zen free models
 
-Unlike the rest of the team, **Puffy** and **Calamari** run on **Google Gemini** models (not OpenCode Zen), because they rely on **Google Search Grounding** (`googleSearch`) for real-time, sourced web results.
+**Puffy** and **Calamari** run on the same **OpenCode Zen** free models as the rest of the team — no extra provider or API key needed. They use the standard `websearch`/`webfetch` tools for real-time, sourced web results.
 
-| Model ID                       | Used by  | Why                                                          |
-| ------------------------------ | -------- | ------------------------------------------------------------ |
-| `google/gemini-3.7-flash`      | Puffy    | Balanced speed/quality for structured documentation research |
-| `google/gemini-3.5-flash-lite` | Calamari | Cheapest/fastest Gemini tier — single-fact verification only |
-
-This requires a configured **Google/Gemini provider** (API key) in your OpenCode setup — see [opencode.ai/docs/providers](https://opencode.ai/docs/providers/). If Google Search Grounding isn't available in your OpenCode version, both agents fall back to the standard `websearch`/`webfetch` tools.
+| Model ID                               | Used by  | Why                                                       |
+| -------------------------------------- | -------- | --------------------------------------------------------- |
+| `opencode/nemotron-3.5-lightning-free` | Puffy    | Largest output budget — long, structured research reports |
+| `opencode/deepseek-v4-flash-free`      | Calamari | Fast/cheap workhorse — single-fact verification only      |
 
 ## 📝 License
 

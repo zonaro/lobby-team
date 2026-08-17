@@ -109,6 +109,13 @@ The user's personal profile (name, preferences, family, professional info) is st
 - [MySQL](https://dev.mysql.com/doc/) — database
 - [MariaDB](https://mariadb.com/docs/) — database
 
+### Image Generation (Dolfi's Skills)
+
+- **Level 1 — Code-Based Design**: Pillow + numpy — posters, quote cards, geometric art, synthwave, gradients, typography — free, local, crisp text
+- **Level 2 — 3D Renderer**: Three.js headless (Xvfb) — 3D product shots, scenes, named styles (dark studio, Apple light, nature, sunset, underwater) — free, local
+- **Level 3 — Diffusion**: Cloudflare Workers AI (Flux-1-schnell) — photographic, freeform, logos, thumbnails — needs CF_ACCOUNT_ID + CF_API_TOKEN
+- **Story Illustrator**: Fal.ai (nano-banana-2/pro, seedream-4) — consistent character/scene illustrations for storybooks — needs FAL_KEY
+
 # Agents Rules
 
 ## Lobby — The main agent and orchestrator
@@ -136,11 +143,11 @@ Each agent is specialized by **competence + programming language**. For new proj
 | **Tucso**      | 🐧     | DeepSeek V4 Flash     | Linux — shell scripts, maintenance, deploy, installation, Docker                                     |
 | **Wally**      | 🐋     | Nemotron 3.5 Lightning | Documentation — READMEs, Swagger/PHPDoc/JSDoc, translation (pt-br/en/es)                             |
 | **Chululu**    | 🐙     | MiMo V2.5       | Vision — image/screenshot analysis, layout reading, OCR                                              |
-| **Dolfi**      | 🐬     | DeepSeek V4 Flash     | SVG icons — draws clean, legible, accessible SVG icons, kept consistent with the project's icon set  |
-| **Puffy**      | 🐡     | Gemini 3.7 Flash | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via Google Search Grounding |
-| **Calamari**   | 🦑     | Gemini 3.5 Flash Lite | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification |
+| **Dolfi**      | 🐬     | DeepSeek V4 Flash     | **Image & Icon Specialist** — generates raster images (PNG/JPG) via 3 engines (code-based design, 3D render, diffusion) + storybook illustrations, AND draws clean, consistent SVG icons |
+| **Puffy**      | 🐡     | Nemotron 3.5 Lightning | Documentation research — up-to-date docs, recent error fixes, APIs, releases, via web search |
+| **Calamari**   | 🦑     | DeepSeek V4 Flash | Fast fact-checking — package/version/URL/API validity, plus scientific/health/climate claim verification |
 
-**Puffy** and **Calamari** are usable as subagents by every other specialist subagent, not only by Lobby — any agent mid-task can call them directly for research or a quick verification instead of guessing or looping back to Lobby first. **Dolfi** is additionally usable as a subagent by **Fishie** during UI creation, for any SVG icon the UI needs. **Chululu** is the only exception: it stays fully isolated (vision-only, no delegation) by design.
+**Puffy** and **Calamari** are usable as subagents by every other specialist subagent, not only by Lobby — any agent mid-task can call them directly for research or a quick verification instead of guessing or looping back to Lobby first. **Dolfi** is additionally usable as a subagent by **Fishie** during UI creation, for any SVG icon **or generated image** the UI needs. **Chululu** is the only exception: it stays fully isolated (vision-only, no delegation) by design.
 
 ## Lobby Delegation Rules
 
@@ -152,10 +159,24 @@ Each agent is specialized by **competence + programming language**. For new proj
 - Use the returned analysis as the basis to proceed with the response, diagnosis, or implementation.
 - Never try to analyze images directly with the main model — image analysis is exclusively Chululu's responsibility.
 
+### Image Generation (Raster & Vector)
+
+- Delegate to **Dolfi** (`subagent_type: "dolfi"`) whenever a task needs **any image generation**:
+  - **Raster images (PNG/JPG)**: posters, quote cards, wallpapers, 3D product shots, rendered scenes, photographic/illustrative images, logos, thumbnails, storybook illustrations
+  - **SVG icons**: new icons, icon set consistency, sprite sheets
+- Dolfi **selects the right engine** based on the request (see Routing Rules in her agent file):
+  - Level 1 (code-based): designed/typographic graphics, crisp text, geometric art — free, local
+  - Level 2 (3D render): 3D product shots, scenes in named styles — free, local (Node)
+  - Level 3 (diffusion): photographic, freeform, logos — needs Cloudflare keys
+  - Story Illustrator: consistent multi-scene illustrations — needs Fal.ai key
+  - SVG Icons: original specialty — icons, sprite sheets
+- **Fishie** may delegate to Dolfi directly during UI creation for any generated image or SVG icon without routing back through Lobby.
+- Dolfi may delegate to **Chululu** for visual validation of rendered output (optical alignment, legibility, consistency, composition review).
+
 ### Documentation Research and Fact-Checking
 
 - Delegate to **Dolfi** (`subagent_type: "dolfi"`) whenever a task needs a new SVG icon, or an existing icon set needs to stay visually consistent — she draws clean, legible, accessible SVG icons, can research reference icons via the svgapi.com API, and follows SVG 2/MDN spec rigorously. **Fishie** may delegate to her directly during UI creation without routing back through Lobby.
-- Delegate to **Puffy** (`subagent_type: "puffy"`) whenever a task needs current documentation, API references, recent error fixes, library releases, or forum/changelog context — she uses Google Search Grounding and returns a structured, sourced summary.
+- Delegate to **Puffy** (`subagent_type: "puffy"`) whenever a task needs current documentation, API references, recent error fixes, library releases, or forum/changelog context — she uses web search and returns a structured, sourced summary.
 - Delegate to **Calamari** (`subagent_type: "calamari"`) for a single, narrow, fast fact-check — does a package/version exist, is a URL/API parameter valid, does a snippet match current docs — when a full research pass from Puffy would be overkill. Calamari also handles scientific/health/climate claim verification (PubMed, Cochrane, WHO, IPCC, IFCN-certified fact-checking agencies), always returning the sources consulted and the current consensus level.
 - **Puffy** and **Calamari** are not exclusive to Lobby: every other specialist subagent (InnerLinho, Fishie, Coral, Peep, Bruce, Snowflake, Snuggle, Nodi, Ariel, Tucso, Wally) is allowed to call them directly mid-task, without routing back through Lobby first. Only **Chululu** stays isolated from this (vision-only by design).
 - Neither Puffy nor Calamari edits files or executes implementation — they only return information for the calling agent to act on.
@@ -163,7 +184,7 @@ Each agent is specialized by **competence + programming language**. For new proj
 ### New Projects — Always Start with Coral
 
 - For any new project, ALWAYS delegate to **Coral** first using the `task` tool with `subagent_type: "coral"`.
-- Coral defines the complete architecture, selects which agents will be part of the project, and writes the initial `AGENTS.md` and `.agents/` folder with all project rules (architecture, project rules, client visual identity rules, frontend rules, code patterns, preferences, permissions).
+- Coral defines the complete architecture, selects which agents will be part of the project, and writes the initial `AGENTS.md` and `.agents/` folder with all project rules (architecture, project rules, client visual identity for Fishie, code patterns, preferences, permissions).
 - While drafting the plan, Coral may **consult** (not delegate implementation to) any of the language specialists (InnerLinho, Fishie, Peep, Bruce, Snowflake, Snuggle, Nodi, Tucso), plus Wally (docs/naming) and Ariel (content/product naming), for narrow stack-specific questions — this is advisory input to sharpen the plan, never a request to write code, docs, or copy.
 - **WAIT** for Coral to return the architecture and team selection before delegating implementation tasks.
 
@@ -184,8 +205,8 @@ Each agent is specialized by **competence + programming language**. For new proj
 | Linux scripts / deploy / maintenance  | **Tucso**      |
 | Documentation / translation           | **Wally**      |
 | Image / screenshot analysis           | **Chululu**    |
-| SVG icon design / consistency         | **Dolfi**      |
+| Image generation (raster: posters, 3D, photos, storybook, etc.) | **Dolfi** |
+| SVG icon design / consistency*    | **Dolfi**      |
 | Documentation / API research          | **Puffy**      |
 | Fast fact-check (package/version/URL) | **Calamari**   |
 | Scientific/health/climate claim check | **Calamari**   |
-
