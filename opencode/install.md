@@ -7,13 +7,13 @@ Paste the prompt below into **OpenCode** to install the **Lobby** team in the gl
 ## Prompt
 
 ```
-Install the global agent configuration for the opencode-lobby project by downloading files from GitHub.
+Install the global agent configuration for the lobby-team project by downloading files from GitHub.
 
 ## Context
 
-The repository is `zonaro/opencode-lobby` (branch `main`). Files are available via raw.githubusercontent.com:
+The repository is `zonaro/lobby-team` (branch `main`). Files are available via raw.githubusercontent.com:
 
-- Base: `https://raw.githubusercontent.com/zonaro/opencode-lobby/main/`
+- Base: `https://raw.githubusercontent.com/zonaro/lobby-team/main/`
 - `agents/` — folder with all specialized agents (lobby, coral, innerlinho, fishie, peep, bruce, snowflake, snuggle, nodi, ariel, tucso, wally, chululu, dolfi, puffy, calamari)
 - `AGENTS.md` — global user rules and delegation rules
 - `opencode.jsonc` — opencode configuration (default_agent: lobby)

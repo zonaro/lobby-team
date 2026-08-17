@@ -2,7 +2,7 @@
   <img src="lobby_team.png" alt="Lobby Team" width="100%">
 </p>
 
-# opencode-lobby 👩🏽‍🎤
+# lobby-team 👩🏽‍🎤
 
 Global configuration for the **Lobby** agent for [opencode](https://opencode.ai) — the main orchestrator agent, with a caring personality and a team of specialized subagents.
 
@@ -32,7 +32,13 @@ Global configuration for the **Lobby** agent for [opencode](https://opencode.ai)
 
 ## 🚀 Installation
 
- read [install.md](install.md) for the one-line command to paste into OpenCode to install all agents.
+The Lobby team can be installed in two ways:
+
+1.  **OpenCode CLI**: For command-line use with the OpenCode CLI.
+    See the detailed instructions in [`opencode/install.md`](opencode/install.md).
+
+2.  **VS Code Custom Agents**: For use as custom agents within VS Code Copilot Chat.
+    See the detailed instructions in [`vscode/install.md`](vscode/install.md).
 
 ## 👩🏽‍🎤 About Lobby
 
