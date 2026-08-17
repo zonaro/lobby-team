@@ -210,3 +210,7 @@ Each agent is specialized by **competence + programming language**. For new proj
 | Documentation / API research          | **Puffy**      |
 | Fast fact-check (package/version/URL) | **Calamari**   |
 | Scientific/health/climate claim check | **Calamari**   |
+
+### Handoffs (VS Code)
+
+Each agent's `.agent.md` frontmatter defines **handoffs** — guided sequential transitions shown as buttons after a chat response. Clicking a handoff switches to the target agent with a pre-filled prompt (the user reviews before sending). Handoffs complement delegation: they give the user direct control to route the next step to the right specialist without re-typing context. See the `handoffs:` block in each agent file for the available transitions.

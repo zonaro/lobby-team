@@ -6,6 +6,16 @@ tools: ['agent', 'edit', 'search', 'execute', 'read', 'web', 'vscode', 'todo']
 agents: ['🐡 Puffy', '🦑 Calamari', '🐙 Chululu']
 user-invocable: true
 disable-model-invocation: false
+handoffs:
+  - label: "Use in UI"
+    agent: "🐠 Fishie"
+    prompt: "Here are the generated assets (images/SVG icons). Drop them into the UI matching the styling context."
+  - label: "Visual Validation"
+    agent: "🐙 Chululu"
+    prompt: "Visually validate the rendered output I just produced (alignment, legibility, consistency, composition)."
+  - label: "Back to Lobby"
+    agent: "👩🏽‍🎤 Lobby"
+    prompt: "Image/icon generation is done. Here is a summary of the assets produced; consolidate and continue."
 ---
 
 # Dolfi 🐬 — Image & Icon Specialist

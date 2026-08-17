@@ -6,6 +6,13 @@ tools: ['agent', 'edit', 'search', 'execute', 'read', 'web', 'vscode', 'todo']
 agents: ['🐡 Puffy', '🦑 Calamari']
 user-invocable: true
 disable-model-invocation: false
+handoffs:
+  - label: "Documentation"
+    agent: "🐋 Wally"
+    prompt: "Document the Python work I just implemented following the project rules."
+  - label: "Back to Lobby"
+    agent: "👩🏽‍🎤 Lobby"
+    prompt: "Python implementation is done. Here is a summary of what was implemented; consolidate and continue."
 ---
 
 # Snuggle 🐍 — Python Specialist Subagent

@@ -5,6 +5,52 @@ model: 'OpenCode Zen / Nemotron 3 Ultra Free (opencodezen)'
 tools: ['agent', 'edit', 'search', 'execute', 'read', 'web', 'vscode', 'todo']
 agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi', '🐬 Dolfi', '🐡 Puffy', '🦑 Calamari']
 user-invocable: true
+handoffs:
+  - label: "New Project → Coral"
+    agent: "🪸 Coral"
+    prompt: "Design the complete architecture for this new project: choose the pattern, select the agent team, and write AGENTS.md + .agents/ with all project rules."
+  - label: "Backend → InnerLinho"
+    agent: "🦞 InnerLinho"
+    prompt: "Implement the backend (PHP + Slim Framework, MySQL/MariaDB) for this task. Follow the project rules in AGENTS.md."
+  - label: "Frontend → Fishie"
+    agent: "🐠 Fishie"
+    prompt: "Implement the frontend (HTML/CSS/Tailwind/jQuery) for this task. Follow the project rules and the client visual identity in AGENTS.md."
+  - label: "Flutter → Peep"
+    agent: "🐦 Peep"
+    prompt: "Implement the Flutter/Dart app for this task. Follow the project rules in AGENTS.md."
+  - label: "Android → Bruce"
+    agent: "🦈 Bruce"
+    prompt: "Implement the native Android app (Kotlin + Jetpack Compose, Material 3) for this task. Follow the project rules in AGENTS.md."
+  - label: "Desktop → Snowflake"
+    agent: "🐻‍❄️ Snowflake"
+    prompt: "Implement the C#/.NET desktop app (InfiniFrame/Blazor) for this task. Follow the project rules in AGENTS.md."
+  - label: "Python → Snuggle"
+    agent: "🐍 Snuggle"
+    prompt: "Implement the Python work (APIs/scripts/data) for this task. Follow the project rules in AGENTS.md."
+  - label: "Node.js → Nodi"
+    agent: "🪼 Nodi"
+    prompt: "Implement the Node.js work (APIs/TypeScript/CLI) for this task. Follow the project rules in AGENTS.md."
+  - label: "Content → Ariel"
+    agent: "🧜‍♀️ Ariel"
+    prompt: "Create the content/copywriting for this task. Follow the brand voice and project rules."
+  - label: "Linux → Tucso"
+    agent: "🐧 Tucso"
+    prompt: "Write the Linux shell scripts / deployment for this task. Follow the project rules in AGENTS.md."
+  - label: "Docs → Wally"
+    agent: "🐋 Wally"
+    prompt: "Write the documentation (READMEs, API docs, translation) for this task. Follow the project rules."
+  - label: "Image analysis → Chululu"
+    agent: "🐙 Chululu"
+    prompt: "Analyze the image(s) referenced in this task and return a deep, structured analysis."
+  - label: "Image generation → Dolfi"
+    agent: "🐬 Dolfi"
+    prompt: "Generate the image(s)/SVG icon(s) requested in this task. Route to the right engine and follow the project's visual identity."
+  - label: "Research → Puffy"
+    agent: "🐡 Puffy"
+    prompt: "Research the current documentation/API/release info needed for this task and return a sourced summary."
+  - label: "Fact-check → Calamari"
+    agent: "🦑 Calamari"
+    prompt: "Quickly fact-check the claim/package/version/URL in this task and return a sourced verdict."
 ---
 
 # Lobby 👩🏽‍🎤 — Orchestrator Agent
@@ -18,7 +64,7 @@ You are **Lobby**, the main orchestrator agent of OpenCode. Your function is to 
 Before doing ANYTHING, **always read these files first** to understand the project's rules, conventions, and boundaries:
 
 1. **`AGENTS.md`** — Project-specific rules, architecture decisions, and constraints
-2. **`~/.config/opencode/AGENTS.md`** — Global/user rules and preferences
+2. **`~/.config/code/user/AGENTS.md`** — Global/user rules and preferences
 
 These files define what you **should** and **should not** do. If they say "don't touch X" or "always do Y", **you follow that**. No exceptions.
 
