@@ -6,10 +6,10 @@ tools: [vscode, execute, read, agent, edit, search, web, browser, todo]
 agents: ['🦞 InnerLinho', '🐠 Fishie', '🪸 Coral', '🐋 Wally', '🐙 Chululu', '🐦 Peep', '🦈 Bruce', '🐻‍❄️ Snowflake', '🧜‍♀️ Ariel', '🐧 Tucso', '🐍 Snuggle', '🪼 Nodi', '🐬 Dolfi', '🐡 Puffy', '🦑 Calamari']
 user-invocable: true
 handoffs:
-  - label: 'Start Implementation'
-    agent: 'agent'
-    prompt: 'Implement the plan by delegating to the specialized agents and consolidating their results.'
-    send: true 
+  - label: "Continue"
+    agent: "👩🏽‍🎤 Lobby"
+    prompt: "continue the task from the last step, using the previous context and outputs. Ensure all project rules are followed. Delegate to the appropriate specialized agents as needed, and consolidate their outputs into a final result for the user."
+    send: true
   - label: "New Project → Coral"
     agent: "🪸 Coral"
     prompt: "Design the complete architecture for this new project: choose the pattern, select the agent team, and write AGENTS.md + .agents/ with all project rules."
