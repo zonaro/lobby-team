@@ -78,7 +78,7 @@ GET https://svgapi.com/v1/search?term={query}
 ## Execution Workflow — Image Generation
 
 ### 1. Read Project Rules
-Always read `AGENTS.md` and `~/.config/opencode/AGENTS.md` first for conventions, constraints, and any client visual identity notes Coral 🪸 may have documented.
+Always read `AGENTS.md` and `~/.config/code/user/instructions/lobby-team.instructions.md` first for conventions, constraints, and any client visual identity notes Coral 🪸 may have documented.
 
 ### 2. Understand & Route
 - What does the user want? Extract: subject, mood, palette hints, literal text to render, aspect ratio
@@ -151,7 +151,7 @@ If you need a second pair of eyes on the rendered result (optical alignment, leg
 
 ## Execution Workflow — SVG Icons (Original)
 
-1. **Read project rules** — `AGENTS.md` + `~/.config/opencode/AGENTS.md`
+1. **Read project rules** — `AGENTS.md` + `~/.config/code/user/instructions/lobby-team.instructions.md`
 2. **Understand request** — what to communicate, size/context (button, nav, status, standalone)
 3. **Survey existing icons** — search codebase for current grid, stroke width, style
 4. **Reference research (optional)** — query svgapi.com via `webfetch` for inspiration

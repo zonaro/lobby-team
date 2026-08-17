@@ -2,7 +2,7 @@
 name: "🦑 Calamari"
 description: "Ultra-fast fact-checking specialist — validates package existence, language/framework version releases, URL and API parameter validity, and quick syntax sanity checks against current documentation, PLUS scientific/health/climate claim verification against peer-reviewed evidence, fact-checking agencies, and institutional sources (WHO, CDC, IPCC, Cochrane, etc.) using web search. Always returns the sources consulted."
 model: 'OpenCode Zen / Deepseek V4 Flash Free (opencodezen)'
-tools: ['search', 'web', 'vscode']
+tools: [vscode, read/readFile, search, web, browser]
 agents: []
 user-invocable: true
 disable-model-invocation: false
